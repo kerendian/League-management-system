@@ -1,5 +1,6 @@
 package Domain;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Game {
@@ -10,6 +11,8 @@ public class Game {
     Team home_team;
     Team external_team;
     String result;
+    Referee main_referee;
+    ArrayList<Referee> secondary_referees;
 
     public Game(Date date, int hour, Team home_team, Team external_team) {
         this.date = date;
