@@ -15,7 +15,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="League-management-system" options="--add-modules java.base,java.sql" />
+      <module name="League-management-system" options="" />
     </option>
   </component>
 </project>

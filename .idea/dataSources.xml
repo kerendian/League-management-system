@@ -15,5 +15,12 @@
       <jdbc-url>jdbc:sqlite:C:\Users\noa15\League-management-system\target\classes\DataAccess\db.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="db [3]" uuid="efaad042-8d98-4d22-9616-fb86c6f81bc2">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\Win10\Desktop\League-management-system\src\DataAccess\db.db</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
