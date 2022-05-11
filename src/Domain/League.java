@@ -6,13 +6,15 @@ public class League {
    static int counter = 1;
    String league_id;
    ArrayList<Referee> Referees;
+   ArrayList<Game> Games;
    Policy scoring_policy;
    Policy game_policy;
    Season league_season;
 
     public League() {
         league_id = "LEA"+ counter++;
-
+        Referees = new ArrayList<Referee>();
+        Games = new ArrayList<Game>();
     }
 
     public String getLeague_id() {
@@ -25,6 +27,10 @@ public class League {
 
     public ArrayList<Referee> getReferees() {
         return Referees;
+    }
+
+    public ArrayList<Game> getGames() {
+        return Games;
     }
 
     public void setReferees(ArrayList<Referee> referees) {
@@ -54,8 +60,11 @@ public class League {
     public void setLeague_season(Season league_season) {
         this.league_season = league_season;
     }
+
     public  void Add_referee(Referee referee){
         Referees.add(referee);
     }
+
+    public void add_game(Game game){Games.add(game); }
 }
 
