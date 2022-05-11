@@ -1,9 +1,9 @@
 package Service;
 
-import Domain.LoginDomainController;
+import Domain.DomainController;
 import Domain.UserStatus;
-public class LoginServiceController {
-    LoginDomainController loginDomainController = new LoginDomainController();
+public class ServiceController {
+    DomainController loginDomainController = new DomainController();
     String userType_mem = null;
     public void logIn(String userName, String password, String userType)
     {

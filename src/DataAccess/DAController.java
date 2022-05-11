@@ -3,16 +3,15 @@ package DataAccess;
 import Domain.UserStatus;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class LoginDAController {
-private static LoginDAController instance = new LoginDAController();
+public class DAController {
+private static DAController instance = new DAController();
 DBConnector dbc = DBConnector.getInstance();
-private LoginDAController(){}
+private DAController(){}
 
-public static LoginDAController getInstance(){return  instance;};
+public static DAController getInstance(){return  instance;};
     public UserStatus findUser(String userName, String password, String userType)
     {
         UserStatus  us = null;

@@ -1,4 +1,4 @@
 package Domain;
 
-public class Policy {
+public abstract class Policy {
 }

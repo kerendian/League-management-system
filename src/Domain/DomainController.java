@@ -1,9 +1,9 @@
 package Domain;
 
-import DataAccess.LoginDAController;
+import DataAccess.DAController;
 
-public class LoginDomainController {
-    LoginDAController loginDAController = LoginDAController.getInstance();
+public class DomainController {
+    DAController loginDAController = DAController.getInstance();
 
     public UserStatus findUser(String userName, String password, String userType)
     {
