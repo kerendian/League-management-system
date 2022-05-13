@@ -62,7 +62,7 @@ public class Game {
         this.league = league;
 
         //placement game to policy
-        this.league.game_policy.add_game_to_league(this.league, this);
+        this.league.getGame_policy().add_game_to_league(this.league, this);
 
     }
 }

@@ -45,7 +45,7 @@ public class League {
         this.scoring_policy = scoring_policy;
     }
 
-    public Policy getGame_policy() {
+    public GamePlacementPolicy getGame_policy() {
         return game_policy;
     }
 
