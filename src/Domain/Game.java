@@ -8,7 +8,7 @@ public class Game {
     int counter = 1;
     String game_id;
     Date date;
-    Time time;
+    int hour;
     Team home_team;
     Team external_team;
     String result;
@@ -55,9 +55,9 @@ public class Game {
         this.result = result;
     }
 
-    public void game_placement(Date date, Time time, Court court, League league){
+    public void game_placement(Date date, int hour , Court court, League league){
         this.date = date;
-        this.time = time;
+        this.hour = hour;
         this.court = court;
         this.league = league;
 

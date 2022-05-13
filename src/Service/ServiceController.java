@@ -5,6 +5,8 @@ import Domain.UserStatus;
 import Exceptions.WrongPasswordException;
 import Exceptions.WrongUserNameException;
 import java.io.IOException;
+import java.sql.Time;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.*;
@@ -41,7 +43,12 @@ public class ServiceController {
 
     }
 //    TODO: remove if dont need
-    public String getUserType_mem(){ return userType_mem;}
+    public String getUserType_mem(){ return user;}
 
 
-}
+    public Status schedualeGame(String game_id, Date date, Time time, String court_id,String league_id){
+        domainController
+    }
+
+    }
+
