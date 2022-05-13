@@ -5,6 +5,10 @@ public class GamePlacementPolicy2 extends GamePlacementPolicy{
         for (League my_league: this.league_list) {
             if(league.getLeague_id()==my_league.getLeague_id()){
                 league.getGames().add(game);
+
+                Game game2 = game;
+                game2.setHome_team(game2.getExternal_team());
+                game2.setExternal_team(game2.getHome_team());
                 league.getGames().add(game);
             }
             else{

@@ -8,7 +8,7 @@ public class League {
    ArrayList<Referee> Referees;
    ArrayList<Game> Games;
    Policy scoring_policy;
-   Policy game_policy;
+   GamePlacementPolicy game_policy;
    Season league_season;
 
     public League() {
@@ -49,7 +49,7 @@ public class League {
         return game_policy;
     }
 
-    public void setGame_policy(Policy game_policy) {
+    public void setGame_policy(GamePlacementPolicy game_policy) {
         this.game_policy = game_policy;
     }
 

@@ -1,5 +1,6 @@
 package Domain;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -7,21 +8,19 @@ public class Game {
     int counter = 1;
     String game_id;
     Date date;
-    int hour;
+    Time time;
     Team home_team;
     Team external_team;
     String result;
     Referee main_referee;
     ArrayList<Referee> secondary_referees;
     Court court;
+    League league;
 
-    public Game(Date date, int hour, Team home_team, Team external_team, Court court) {
-        this.date = date;
-        this.hour = hour;
+    public Game(Team home_team, Team external_team) {
         this.home_team = home_team;
         this.external_team = external_team;
         this.game_id = "GM"+counter++;
-        this.court = court;
     }
 
     public Date getDate() {
@@ -30,14 +29,6 @@ public class Game {
 
     public void setDate(Date date) {
         this.date = date;
-    }
-
-    public int getHour() {
-        return hour;
-    }
-
-    public void setHour(int hour) {
-        this.hour = hour;
     }
 
     public Team getHome_team() {
@@ -62,5 +53,16 @@ public class Game {
 
     public void setResult(String result) {
         this.result = result;
+    }
+
+    public void game_placement(Date date, Time time, Court court, League league){
+        this.date = date;
+        this.time = time;
+        this.court = court;
+        this.league = league;
+
+        //placement game to policy
+        this.league.game_policy.add_game_to_league(this.league, this);
+
     }
 }
