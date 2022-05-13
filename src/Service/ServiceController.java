@@ -2,32 +2,45 @@ package Service;
 
 import Domain.DomainController;
 import Domain.UserStatus;
+import Exceptions.WrongPasswordException;
+import Exceptions.WrongUserNameException;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.*;
 public class ServiceController {
-    DomainController loginDomainController = new DomainController();
+//    private static final Logger logger = Logger.getLogger(ServiceController.class.getName());
+
+
+    DomainController domainController = new DomainController();
     String userType_mem = null;
-    public void logIn(String userName, String password, String userType)
+    public UserStatus logIn(String userName, String password, String userType) throws Exception
     {
         if (password.length() < 6)
         {
-            System.out.println("Password must be at least 6 characters");
-            return;
+            throw  new WrongPasswordException("Password must be at least 6 characters");
         }
-        UserStatus us= loginDomainController.findUser(userName,password,userType);
-        if (us != null) {
-            if (us == UserStatus.Valid) {
-                System.out.println("Login Successful");
-                userType_mem = userType;
-            } else if (us == UserStatus.WrongPassword) {
-                System.out.println("Wrong Password");
-            } else {
-                System.out.println("There is no " + userType + " with the userName " + userName + " in the system");
-            }
+        UserStatus us= domainController.findUser(userName,password,userType);
+
+        if (us == UserStatus.Valid)
+        {
+//          System.out.println("Login Successful");
+            userType_mem = userType;
+
+            return us;
+        }
+        else if (us == UserStatus.WrongPassword)
+        {
+           throw new WrongPasswordException("Wrong Password");
         }
         else
         {
-            System.out.println("Exception occurred");
+            throw new WrongUserNameException("There is no " + userType + " with the userName " + userName + " in the system");
         }
+
+
     }
+//    TODO: remove if dont need
     public String getUserType_mem(){ return userType_mem;}
 
 

@@ -13,13 +13,15 @@ public class Game {
     String result;
     Referee main_referee;
     ArrayList<Referee> secondary_referees;
+    Court court;
 
-    public Game(Date date, int hour, Team home_team, Team external_team) {
+    public Game(Date date, int hour, Team home_team, Team external_team, Court court) {
         this.date = date;
         this.hour = hour;
         this.home_team = home_team;
         this.external_team = external_team;
         this.game_id = "GM"+counter++;
+        this.court = court;
     }
 
     public Date getDate() {
