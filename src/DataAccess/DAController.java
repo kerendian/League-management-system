@@ -218,8 +218,10 @@ public static DAController getInstance(){return  instance;};
                     "WHERE gameID = '" + game_details.get("game_id") + "';";
             Connection conn = dbc.connect();
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
+            boolean rs = stmt.execute(sql);
             System.out.println("row was updated successfully!");
+            stmt.close();
+            dbc.disconnect(conn);
 
         }
 
@@ -236,8 +238,10 @@ public static DAController getInstance(){return  instance;};
                     "WHERE gameID = '" + game_details.get("game_id") + "';";
             Connection conn = dbc.connect();
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
+            boolean rs = stmt.execute(sql);
             System.out.println("row was updated successfully!");
+            stmt.close();
+            dbc.disconnect(conn);
 
         }
 
