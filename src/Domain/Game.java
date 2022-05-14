@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Game {
-    int counter = 1;
+    int counter = 4;
     String game_id;
     String date;
     int hour;
@@ -20,7 +20,7 @@ public class Game {
     public Game(Team home_team, Team external_team) {
         this.home_team = home_team;
         this.external_team = external_team;
-        this.game_id = "GM"+counter++;
+        this.game_id = "GAME"+counter++;
     }
 
     public String getDate() {

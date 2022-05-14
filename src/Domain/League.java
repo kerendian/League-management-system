@@ -3,7 +3,7 @@ package Domain;
 import java.util.ArrayList;
 
 public class League {
-   static int counter = 1;
+   static int counter = 3;
    String league_id;
    ArrayList<Referee> Referees;
    ArrayList<Game> Games;
@@ -12,7 +12,7 @@ public class League {
    Season league_season;
 
     public League() {
-        league_id = "LEA"+ counter++;
+        league_id = "LEAGUE"+ counter++;
         Referees = new ArrayList<Referee>();
         Games = new ArrayList<Game>();
     }

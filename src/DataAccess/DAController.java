@@ -71,7 +71,6 @@ public static DAController getInstance(){return  instance;};
                     game_details.put("hour",rs.getString("hour"));
                     game_details.put("home_team",rs.getString("homeTeam_ID"));
                     game_details.put("external_team",rs.getString("externalTeam_ID"));
-                    game_details.put("internal_team",   rs.getString("internalTeam_ID"));
                     game_details.put( "main_referee" ,   rs.getString("main_referee_ID"));
                     game_details.put( "secondary_referee_1" ,   rs.getString("secondary_referee_ID1"));
                     game_details.put(  "secondary_referee_2",   rs.getString("secondary_referee_ID2"));
