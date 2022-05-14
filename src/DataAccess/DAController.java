@@ -181,48 +181,10 @@ public static DAController getInstance(){return  instance;};
         }
         return court_details;
     }
-    public void game_placement(HashMap<String,String> game_details){
-        try {
-            String sql = "SELECT * FROM Games WHERE gameID = '" + game_details.get("game_id") + "';";
-            Connection conn = dbc.connect();
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-            rs.updateString("date", game_details.get("date"));
-            rs.updateString("hour", game_details.get("hour"));
-            rs.updateString("homeTeam_ID", game_details.get("home_team"));
-            rs.updateString("externalTeam_ID", game_details.get("external_team"));
-            rs.updateString("courtID", game_details.get("court"));
-            rs.updateString("leagueID", game_details.get("league"));
-            rs.updateRow();
-            System.out.println("Row Updated");
-            System.out.println(rs.getMetaData());
-            rs.close();
-            stmt.close();
-            dbc.disconnect(conn);
-        }
-
-        catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-    }
-
-    public void referees_placement(HashMap<String,String> game_details){
-        try {
-            String sql = "UPDATE Games " +
-                    "SET date = '" + game_details.get("date") + "',"+
-                    "hour = '" + game_details.get("hour") + "',"+
-                    "homeTeam_ID = '" + game_details.get("home_team") + "',"+
-                    "externalTeam_ID = '" + game_details.get("external_team") + "',"+
-                    "courtID = '" + game_details.get("court") + "',"+
-                    "leagueID = '" + game_details.get("league") + "',"+
-                    "WHERE gameID = '" + game_details.get("game_id") + "';";
-            Connection conn = dbc.connect();
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-            System.out.println("row was updated successfully!");
-
-        }
-        //            Connection conn = dbc.connect();
+//    public void game_placement(HashMap<String,String> game_details){
+//        try {
+//            String sql = "SELECT * FROM Games WHERE gameID = '" + game_details.get("game_id") + "';";
+//            Connection conn = dbc.connect();
 //            Statement stmt = conn.createStatement();
 //            ResultSet rs = stmt.executeQuery(sql);
 //            rs.updateString("date", game_details.get("date"));
@@ -237,9 +199,52 @@ public static DAController getInstance(){return  instance;};
 //            rs.close();
 //            stmt.close();
 //            dbc.disconnect(conn);
+//        }
+//
+//        catch (Exception e) {
+//                System.out.println(e.getMessage());
+//            }
+//    }
+
+    public void games_placement(HashMap<String,String> game_details){
+        try {
+            String sql = "UPDATE Games " +
+                    "SET date = '" + game_details.get("date") + "',"+
+                    "hour = '" + game_details.get("hour") + "',"+
+                    "homeTeam_ID = '" + game_details.get("home_team") + "',"+
+                    "externalTeam_ID = '" + game_details.get("external_team") + "',"+
+                    "courtID = '" + game_details.get("court") + "',"+
+                    "leagueID = '" + game_details.get("league") + "'"+
+                    "WHERE gameID = '" + game_details.get("game_id") + "';";
+            Connection conn = dbc.connect();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            System.out.println("row was updated successfully!");
+
+        }
 
         catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
+    public void referees_placement(HashMap<String,String> game_details){
+        try {
+            String sql = "UPDATE Games " +
+                    "SET main_referee_ID = '" + game_details.get("main_referee") + "',"+
+                    "secondary_referee_ID1 = '" + game_details.get("secondary_referee_1") + "',"+
+                    "secondary_referee_ID2 = '" + game_details.get("secondary_referee_2") + "'"+
+                    "WHERE gameID = '" + game_details.get("game_id") + "';";
+            Connection conn = dbc.connect();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            System.out.println("row was updated successfully!");
+
+        }
+
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+
 }
