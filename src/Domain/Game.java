@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Game {
-    //check commitxgxg
     int counter = 1;
     String game_id;
     String date;
