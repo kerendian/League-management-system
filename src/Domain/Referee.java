@@ -4,10 +4,14 @@ import java.util.ArrayList;
 
 public class Referee extends SignedUser {
 
+    String referee_ID;
     String refNum;
     League league;
     String qualification;
     ArrayList<Game> games_list;
+    int counter= 5;
+
+
 
     public String getRefNum() {
         return refNum;
@@ -41,9 +45,10 @@ public class Referee extends SignedUser {
         this.games_list = games_list;
     }
 
-    public Referee(String userName, String password) {
+    public Referee(String userName, String password, String refNum) {
         super(userName, password);
-
+        this.refNum = refNum;
+        this.referee_ID = "REF"+ counter++;
     }
 
     @Override

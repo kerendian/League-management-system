@@ -3,11 +3,11 @@ package Domain;
 public class Court {
     String courtID;
     String name;
-    int counter =1;
+    int counter =2;
 
     public Court(String name) {
         this.name = name;
-        this.courtID = "Court"+counter++;
+        this.courtID = "COURT"+counter++;
     }
 
     public String getCourtID() {
