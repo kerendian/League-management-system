@@ -43,12 +43,12 @@ public class ServiceController {
 
     }
 //    TODO: remove if dont need
-    public String getUserType_mem(){ return user;}
+//    public String getUserType_mem(){ return user;}
 
 
-    public Status schedualeGame(String game_id, Date date, Time time, String court_id,String league_id){
-        domainController
-    }
+//    public Status schedualeGame(String game_id, Date date, Time time, String court_id,String league_id){
+//        domainController
+//    }
 
     }
 

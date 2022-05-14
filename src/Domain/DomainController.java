@@ -16,14 +16,14 @@ public class DomainController {
 
     }
 
-    public Status schedualeGame(String game_id, Date date, Time time, String court_id, String league_id){
-
-        //trying importing the specific game from db
-        try {
-            Game my_game = daController.
-        }
-        catch(){
-
-        }
-    }
+//    public Status schedualeGame(String game_id, Date date, Time time, String court_id, String league_id){
+//
+//        //trying importing the specific game from db
+//        try {
+//            Game my_game = daController.
+//        }
+//        catch(){
+//
+//        }
+//    }
 }
