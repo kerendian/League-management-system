@@ -108,6 +108,61 @@ public static DAController getInstance(){return  instance;};
         return game_details;
     }
 
+//    public HashMap<String,String>  findReferee(String referee_id)
+//    {
+//        HashMap<String,String> referee_details = new HashMap<>();
+//
+//        try {
+//            String sql = "SELECT * FROM Referees WHERE refereeID = '" + referee_id + "';" ;
+//            Connection conn = dbc.connect();
+//            Statement stmt = conn.createStatement();
+//            ResultSet rs = stmt.executeQuery(sql);
+//            //reading the rows that returned
+//            if (rs.next())
+//            {
+//                String referee_idFromDB = rs.getString("gameID");
+//                if (game_idFromDB.equals(game_id))
+//                {   game_details.put("game_id",rs.getString("gameID"));
+//                    game_details.put("date",rs.getString("date"));
+//                    game_details.put("hour",rs.getString("hour"));
+//                    game_details.put("home_team",rs.getString("homeTeam_ID"));
+//                    game_details.put("external_team",rs.getString("externalTeam_ID"));
+//                    game_details.put( "main_referee" ,   rs.getString("main_referee_ID"));
+//                    game_details.put( "secondary_referee_1" ,   rs.getString("secondary_referee_ID1"));
+//                    game_details.put(  "secondary_referee_2",   rs.getString("secondary_referee_ID2"));
+//                    game_details.put(  "court", rs.getString("courtID"));
+//                    game_details.put( "league" , rs.getString("leagueID"));
+//                    game_details.put(  "result", rs.getString("result"));
+//
+//
+//                }
+//                else
+//                {
+//                    game_details = null;
+//                    rs.close();
+//                    stmt.close();
+//                    dbc.disconnect(conn);
+//                    throw new ObjectIDNotExistException("The game id is not found in the DB");
+//                }
+//            }
+//            else
+//            {
+//                rs.close();
+//                stmt.close();
+//                dbc.disconnect(conn);
+//                throw new ImportDataException("could not import the game data");
+//            }
+//            rs.close();
+//            stmt.close();
+//            dbc.disconnect(conn);
+//        }
+//
+//        catch (Exception e)
+//        {
+//            System.out.println(e.getMessage());
+//        }
+//        return game_details;
+//    }
 
     public HashMap<String,String>  findLeague(String league_id) {
         HashMap<String, String> league_details = new HashMap<>();

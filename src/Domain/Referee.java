@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Referee extends SignedUser {
 
-    String referee_ID;
+    String refereeID;
     String refNum;
     League league;
     String qualification;
@@ -48,7 +48,7 @@ public class Referee extends SignedUser {
     public Referee(String userName, String password, String refNum) {
         super(userName, password);
         this.refNum = refNum;
-        this.referee_ID = "REF"+ counter++;
+        this.refereeID = "REF"+ counter++;
     }
 
     @Override
