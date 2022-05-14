@@ -50,61 +50,29 @@ public static DAController getInstance(){return  instance;};
     return us;
     }
 
-    public HashMap<String,String>  findGame(String game_id)
-    {
-        // game_details=[game_id,date,hour,home_team,external_team,result,main_referee,,secondary_referee1, secondary_referee2, court_id, leasgue_id]
-        //ArrayList<String>  game_details = new ArrayList<>();
-        HashMap<String,String> game_details = new HashMap<>();
+
+
+
+    public HashMap<String,String>  findLeague(String league_id) {
+        HashMap<String, String> league_details = new HashMap<>();
         try {
-            String sql = "SELECT * FROM Games WHERE gameID = '" + game_id + "';" ;
+            String sql = "SELECT * FROM Leagues WHERE leagueID = '" + league_id + "';";
             Connection conn = dbc.connect();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             //reading the rows that returned
-            if (rs.next())
-            {
-                String game_idFromDB = rs.getString("gameID");
-                if (game_idFromDB.equals(game_id))
-                {   game_details.put("game_id",rs.getString("gameID"));
-                    game_details.put("game_id",rs.getString("date"));
-
-
-                     String date = rs.getString("date");
-                     String hour = rs.getString("hour");
-                     String home_team = rs.getString("homeTeam_ID");
-                     String external_team = rs.getString("externalTeam_ID");
-                     String main_referee = rs.getString("main_referee_ID");
-                     String secondary_referee_ID1 = rs.getString("secondary_referee_ID1");
-                     String secondary_referee_ID2 = rs.getString("secondary_referee_ID2");
-                     String court_id = rs.getString("courtID");
-                     String league_id = rs.getString("leagueID");
-
-
-
-
-                    main_referee_ID
-                            main_referee,,secondary_referee1, secondary_referee2, court_id, leasgue_id]
-
-
-
-                }
-                else
-                {
-                    game_details = Status.WrongPassword;
+            if (rs.next()) {
+                String league_idFromDB = rs.getString("leagueID");
+                if (league_idFromDB.equals(league_id)) {
+                    league_details.put("league_id", league_idFromDB);
+                    league_details.put("season_year", rs.getString("season_year"));
+                    league_details.put("policy_id", rs.getString("policyID"));
+                    return league_details;
                 }
             }
-            else
-            {
-                us = UserStatus.WrongType;
-            }
-            rs.close();
-            stmt.close();
-            dbc.disconnect(conn);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return us;
+        return league_details;
     }
 }
