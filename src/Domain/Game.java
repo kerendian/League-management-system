@@ -7,7 +7,7 @@ import java.util.Date;
 public class Game {
     int counter = 1;
     String game_id;
-    Date date;
+    String date;
     int hour;
     Team home_team;
     Team external_team;
@@ -23,11 +23,11 @@ public class Game {
         this.game_id = "GM"+counter++;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -55,7 +55,7 @@ public class Game {
         this.result = result;
     }
 
-    public void game_placement(Date date, int hour , Court court, League league){
+    public void game_placement(String date, int hour , Court court, League league){
         this.date = date;
         this.hour = hour;
         this.court = court;

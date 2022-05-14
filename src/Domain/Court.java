@@ -1,17 +1,20 @@
 package Domain;
 
 public class Court {
-    int courtID;
+    String courtID;
+    String name;
+    int counter =1;
 
-    public Court(int courtID) {
-        this.courtID = courtID;
+    public Court(String name) {
+        this.name = name;
+        this.courtID = "Court"+counter++;
     }
 
-    public int getCourtID() {
+    public String getCourtID() {
         return courtID;
     }
 
-    public void setCourtID(int courtID) {
+    public void setCourtID(String courtID) {
         this.courtID = courtID;
     }
 }
