@@ -29,10 +29,10 @@ public class DomainController implements DomainControllerInterface {
 
     }
 
-    public HashMap<String,String> findGame(String game_id){
-        HashMap<String,String> game_row = daController.findGame(game_id);
-        return game_row;
-    }
+//    public HashMap<String,String> findGame(String game_id){
+//        HashMap<String,String> game_row = daController.findGame(game_id);
+//        return game_row;
+//    }
 
     public Status games_placement(String date, int hour , String leagueID,String game_id){
 
@@ -202,7 +202,7 @@ public class DomainController implements DomainControllerInterface {
             }
 
             //checking the referee have no league
-            if (curr_referee.getLeagueID() ==null||curr_referee.getLeagueID().equals("NULL") ){
+            if (curr_referee.getLeagueID() ==null||curr_referee.getLeagueID().equals("NULL")||curr_referee.getLeagueID().equals("") ){
                 curr_referee.setLeagueID(league_id);
                 daController.updateLeagueToReferee(referee_id, league_id);
                 return success;

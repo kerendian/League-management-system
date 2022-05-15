@@ -1,5 +1,6 @@
 package Domain;
 
+import Service.Status;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -11,7 +12,7 @@ private static DomainController dc;
     @BeforeClass
     public static void setUp() throws Exception
     {
-        dc = new DomainController(new StubDAController());
+        dc = new DomainController(new StubDAController());//domain controller
 
     }
 
@@ -38,5 +39,28 @@ private static DomainController dc;
     {
         UserStatus res = dc.findUser("Alice","test1234","UnionRepresentors");
         assertEquals(UserStatus.WrongType,res);
+    }
+
+    @Test
+    public void assign_valid_referee_to_league(){
+        Status  res = dc.assign_referee_to_league("REF1","LEAGUE1");
+        assertEquals(Status.success,res);
+    }
+
+    @Test
+    public void assign_invalid_referee_to_league(){
+        Status  res = dc.assign_referee_to_league("REF2","LEAGUE1");
+        assertEquals(Status.failure,res);
+    }
+    @Test
+    public void assign_referee_to_invalid_league(){
+        Status  res = dc.assign_referee_to_league("REF1","LEAGUE2");
+        assertEquals(Status.failure,res);
+    }
+
+    @Test
+    public void assign_invalid_referee_to_invalid_league(){
+        Status  res = dc.assign_referee_to_league("REF2","LEAGUE2");
+        assertEquals(Status.failure,res);
     }
 }
