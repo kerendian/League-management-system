@@ -1,14 +1,22 @@
 package Domain;
 
 import DataAccess.DAController;
+import DataAccess.DAControllerInterface;
 import Service.Status;
 
 import java.sql.Time;
 import java.util.Date;
 import java.util.HashMap;
 
-public class DomainController {
-    DAController daController = DAController.getInstance();
+public class DomainController implements DomainControllerInterface {
+    DAControllerInterface daController;
+
+    //remember when using constructor in acceptance / integration tests to send DAController.getInstance()
+    public DomainController(DAControllerInterface daController) {
+
+        this.daController = daController;
+    }
+
 
     public UserStatus findUser(String userName, String password, String userType)
     {

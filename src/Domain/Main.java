@@ -1,12 +1,13 @@
 package Domain;
 
+import DataAccess.DAController;
 import Service.ServiceController;
 
 import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
-        ServiceController la =new ServiceController();
+        ServiceController la =new ServiceController(new DomainController(DAController.getInstance()));
         try {
             la.logIn("Yosi","123456","Referees");
         } catch (Exception e) {

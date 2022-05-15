@@ -11,8 +11,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class DAController {
-private static DAController instance = new DAController();
+public class DAController implements DAControllerInterface {
+private static DAController instance = new DAController() ;
 DBConnector dbc = DBConnector.getInstance();
 private DAController(){}
 

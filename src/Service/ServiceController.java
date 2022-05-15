@@ -1,6 +1,8 @@
 package Service;
 
+import DataAccess.DAController;
 import Domain.DomainController;
+import Domain.DomainControllerInterface;
 import Domain.UserStatus;
 import Exceptions.WrongPasswordException;
 import Exceptions.WrongUserNameException;
@@ -15,17 +17,25 @@ import java.util.logging.*;
 public class ServiceController {
     private static final Logger logger = Logger.getLogger(ServiceController.class.getName());
     FileHandler fileHandler;
+    DomainControllerInterface domainController;
+
     {
+
+    }
+    String userType_mem = null;
+
+    //remember when using constructor in acceptance / integration tests to send new DomainController(DAController.getInstance())
+
+    public ServiceController(DomainController domainController) {
         try
         {
-            fileHandler = new FileHandler("status.log",true);
+            this.fileHandler = new FileHandler("status.log",true);
             logger.addHandler(fileHandler);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        this.domainController = domainController;
     }
-    DomainController domainController = new DomainController();
-    String userType_mem = null;
 
     public UserStatus logIn(String userName, String password, String userType) throws Exception
     {
