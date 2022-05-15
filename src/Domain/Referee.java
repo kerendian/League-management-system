@@ -1,17 +1,25 @@
 package Domain;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Referee extends SignedUser {
 
     String refereeID;
     String refNum;
-    League league;
+    String leagueID;
     String qualification;
-    ArrayList<Game> games_list;
+
     int counter= 5;
 
 
+    public String getRefereeID() {
+        return refereeID;
+    }
+
+    public void setRefereeID(String refereeID) {
+        this.refereeID = refereeID;
+    }
 
     public String getRefNum() {
         return refNum;
@@ -21,12 +29,12 @@ public class Referee extends SignedUser {
         this.refNum = refNum;
     }
 
-    public League getLeague() {
-        return league;
+    public String getLeagueID() {
+        return leagueID;
     }
 
-    public void setLeague(League league) {
-        this.league = league;
+    public void setLeagueID(String league) {
+        this.leagueID = league;
     }
 
     public String getQualification() {
@@ -37,19 +45,24 @@ public class Referee extends SignedUser {
         this.qualification = qualification;
     }
 
-    public ArrayList<Game> getGames_list() {
-        return games_list;
-    }
-
-    public void setGames_list(ArrayList<Game> games_list) {
-        this.games_list = games_list;
-    }
-
     public Referee(String userName, String password, String refNum) {
         super(userName, password);
         this.refNum = refNum;
         this.refereeID = "REF"+ counter++;
     }
+
+
+    public HashMap<String,String> get_referee_details(){
+        HashMap<String,String> referee_details = new HashMap<>();
+        referee_details.put("refereeID",this.refereeID);
+        referee_details.put("refNum",this.refNum);
+        referee_details.put("leagueID",this.leagueID);
+        referee_details.put("qualification",this.qualification);
+        referee_details.put("username",this.userName);
+        referee_details.put("password",this.password);
+        return referee_details;
+    }
+
 
     @Override
     public String toString() {

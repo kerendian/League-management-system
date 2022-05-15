@@ -3,24 +3,34 @@ package Domain;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 public class Game {
     int counter = 4;
     String game_id;
     String date;
     int hour;
-    Team home_team;
-    Team external_team;
+    String home_team_ID;
+    String external_team_ID;
     String result;
-    Referee main_referee;
-    ArrayList<Referee> secondary_referees;
-    Court court;
-    League league;
+    String main_referee_ID;
+    String secondary_referee_ID1;
+    String secondary_referee_ID2;
+    String courtID;
+    String leagueID;
 
-    public Game(Team home_team, Team external_team) {
-        this.home_team = home_team;
-        this.external_team = external_team;
+    public Game(String home_team, String external_team) {
+        this.home_team_ID = home_team;
+        this.external_team_ID = external_team;
         this.game_id = "GAME"+counter++;
+    }
+
+    public String getGame_id() {
+        return game_id;
+    }
+
+    public void setGame_id(String game_id) {
+        this.game_id = game_id;
     }
 
     public String getDate() {
@@ -31,38 +41,101 @@ public class Game {
         this.date = date;
     }
 
-    public Team getHome_team() {
-        return home_team;
+    public int getHour() {
+        return hour;
     }
 
-    public void setHome_team(Team home_team) {
-        this.home_team = home_team;
+    public void setHour(int hour) {
+        this.hour = hour;
     }
 
-    public Team getExternal_team() {
-        return external_team;
+    public String getHome_team_ID() {
+        return home_team_ID;
     }
 
-    public void setExternal_team(Team external_team) {
-        this.external_team = external_team;
+    public void setHome_team_ID(String home_team_ID) {
+        this.home_team_ID = home_team_ID;
     }
 
-    public String getResult() {
-        return result;
+    public String getExternal_team_ID() {
+        return external_team_ID;
     }
 
-    public void setResult(String result) {
-        this.result = result;
+    public void setExternal_team_ID(String external_team_ID) {
+        this.external_team_ID = external_team_ID;
     }
 
-    public void game_placement(String date, int hour , Court court, League league){
+    public String getMain_referee_ID() {
+        return main_referee_ID;
+    }
+
+    public void setMain_referee_ID(String main_referee_ID) {
+        this.main_referee_ID = main_referee_ID;
+    }
+
+    public String getSecondary_referee_ID1() {
+        return secondary_referee_ID1;
+    }
+
+    public void setSecondary_referee_ID1(String secondary_referee_ID1) {
+        this.secondary_referee_ID1 = secondary_referee_ID1;
+    }
+
+    public String getSecondary_referee_ID2() {
+        return secondary_referee_ID2;
+    }
+
+    public void setSecondary_referee_ID2(String secondary_referee_ID2) {
+        this.secondary_referee_ID2 = secondary_referee_ID2;
+    }
+
+    public String getCourtID() {
+        return courtID;
+    }
+
+    public void setCourtID(String courtID) {
+        this.courtID = courtID;
+    }
+
+    public String getLeagueID() {
+        return leagueID;
+    }
+
+    public void setLeagueID(String leagueID) {
+        this.leagueID = leagueID;
+    }
+
+    public Game game_placement(String date, int hour , String leagueID,String PolicyID,String home_court_id,String external_court_id){
         this.date = date;
         this.hour = hour;
-        this.court = court;
-        this.league = league;
+        this.courtID = home_court_id;
+        this.leagueID = leagueID;
 
         //placement game to policy
-        this.league.getGame_policy().add_game_to_league(this.league, this);
 
+        switch(PolicyID){
+            case "POLICY1":
+                return GamePlacementPolicy1.add_game_to_league(this,home_court_id,external_court_id);
+            case "POLICY2":
+                return GamePlacementPolicy2.add_game_to_league(this,home_court_id,external_court_id);
+
+        }
+
+        return this;
+    }
+
+    public HashMap<String,String> convertToHash(){
+        HashMap<String,String> my_hash = new HashMap<>();
+        my_hash.put("game_id",this.game_id);
+        my_hash.put("date",this.date);
+        my_hash.put("hour",Integer.toString(this.hour));
+        my_hash.put("home_team",this.home_team_ID);
+        my_hash.put("external_team",this.external_team_ID);
+        my_hash.put("main_referee",this.main_referee_ID);
+        my_hash.put("secondary_referee_1",this.secondary_referee_ID1);
+        my_hash.put("secondary_referee_2",this.secondary_referee_ID2);
+        my_hash.put("court",this.courtID);
+        my_hash.put("league",this.leagueID);
+        return my_hash;
     }
 }
