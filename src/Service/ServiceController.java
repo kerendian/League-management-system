@@ -18,19 +18,15 @@ public class ServiceController {
     private static final Logger logger = Logger.getLogger(ServiceController.class.getName());
     FileHandler fileHandler;
     DomainControllerInterface domainController;
-
-    {
-
-    }
     String userType_mem = null;
 
     //remember when using constructor in acceptance / integration tests to send new DomainController(DAController.getInstance())
-
     public ServiceController(DomainController domainController) {
         try
         {
             this.fileHandler = new FileHandler("status.log",true);
             logger.addHandler(fileHandler);
+            logger.setUseParentHandlers(false);
         } catch (IOException e) {
             e.printStackTrace();
         }

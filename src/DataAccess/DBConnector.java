@@ -22,7 +22,7 @@ public class DBConnector {
             String url = "jdbc:sqlite:src/DataAccess/db.db";
             // create a connection to the database
             conn = DriverManager.getConnection(url,"root","root");
-            System.out.println("Connection to SQLite has been established.");
+//            System.out.println("Connection to SQLite has been established.");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
