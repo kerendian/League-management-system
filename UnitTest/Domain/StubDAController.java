@@ -1,6 +1,7 @@
 package Domain;
 
 import DataAccess.DAControllerInterface;
+import Service.Status;
 
 import java.util.HashMap;
 
@@ -31,6 +32,11 @@ public class StubDAController implements DAControllerInterface
     }
 
     @Override
+    public HashMap<String, String> findReferee(String referee_id) {
+        return null;
+    }
+
+    @Override
     public HashMap<String, String> findLeague(String league_id) {
         return null;
     }
@@ -41,12 +47,17 @@ public class StubDAController implements DAControllerInterface
     }
 
     @Override
-    public void games_placement(HashMap<String, String> game_details) {
-
+    public Status games_placement(HashMap<String, String> game_details) {
+        return null;
     }
 
     @Override
-    public void referees_placement(HashMap<String, String> game_details) {
+    public Status updateRefereesToGame(HashMap<String, String> game_details) {
+        return null;
+    }
 
+    @Override
+    public Status updateLeagueToReferee(String referee_id, String league_id) {
+        return null;
     }
 }
