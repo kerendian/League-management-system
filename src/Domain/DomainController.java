@@ -36,7 +36,7 @@ public class DomainController {
             //checking referee exists
             HashMap<String, String> referee_details = daController.findReferee(referee_id);
 
-            if (referee_details.get("leagueID") != game_details)
+           // if (referee_details.get("leagueID") != game_details)
 
 
         }catch(Exception e){
@@ -80,7 +80,7 @@ public class DomainController {
     }
 
 
-        game_placement(String date, int hour , String court, String league)
+        //game_placement(String date, int hour , String court, String league)
 
     //    public Status schedualeGame(String game_id, Date date, Time time, String court_id, String league_id){
 //
