@@ -46,9 +46,32 @@ public class ServiceController {
 //    public String getUserType_mem(){ return user;}
 
 
-//    public Status schedualeGame(String game_id, Date date, Time time, String court_id,String league_id){
-//        domainController
+//    public Status schedualeGame(String game_id, String date, String  time, String court_id,String league_id){
+//
+//        //domainController.games_placement();
 //    }
 
+
+
+    public void assign_referee_to_game(String referee_id,String game_id){
+        try{
+        domainController.assign_referee_to_game(referee_id,game_id);
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+
+    }
+
+    public void assign_referee_to_league(String referee_id,String league_id){
+        try{
+            domainController.assign_referee_to_league(referee_id,league_id);
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+    }
     }
 
