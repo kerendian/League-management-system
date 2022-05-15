@@ -12,13 +12,13 @@ import static Service.Status.success;
 
 public class DomainController implements DomainControllerInterface {
     DAControllerInterface daController;
-    HashMap<String,Object> cache;
+    HashMap<String,Object> cache=  new HashMap<>();
 
     //remember when using constructor in acceptance / integration tests to send DAController.getInstance()
     public DomainController(DAControllerInterface daController) {
 
         this.daController = daController;
-        HashMap<String,Object> cache=new HashMap<>();
+        //HashMap<String,Object> cache = new HashMap<>();
     }
 
 
@@ -187,9 +187,11 @@ public class DomainController implements DomainControllerInterface {
 
             //checking the if the league id exists in memory
             HashMap<String,String>  league_details = daController.findLeague(league_id);
-
+            Referee curr_referee = null;
             //checking the league id exists in cache
-            Referee curr_referee = (Referee) cache.get(referee_id);
+            if (cache.containsKey("referee_id")) {
+                curr_referee = (Referee) cache.get(referee_id);
+            }
 
             if (curr_referee==null){
                 //checking the if the referee id exists in memory

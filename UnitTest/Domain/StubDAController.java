@@ -70,7 +70,7 @@ public class StubDAController implements DAControllerInterface
         league_row_data.put("policy_id", "POLICY1");
         league_row_data.put("season_id", "SEASON1");
 
-        if(league_row_data.get("refereeID").equals(league_id)){
+        if(league_row_data.get("league_id").equals(league_id)){
             return league_row_data;
         }
         else{
