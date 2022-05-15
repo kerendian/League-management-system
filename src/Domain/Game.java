@@ -3,6 +3,7 @@ package Domain;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 public class Game {
     int counter = 4;
@@ -104,25 +105,37 @@ public class Game {
         this.leagueID = leagueID;
     }
 
-    public void game_placement(String date, int hour , String court, String leagueID,String PolicyID,String home_court_id,String external_court_id){
+    public Game game_placement(String date, int hour , String leagueID,String PolicyID,String home_court_id,String external_court_id){
         this.date = date;
         this.hour = hour;
-        this.courtID = court;
+        this.courtID = home_court_id;
         this.leagueID = leagueID;
 
         //placement game to policy
-        //this.leagueID.getGame_policy().add_game_to_league(this.league, this);
-
-        //placement game to policy - new
 
         switch(PolicyID){
             case "POLICY1":
-                GamePlacementPolicy1.add_game_to_league(this,home_court_id,external_court_id);
+                return GamePlacementPolicy1.add_game_to_league(this,home_court_id,external_court_id);
             case "POLICY2":
-                GamePlacementPolicy2.add_game_to_league(this,home_court_id,external_court_id);
+                return GamePlacementPolicy2.add_game_to_league(this,home_court_id,external_court_id);
 
         }
 
+        return this;
+    }
 
+    public HashMap<String,String> convertToHash(){
+        HashMap<String,String> my_hash = new HashMap<>();
+        my_hash.put("game_id",this.game_id);
+        my_hash.put("date",this.date);
+        my_hash.put("hour",Integer.toString(this.hour));
+        my_hash.put("home_team",this.home_team_ID);
+        my_hash.put("external_team",this.external_team_ID);
+        my_hash.put("main_referee",this.main_referee_ID);
+        my_hash.put("secondary_referee_1",this.secondary_referee_ID1);
+        my_hash.put("secondary_referee_2",this.secondary_referee_ID2);
+        my_hash.put("court",this.courtID);
+        my_hash.put("league",this.leagueID);
+        return my_hash;
     }
 }

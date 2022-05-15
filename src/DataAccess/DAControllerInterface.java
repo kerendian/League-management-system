@@ -15,6 +15,7 @@ public interface DAControllerInterface {
     Status games_placement(HashMap<String,String> game_details);
     Status updateRefereesToGame(HashMap<String,String> game_details);
     Status updateLeagueToReferee(String referee_id, String league_id);
+    HashMap<String,String>  findTeam(String team_id);
 
 
 

@@ -60,4 +60,9 @@ public class StubDAController implements DAControllerInterface
     public Status updateLeagueToReferee(String referee_id, String league_id) {
         return null;
     }
+
+    @Override
+    public HashMap<String, String> findTeam(String team_id) {
+        return null;
+    }
 }

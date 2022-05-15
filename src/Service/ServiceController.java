@@ -73,9 +73,9 @@ public class ServiceController {
 
 
 
-    public void assign_referee_to_game(String referee_id,String game_id){
+    public void assign_referee_to_game(String referee_id,String game_id, int ref_type){
         try{
-        domainController.assign_referee_to_game(referee_id,game_id);
+        domainController.assign_referee_to_game(referee_id,game_id,ref_type);
         }
         catch (Exception e){
             System.out.println(e.getMessage());
@@ -93,5 +93,15 @@ public class ServiceController {
         }
 
     }
+
+    public Status games_placement(String date, int hour , String leagueID,String game_id) {
+        try {
+            return domainController.games_placement(date, hour, leagueID, game_id);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return Status.failure;
+        }
     }
+    }
+
 

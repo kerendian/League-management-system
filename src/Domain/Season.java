@@ -1,47 +1,28 @@
 package Domain;
 
 public class Season {
-    int seasonID;
-    String name;
-    String startDate;
-    String endDate;
+    String seasonID;
+    int year;
+    int counter=2;
 
-    public Season(int seasonID, String name, String startDate, String endDate) {
-        this.seasonID = seasonID;
-        this.name = name;
-        this.startDate = startDate;
-        this.endDate = endDate;
+    public Season(int year_s) {
+        this.seasonID = "SEASON"+counter++;
+
     }
 
-    public int getSeasonID() {
+    public String getSeasonID() {
         return seasonID;
     }
 
-    public void setSeasonID(int seasonID) {
+    public void setSeasonID(String seasonID) {
         this.seasonID = seasonID;
     }
 
-    public String getName() {
-        return name;
+    public int getYear() {
+        return year;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
-    }
-
-    public String getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
+    public void setYear(int year) {
+        this.year = year;
     }
 }

@@ -122,12 +122,14 @@ public static DAController getInstance(){return  instance;};
             //reading the rows that returned
             if (rs.next())
             {
-                String referee_idFromDB = rs.getString("gameID");
+                String referee_idFromDB = rs.getString("refereeID");
                 if (referee_idFromDB.equals(referee_id))
                 {   referee_details.put("refereeID",rs.getString("refereeID"));
                     referee_details.put("refNum",rs.getString("refNum"));
                     referee_details.put("leagueID",rs.getString("leagueID"));
                     referee_details.put("qualification",rs.getString("qualification"));
+                    referee_details.put("username",rs.getString("userName"));
+                    referee_details.put("password",rs.getString("password"));
 
                 }
                 else
@@ -157,9 +159,7 @@ public static DAController getInstance(){return  instance;};
         return referee_details;
     }
 
-//    public HashMap<String,String> findRefereeGames(HashMap<String,String> referee_details) {
-//
-//    }
+
     public HashMap<String,String>  findLeague(String league_id) {
         HashMap<String, String> league_details = new HashMap<>();
         try {
@@ -172,7 +172,7 @@ public static DAController getInstance(){return  instance;};
                 String league_idFromDB = rs.getString("leagueID");
                 if (league_idFromDB.equals(league_id)) {
                     league_details.put("league_id", league_idFromDB);
-                    league_details.put("season_year", rs.getString("season_year"));
+                    league_details.put("season_year", rs.getString("seasonID"));
                     league_details.put("policy_id", rs.getString("policyID"));
 
                 }
@@ -232,30 +232,6 @@ public static DAController getInstance(){return  instance;};
         }
         return court_details;
     }
-//    public void game_placement(HashMap<String,String> game_details){
-//        try {
-//            String sql = "SELECT * FROM Games WHERE gameID = '" + game_details.get("game_id") + "';";
-//            Connection conn = dbc.connect();
-//            Statement stmt = conn.createStatement();
-//            ResultSet rs = stmt.executeQuery(sql);
-//            rs.updateString("date", game_details.get("date"));
-//            rs.updateString("hour", game_details.get("hour"));
-//            rs.updateString("homeTeam_ID", game_details.get("home_team"));
-//            rs.updateString("externalTeam_ID", game_details.get("external_team"));
-//            rs.updateString("courtID", game_details.get("court"));
-//            rs.updateString("leagueID", game_details.get("league"));
-//            rs.updateRow();
-//            System.out.println("Row Updated");
-//            System.out.println(rs.getMetaData());
-//            rs.close();
-//            stmt.close();
-//            dbc.disconnect(conn);
-//        }
-//
-//        catch (Exception e) {
-//                System.out.println(e.getMessage());
-//            }
-//    }
 
     public Status games_placement(HashMap<String,String> game_details){
         try {
@@ -282,9 +258,6 @@ public static DAController getInstance(){return  instance;};
             return Status.failure;
         }
     }
-
-
-
 
     public Status updateRefereesToGame(HashMap<String,String> game_details) {
         try {
@@ -335,8 +308,41 @@ public static DAController getInstance(){return  instance;};
     }
 
 
+    public HashMap<String,String>  findTeam(String team_id) {
+        HashMap<String, String> team_details = new HashMap<>();
+        try {
+            String sql = "SELECT * FROM Teams WHERE teamID = '" + team_id + "';";
+            Connection conn = dbc.connect();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            //reading the rows that returned
+            if (rs.next()) {
+                String team_idFromDB = rs.getString("teamID");
+                if (team_idFromDB.equals(team_id)) {
+                    team_details.put("team_id", team_idFromDB);
+                    team_details.put("court_id", rs.getString("courtID"));
+
+                }
+                else{
+                    System.out.println("The retrieval from the database was performed but there is no equality between the line and the argument");
+                }
 
 
+                rs.close();
+                stmt.close();
+                dbc.disconnect(conn);
+            }
+            else{
+                rs.close();
+                stmt.close();
+                dbc.disconnect(conn);
+                throw new ObjectIDNotExistException("The league id is not found in the DB");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return team_details;
+    }
 
 
 }

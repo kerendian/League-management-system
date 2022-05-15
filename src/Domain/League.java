@@ -7,7 +7,7 @@ public class League {
    String league_id;
    String scoring_policyID;
    String game_policyID;
-   int season_year;
+   String seasonID;
 
     public League() {
         league_id = "LEAGUE"+ counter++;
@@ -38,12 +38,10 @@ public class League {
         this.game_policyID = game_policyID;
     }
 
-    public int getSeason_year() {
-        return season_year;
+    public String getSeasonID() {
+        return seasonID;
     }
 
-    public void setSeason_year(int season_year) {
-        this.season_year = season_year;
-    }
+
 }
 
