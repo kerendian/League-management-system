@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-15T08:52:47.484272700Z</date>
+  <millis>1652604767484</millis>
+  <nanos>272700</nanos>
+  <sequence>0</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Yosi tried to log in to the system as Referees with wrong password</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-15T08:54:06.476055700Z</date>
+  <millis>1652604846476</millis>
+  <nanos>55700</nanos>
+  <sequence>0</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Yosi logged in to the system as Referees</message>
+</record>
+</log>
