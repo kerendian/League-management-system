@@ -4,6 +4,8 @@ import Domain.DomainController;
 import Domain.UserStatus;
 import Exceptions.WrongPasswordException;
 import Exceptions.WrongUserNameException;
+
+
 import java.io.IOException;
 import java.sql.Time;
 import java.util.Date;
@@ -11,11 +13,20 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.*;
 public class ServiceController {
-//    private static final Logger logger = Logger.getLogger(ServiceController.class.getName());
-
-
+    private static final Logger logger = Logger.getLogger(ServiceController.class.getName());
+    FileHandler fileHandler;
+    {
+        try
+        {
+            fileHandler = new FileHandler("status.log",true);
+            logger.addHandler(fileHandler);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     DomainController domainController = new DomainController();
     String userType_mem = null;
+
     public UserStatus logIn(String userName, String password, String userType) throws Exception
     {
         if (password.length() < 6)
@@ -28,15 +39,18 @@ public class ServiceController {
         {
 //          System.out.println("Login Successful");
             userType_mem = userType;
+            logger.log(Level.INFO,"user "+ userName + " logged in to the system as " + userType);
 
             return us;
         }
         else if (us == UserStatus.WrongPassword)
         {
+            logger.log(Level.WARNING,"user "+ userName + " tried to log in to the system as " + userType + " with wrong password");
            throw new WrongPasswordException("Wrong Password");
         }
         else
         {
+            logger.log(Level.WARNING,"user "+ userName + " tried to log in to the system as " + userType + " with wrong username or user type");
             throw new WrongUserNameException("There is no " + userType + " with the userName " + userName + " in the system");
         }
 
