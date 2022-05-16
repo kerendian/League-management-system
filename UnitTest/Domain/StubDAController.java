@@ -29,12 +29,25 @@ public class StubDAController implements DAControllerInterface
 
     @Override
     public HashMap<String, String> findGame(String game_id) throws ObjectIDNotExistException {
-        HashMap<String, String> game_row_data = new HashMap<>();
-        game_row_data.put("game_id", "GAME1");
-        game_row_data.put("home_team", "TEAM1");
-        game_row_data.put("external_team", "TEAM2");
-        if(game_row_data.get("game_id").equals(game_id)){
-            return game_row_data;
+        //good case
+        HashMap<String, String> game_row_data1 = new HashMap<>();
+        game_row_data1.put("game_id", "GAME1");
+        game_row_data1.put("home_team", "TEAM1");
+        game_row_data1.put("external_team", "TEAM2");
+        game_row_data1.put("league", "LEAGUE1");
+
+        //bad case - game without league
+        HashMap<String, String> game_row_data2 = new HashMap<>();
+        game_row_data2.put("game_id", "GAME2");
+        game_row_data2.put("home_team", "TEAM2");
+        game_row_data2.put("external_team", "TEAM3");
+
+
+        if(game_row_data1.get("game_id").equals(game_id)){
+            return game_row_data1;
+        }
+        if(game_row_data2.get("game_id").equals(game_id)){
+            return game_row_data2;
         }
         else{
             throw new ObjectIDNotExistException("The game id is not found in the DB");
@@ -100,8 +113,10 @@ public class StubDAController implements DAControllerInterface
 
     @Override
     public Status updateRefereesToGame(HashMap<String, String> game_details) {
-
-        return Status.success;
+        if(game_details.containsKey("GAME1")){
+            return Status.success;
+        }
+        return Status.failure;
     }
 
     @Override
