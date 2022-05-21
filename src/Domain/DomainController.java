@@ -27,6 +27,9 @@ public class DomainController implements DomainControllerInterface {
         //HashMap<String,Object> cache = new HashMap<>();
     }
 
+    public HashMap<String, Object> getCache() {
+        return cache;
+    }
 
     public UserStatus findUser(String userName, String password, String userType)
     {
@@ -50,7 +53,7 @@ public class DomainController implements DomainControllerInterface {
     }
 
 
-    public ArrayList<HashMap<String,String>> games_placement(String date, int hour , String leagueID, String game_id) throws ObjectIDNotExistException, SQLException, ImportDataException, ParseException, InvalidDateException, ScheduleRefereeFailed {
+    public ArrayList<HashMap<String,String>> games_placement(String date, int hour , String leagueID, String game_id) throws ObjectIDNotExistException, SQLException, ImportDataException, ParseException, InvalidDateException, ScheduleRefereeFailed, ScheduleGameFailed {
         ArrayList<HashMap<String,String>> array_to_return = new ArrayList<HashMap<String,String>>();
         //checking if the game_id in the local memory
         Game origin_game =null;
@@ -103,6 +106,9 @@ public class DomainController implements DomainControllerInterface {
                         return array_to_return;
                     }
                 }
+            }
+            else{
+                throw new ScheduleGameFailed("one of the teams in this game has already game at this date");
             }
             return array_to_return;
     }
@@ -157,9 +163,12 @@ public class DomainController implements DomainControllerInterface {
                 throw new NullPointerException("the referee is not schedule to any league");
             }
 
-            // if the leagues are equal else error
+            // if the leagues are not equal
             if (!curr_referee.getLeagueID().equals(curr_game.getLeagueID())) {
                 throw new ScheduleRefereeFailed("the chosen referee and the chosen game are not belong to the same league");
+            }
+            if(curr_referee.getRefereeID().equals(curr_game.getMain_referee_ID()) || curr_referee.getRefereeID().equals(curr_game.getSecondary_referee_ID1()) || curr_referee.getRefereeID().equals(curr_game.getSecondary_referee_ID2())){
+                throw new ScheduleRefereeFailed("the chosen referee already schedual to this game");
             }
             // if the type is not available
             switch (type) {
@@ -219,41 +228,46 @@ public class DomainController implements DomainControllerInterface {
             }
             return null;
     }
-        public Status assign_referee_to_league(String referee_id,String league_id){
+        public HashMap<String,String> assign_referee_to_league(String referee_id,String league_id) throws ObjectIDNotExistException, SQLException, ImportDataException, ScheduleRefereeFailed {
 
-        try {
+            //try {
             //checking the if the league id exists in memory
-            HashMap<String,String>  league_details = daController.findLeague(league_id);
+            HashMap<String, String> league_details = daController.findLeague(league_id);
             Referee curr_referee = null;
             //checking the league id exists in cache
             if (cache.containsKey("referee_id")) {
                 curr_referee = (Referee) cache.get(referee_id);
             }
 
-            if (curr_referee==null){
+            if (curr_referee == null) {
                 //checking the if the referee id exists in memory
-                HashMap<String,String>  referee_details = daController.findReferee(referee_id);
-                curr_referee = new Referee(referee_details.get("username"),referee_details.get("password"),referee_details.get("refNum"));
+                HashMap<String, String> referee_details = daController.findReferee(referee_id);
+                curr_referee = new Referee(referee_details.get("username"), referee_details.get("password"), referee_details.get("refNum"));
+                curr_referee.setRefereeID(referee_details.get("refereeID"));
                 curr_referee.setQualification(referee_details.get("qualification"));
                 curr_referee.setLeagueID(referee_details.get("leagueID"));
-                cache.put(curr_referee.getRefereeID(),curr_referee);
+                cache.put(curr_referee.getRefereeID(), curr_referee);
 
             }
 
             //checking the referee have no league
-            if (curr_referee.getLeagueID() ==null||curr_referee.getLeagueID().equals("NULL")||curr_referee.getLeagueID().equals("") ){
+            if (curr_referee.getLeagueID() == null || curr_referee.getLeagueID().equals("NULL") || curr_referee.getLeagueID().equals("")) {
                 curr_referee.setLeagueID(league_id);
-                daController.updateLeagueToReferee(referee_id, league_id);
-                return success;
+                Status status_returned = daController.updateLeagueToReferee(referee_id, league_id);
+                if (status_returned == success) {
+                    cache.put(curr_referee.getRefereeID(), curr_referee);
+                    return curr_referee.get_referee_details();
+                }
+                else {
+                    throw new ScheduleRefereeFailed("the status that returned is failure");
+                }
             }
-
-            else{
+            else {
                 throw new ScheduleRefereeFailed("The referee is already schedule to another league");
             }
-        }catch(Exception e){
-
-            System.out.println(e.getMessage());
-            return failure;
-        }
+        //}catch(Exception e){
+          //  System.out.println(e.getMessage());
+            //return failure;
+        //}
     }
 }

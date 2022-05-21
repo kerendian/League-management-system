@@ -145,4 +145,20 @@ public class Game {
         my_hash.put("league",this.leagueID);
         return my_hash;
     }
+
+    @Override
+    public String toString() {
+        return "Game{" +
+                "game_id='" + game_id + '\'' +
+                ", date='" + date + '\'' +
+                ", hour=" + hour +
+                ", home_team_ID='" + home_team_ID + '\'' +
+                ", external_team_ID='" + external_team_ID + '\'' +
+                ", main_referee_ID='" + main_referee_ID + '\'' +
+                ", secondary_referee_ID1='" + secondary_referee_ID1 + '\'' +
+                ", secondary_referee_ID2='" + secondary_referee_ID2 + '\'' +
+                ", courtID='" + courtID + '\'' +
+                ", leagueID='" + leagueID + '\'' +
+                '}';
+    }
 }

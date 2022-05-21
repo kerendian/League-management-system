@@ -1,10 +1,7 @@
 package Domain;
 
-import Exceptions.ImportDataException;
-import Exceptions.InvalidDateException;
+import Exceptions.*;
 import Exceptions.NullPointerException;
-import Exceptions.ObjectIDNotExistException;
-import Exceptions.ScheduleRefereeFailed;
 import Service.Status;
 
 import java.sql.SQLException;
@@ -17,9 +14,9 @@ public interface DomainControllerInterface
     //TODO:add all the signature of the functions from domain controller
     UserStatus findUser(String userName, String password, String userType);
     //HashMap<String,String> findGame(String game_id);
-    ArrayList<HashMap<String,String>> games_placement(String date, int hour , String leagueID, String game_id) throws ObjectIDNotExistException, SQLException, ImportDataException, ParseException, InvalidDateException, ScheduleRefereeFailed;
+    ArrayList<HashMap<String,String>> games_placement(String date, int hour , String leagueID, String game_id) throws ObjectIDNotExistException, SQLException, ImportDataException, ParseException, InvalidDateException, ScheduleRefereeFailed, ScheduleGameFailed;
     HashMap<String,String> assign_referee_to_game(String referee_id, String game_id,int ref_type) throws ObjectIDNotExistException, SQLException, ImportDataException, NullPointerException, ScheduleRefereeFailed;
-    Status assign_referee_to_league(String referee_id,String league_id);
+    HashMap<String,String> assign_referee_to_league(String referee_id,String league_id) throws ObjectIDNotExistException, SQLException, ImportDataException, ScheduleRefereeFailed;
 
 
 
