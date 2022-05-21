@@ -4,13 +4,17 @@ import DataAccess.DAController;
 import Domain.DomainController;
 import Domain.DomainControllerInterface;
 import Domain.UserStatus;
-import Exceptions.WrongPasswordException;
-import Exceptions.WrongUserNameException;
+import Exceptions.*;
+import Exceptions.NullPointerException;
 
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.sql.Time;
+import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.*;
@@ -73,15 +77,9 @@ public class ServiceController {
 
 
 
-    public void assign_referee_to_game(String referee_id,String game_id, int ref_type){
-        try{
-        domainController.assign_referee_to_game(referee_id,game_id,ref_type);
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-        }
+    public HashMap<String,String> assign_referee_to_game(String referee_id,String game_id, int ref_type) throws ObjectIDNotExistException, SQLException, ScheduleRefereeFailed, ImportDataException, NullPointerException {
 
-
+        return domainController.assign_referee_to_game(referee_id,game_id,ref_type);
     }
 
     public void assign_referee_to_league(String referee_id,String league_id){
@@ -94,13 +92,9 @@ public class ServiceController {
 
     }
 
-    public Status games_placement(String date, int hour , String leagueID,String game_id) {
-        try {
-            return domainController.games_placement(date, hour, leagueID, game_id);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return Status.failure;
-        }
+    ArrayList<HashMap<String,String>> games_placement(String date, int hour , String leagueID, String game_id) throws ObjectIDNotExistException, SQLException, ImportDataException, ParseException, InvalidDateException, ScheduleRefereeFailed {
+        ArrayList<HashMap<String,String>> list_to_return = new ArrayList<HashMap<String,String>>();
+        return list_to_return;
     }
     }
 

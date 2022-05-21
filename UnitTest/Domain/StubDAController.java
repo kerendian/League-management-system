@@ -4,6 +4,7 @@ import DataAccess.DAControllerInterface;
 import Exceptions.ObjectIDNotExistException;
 import Service.Status;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 
 public class StubDAController implements DAControllerInterface
@@ -26,6 +27,7 @@ public class StubDAController implements DAControllerInterface
             return UserStatus.WrongType;
         }
     }
+
 
     @Override
     public HashMap<String, String> findGame(String game_id) throws ObjectIDNotExistException {
@@ -168,6 +170,11 @@ public class StubDAController implements DAControllerInterface
         else{
             throw new ObjectIDNotExistException("The Team id is not found in the DB");
         }
+    }
+
+    @Override
+    public boolean check_game_date_validation(String team_id, String date) throws SQLException {
+        return false;
     }
 
 }

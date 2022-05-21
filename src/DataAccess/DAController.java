@@ -7,6 +7,7 @@ import Service.Status;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -52,11 +53,10 @@ public static DAController getInstance(){return  instance;};
     return us;
     }
 
-    public HashMap<String,String>  findGame(String game_id)
-    {
+    public HashMap<String,String>  findGame(String game_id) throws SQLException, ObjectIDNotExistException, ImportDataException {
         HashMap<String,String> game_details = new HashMap<>();
 
-        try {
+        //try {
             String sql = "SELECT * FROM Games WHERE gameID = '" + game_id + "';" ;
             Connection conn = dbc.connect();
             Statement stmt = conn.createStatement();
@@ -99,22 +99,21 @@ public static DAController getInstance(){return  instance;};
             rs.close();
             stmt.close();
             dbc.disconnect(conn);
-        }
+        //}
 
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-        }
+        //catch (Exception e)
+        //{
+            //System.out.println(e.getMessage());
+        //}
         return game_details;
     }
 
 
     //bring referee details without games
-    public HashMap<String,String>  findReferee(String referee_id)
-    {
+    public HashMap<String,String>  findReferee(String referee_id) throws SQLException, ObjectIDNotExistException, ImportDataException {
         HashMap<String,String> referee_details = new HashMap<>();
 
-        try {
+        //try {
             String sql = "SELECT * FROM Referees WHERE refereeID = '" + referee_id + "';" ;
             Connection conn = dbc.connect();
             Statement stmt = conn.createStatement();
@@ -150,19 +149,19 @@ public static DAController getInstance(){return  instance;};
             rs.close();
             stmt.close();
             dbc.disconnect(conn);
-        }
+        //}
 
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-        }
+        //catch (Exception e)
+        //{
+            //System.out.println(e.getMessage());
+        //}
         return referee_details;
     }
 
 
-    public HashMap<String,String>  findLeague(String league_id) {
+    public HashMap<String,String>  findLeague(String league_id) throws SQLException, ObjectIDNotExistException {
         HashMap<String, String> league_details = new HashMap<>();
-        try {
+        //try {
             String sql = "SELECT * FROM Leagues WHERE leagueID = '" + league_id + "';";
             Connection conn = dbc.connect();
             Statement stmt = conn.createStatement();
@@ -191,15 +190,15 @@ public static DAController getInstance(){return  instance;};
                 dbc.disconnect(conn);
                 throw new ObjectIDNotExistException("The league id is not found in the DB");
             }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        //} catch (Exception e) {
+            //System.out.println(e.getMessage());
+        //}
         return league_details;
     }
 
-    public HashMap<String,String>  findCourt(String court_id) {
+    public HashMap<String,String>  findCourt(String court_id) throws SQLException, ObjectIDNotExistException {
         HashMap<String, String> court_details = new HashMap<>();
-        try {
+        //try {
             String sql = "SELECT * FROM Courts WHERE courtID = '" + court_id + "';";
             Connection conn = dbc.connect();
             Statement stmt = conn.createStatement();
@@ -227,14 +226,14 @@ public static DAController getInstance(){return  instance;};
                 dbc.disconnect(conn);
                 throw new ObjectIDNotExistException("The league id is not found in the DB");
             }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        //} catch (Exception e) {
+            //System.out.println(e.getMessage());
+        //}
         return court_details;
     }
 
-    public Status games_placement(HashMap<String,String> game_details){
-        try {
+    public Status games_placement(HashMap<String,String> game_details) throws SQLException {
+        //try {
             String sql = "UPDATE Games " +
                     "SET date = '" + game_details.get("date") + "',"+
                     "hour = '" + game_details.get("hour") + "',"+
@@ -251,16 +250,16 @@ public static DAController getInstance(){return  instance;};
             dbc.disconnect(conn);
             return Status.success;
 
-        }
+        //}
 
-        catch (Exception e) {
-            System.out.println(e.getMessage());
-            return Status.failure;
-        }
+        //catch (Exception e) {
+            //System.out.println(e.getMessage());
+            //return Status.failure;
+       // }
     }
 
-    public Status updateRefereesToGame(HashMap<String,String> game_details) {
-        try {
+    public Status updateRefereesToGame(HashMap<String,String> game_details) throws SQLException {
+        //try {
             String sql = "UPDATE Games " +
                     "SET main_referee_ID = '" + game_details.get("main_referee") + "',"+
                     "secondary_referee_ID1 = '" + game_details.get("secondary_referee_1") + "',"+
@@ -274,18 +273,18 @@ public static DAController getInstance(){return  instance;};
             dbc.disconnect(conn);
             return Status.success;
 
-        }
+        //}
 
-        catch (Exception e) {
-            System.out.println(e.getMessage());
-            return Status.failure;
-        }
+       // catch (Exception e) {
+           // System.out.println(e.getMessage());
+           // return Status.failure;
+       // }
     }
 
 
-    public Status updateLeagueToReferee(String referee_id, String league_id) {
+    public Status updateLeagueToReferee(String referee_id, String league_id) throws SQLException {
 
-        try {
+        //try {
             String sql = "UPDATE Referees " +
                     "SET leagueID = '" + league_id + "'," +
                     "WHERE refereeID = '" + referee_id + "';";
@@ -298,19 +297,19 @@ public static DAController getInstance(){return  instance;};
             return Status.success;
 
 
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return Status.failure;
-        }
+        //} catch (Exception e) {
+           //System.out.println(e.getMessage());
+           // return Status.failure;
+        //}
 
 
 
     }
 
 
-    public HashMap<String,String>  findTeam(String team_id) {
+    public HashMap<String,String>  findTeam(String team_id) throws SQLException, ObjectIDNotExistException {
         HashMap<String, String> team_details = new HashMap<>();
-        try {
+        //try {
             String sql = "SELECT * FROM Teams WHERE teamID = '" + team_id + "';";
             Connection conn = dbc.connect();
             Statement stmt = conn.createStatement();
@@ -338,11 +337,31 @@ public static DAController getInstance(){return  instance;};
                 dbc.disconnect(conn);
                 throw new ObjectIDNotExistException("The league id is not found in the DB");
             }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        //} catch (Exception e) {
+           // System.out.println(e.getMessage());
+        //}
         return team_details;
     }
 
-
+    public boolean check_game_date_validation(String team_id, String date) throws SQLException {
+        String sql = "SELECT * FROM Games WHERE (homeTeam_ID = '" + team_id + "'"+
+                "OR externalTeam_ID = '" + team_id + "')"+
+                "AND date = '" + date + "';";
+        Connection conn = dbc.connect();
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(sql);
+        //reading the rows that returned
+        if (rs.next()) {
+            rs.close();
+            stmt.close();
+            dbc.disconnect(conn);
+            return false;
+            }
+            else {
+            rs.close();
+            stmt.close();
+            dbc.disconnect(conn);
+            return true;
+        }
+    }
 }

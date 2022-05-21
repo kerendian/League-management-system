@@ -1,7 +1,9 @@
 package Domain;
 
 import Exceptions.ImportDataException;
+import Exceptions.NullPointerException;
 import Exceptions.ObjectIDNotExistException;
+import Exceptions.ScheduleRefereeFailed;
 import Service.Status;
 import org.junit.After;
 import org.junit.Before;
@@ -11,6 +13,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.function.Executable;
 
 
+import java.sql.SQLException;
+import java.util.HashMap;
 
 import static org.junit.Assert.*;
 
@@ -84,25 +88,25 @@ private static DomainController dc;
     //          (+) the check should check also the exception type , no?
 
     @Test
-    public void assign_referee_with_league_to_game(){
-        Status  res = dc.assign_referee_to_game("REF1","GAME1",1);
+    public void assign_referee_with_league_to_game() throws ObjectIDNotExistException, SQLException, ScheduleRefereeFailed, ImportDataException, NullPointerException {
+        HashMap<String,String> res = dc.assign_referee_to_game("REF1","GAME1",1);
         assertEquals(Status.success,res);
     }
     @Test
-    public void assign_referee_without_league_to_game(){
-        Status  res = dc.assign_referee_to_game("REF2","GAME1",1);
+    public void assign_referee_without_league_to_game() throws ObjectIDNotExistException, SQLException, ScheduleRefereeFailed, ImportDataException, NullPointerException {
+        HashMap<String,String>  res = dc.assign_referee_to_game("REF2","GAME1",1);
         assertEquals(Status.failure,res);
     }
 
     @Test
-    public void assign_referee_to_game_without_league(){
-        Status  res = dc.assign_referee_to_game("REF1","GAME2",1);
+    public void assign_referee_to_game_without_league() throws ObjectIDNotExistException, SQLException, ScheduleRefereeFailed, ImportDataException, NullPointerException {
+        HashMap<String,String>  res = dc.assign_referee_to_game("REF1","GAME2",1);
         assertEquals(Status.failure,res);
     }
 
     @Test
-    public void assign_without_league_referee_to_game_without_league(){
-        Status  res = dc.assign_referee_to_game("REF2","GAME2",1);
+    public void assign_without_league_referee_to_game_without_league() throws ObjectIDNotExistException, SQLException, ScheduleRefereeFailed, ImportDataException, NullPointerException {
+        HashMap<String,String>  res = dc.assign_referee_to_game("REF2","GAME2",1);
         assertEquals(Status.failure,res);
         assertThrows(ObjectIDNotExistException.class, new Executable() {
             @Override

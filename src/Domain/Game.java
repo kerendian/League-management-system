@@ -1,6 +1,9 @@
 package Domain;
 
+import Exceptions.InvalidDateException;
+
 import java.sql.Time;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -105,7 +108,7 @@ public class Game {
         this.leagueID = leagueID;
     }
 
-    public Game game_placement(String date, int hour , String leagueID,String PolicyID,String home_court_id,String external_court_id){
+    public Game game_placement(String date, int hour , String leagueID,String PolicyID,String home_court_id,String external_court_id) throws ParseException, InvalidDateException {
         this.date = date;
         this.hour = hour;
         this.courtID = home_court_id;
@@ -117,7 +120,11 @@ public class Game {
             case "POLICY1":
                 return GamePlacementPolicy1.add_game_to_league(this,home_court_id,external_court_id);
             case "POLICY2":
-                return GamePlacementPolicy2.add_game_to_league(this,home_court_id,external_court_id);
+                Game game2 =  GamePlacementPolicy2.add_game_to_league(this,home_court_id,external_court_id);
+                String date2 = DomainController.getNextDate(date);
+                game2.setDate(date2);
+                game2.setHour(hour);
+                return game2;
 
         }
 

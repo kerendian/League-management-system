@@ -1,10 +1,16 @@
 package Domain;
 
 import DataAccess.DAControllerInterface;
+import Exceptions.*;
 import Exceptions.NullPointerException;
-import Exceptions.ScheduleRefereeFailed;
 import Service.Status;
 
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 import static Service.Status.failure;
@@ -28,72 +34,92 @@ public class DomainController implements DomainControllerInterface {
         return us;
 
     }
+    public static String getNextDate(String  curDate) throws ParseException, InvalidDateException {
+        final SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+        final Date date = format.parse(curDate);
+        final Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.DAY_OF_YEAR, 1);
+        return format.format(calendar.getTime());
+    }
+    public boolean date_isvalid(String date) throws InvalidDateException, ParseException {
+        if (new SimpleDateFormat("yyyy/MM/dd").parse(date).before(new Date())) {
+            throw new InvalidDateException("this date expired");
+        }
+        return true;
+    }
 
-//    public HashMap<String,String> findGame(String game_id){
-//        HashMap<String,String> game_row = daController.findGame(game_id);
-//        return game_row;
-//    }
 
-    public Status games_placement(String date, int hour , String leagueID,String game_id){
-
+    public ArrayList<HashMap<String,String>> games_placement(String date, int hour , String leagueID, String game_id) throws ObjectIDNotExistException, SQLException, ImportDataException, ParseException, InvalidDateException, ScheduleRefereeFailed {
+        ArrayList<HashMap<String,String>> array_to_return = new ArrayList<HashMap<String,String>>();
         //checking if the game_id in the local memory
-        Game curr_game = (Game) cache.get("game_id");
+        Game origin_game =null;
+        if(cache.containsKey(game_id)) {
+            origin_game = (Game) cache.get(game_id);
+        }
+        Game curr_game = origin_game;
         //if not- load the game details from db
         if (curr_game==null) {
             //create game object if not exsists
-            try{
                 HashMap<String,String> game_details = daController.findGame(game_id);
                 curr_game = new Game(game_details.get("home_team"),game_details.get("external_team"));
                 curr_game.setGame_id(game_id);
-
-            }catch(Exception e){
-                System.out.println(e.getMessage());
-            }
-
         }
         //updating basic details
-        curr_game.setDate(date);
+        if(date_isvalid(date)) {
+            curr_game.setDate(date);
+        }
         curr_game.setHour(hour);
         curr_game.setLeagueID(leagueID);
 
-        try {
+        //try {
             //find teams and courts
             HashMap<String, String> home_team_details = daController.findTeam(curr_game.getHome_team_ID());
             HashMap<String, String> external_team_details = daController.findTeam(curr_game.getExternal_team_ID());
             HashMap<String, String> league_details = daController.findLeague(leagueID);
-            curr_game.game_placement(date,hour,leagueID,league_details.get("policy_id"), home_team_details.get("court_id"), external_team_details.get("court_id"));
-
-            cache.put(curr_game.getGame_id(),curr_game);
-
-            //updating the details in the db
-            daController.games_placement(curr_game.convertToHash());
-            return success;
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-            return failure;
-        }
-
+            if(daController.check_game_date_validation(home_team_details.get("team_id"), date) && daController.check_game_date_validation(external_team_details.get("team_id"), date)){
+                if(league_details.get("policy_id")=="POLICY1"){
+                    curr_game.game_placement(date,hour,leagueID,league_details.get("policy_id"), home_team_details.get("court_id"), external_team_details.get("court_id"));
+                    cache.put(curr_game.getGame_id(),curr_game);
+                    //updating the details in the db
+                    HashMap<String, String> game_details = curr_game.convertToHash();
+                    daController.games_placement(game_details);
+                    array_to_return.add(game_details);
+                    return array_to_return;
+                }
+                else{
+                    String date_game2 = getNextDate(date);
+                    if(daController.check_game_date_validation(home_team_details.get("team_id"), date_game2) && daController.check_game_date_validation(external_team_details.get("team_id"), date_game2)){
+                        Game game2 = curr_game.game_placement(date,hour,leagueID,league_details.get("policy_id"), home_team_details.get("court_id"), external_team_details.get("court_id"));
+                        cache.put(game2.getGame_id(),game2);
+                        cache.put(curr_game.getGame_id(),curr_game);
+                        //updating the details in the db
+                        HashMap<String, String> game_details = curr_game.convertToHash();
+                        HashMap<String, String> game_details2 = game2.convertToHash();
+                        daController.games_placement(game_details);
+                        daController.games_placement(game_details2);
+                        array_to_return.add(game_details);
+                        array_to_return.add(game_details2);
+                        return array_to_return;
+                    }
+                }
+            }
+            return array_to_return;
     }
 
 
-    public Status assign_referee_to_game(String referee_id, String game_id,int type) {
-
-
-        try {
-
+    public HashMap<String, String> assign_referee_to_game(String referee_id, String game_id,int type) throws ObjectIDNotExistException, SQLException, ImportDataException, NullPointerException, ScheduleRefereeFailed {
             //check if the game exists in the cache
             Game curr_game =null;
             if(cache.containsKey(game_id)) {
                  curr_game = (Game) cache.get(game_id);
             }
-
             //if not - import game from db
             if (curr_game == null) {
                 HashMap<String, String> game_details = daController.findGame(game_id);
                 curr_game = new Game(game_details.get("home_team"), game_details.get("external_team"));
                 curr_game.setGame_id(game_id);
                 curr_game.setDate(game_details.get("date"));
-
                 String hour_detail = game_details.get("hour");
                 if (hour_detail !=null ){
                 curr_game.setHour(Integer.parseInt(game_details.get("hour")));
@@ -103,7 +129,6 @@ public class DomainController implements DomainControllerInterface {
                 curr_game.setMain_referee_ID(game_details.get("main_referee"));
                 curr_game.setSecondary_referee_ID1(game_details.get("secondary_referee_1"));
                 curr_game.setSecondary_referee_ID2(game_details.get("secondary_referee_2"));
-
             }
 
             //check if the referee exists in the cache
@@ -112,7 +137,6 @@ public class DomainController implements DomainControllerInterface {
                 curr_referee = (Referee) cache.get(referee_id);
             }
             if (curr_referee == null) {
-
                 //checking the if the referee id exists in memory
                 HashMap<String, String> referee_details = daController.findReferee(referee_id);
                 curr_referee = new Referee(referee_details.get("username"), referee_details.get("password"), referee_details.get("refNum"));
@@ -127,18 +151,15 @@ public class DomainController implements DomainControllerInterface {
             //if the game has no league raise error
             if (curr_game.getLeagueID() == null || curr_game.getLeagueID().equals("NULL") || curr_game.getLeagueID().equals("")) {
                 throw new NullPointerException("the game is not schedule to any league");
-
             }
             //if the referee has no league raise error
             if (curr_referee.getLeagueID() == null || curr_referee.getLeagueID().equals("NULL") || curr_referee.getLeagueID().equals("")) {
                 throw new NullPointerException("the referee is not schedule to any league");
-
             }
 
             // if the leagues are equal else error
             if (!curr_referee.getLeagueID().equals(curr_game.getLeagueID())) {
                 throw new ScheduleRefereeFailed("the chosen referee and the chosen game are not belong to the same league");
-
             }
             // if the type is not available
             switch (type) {
@@ -150,7 +171,14 @@ public class DomainController implements DomainControllerInterface {
                         //main referee
                         curr_game.setMain_referee_ID(referee_id);
                         cache.put(game_id, curr_game);
-                        return daController.updateRefereesToGame(curr_game.convertToHash());
+                        HashMap<String,String> game_details = curr_game.convertToHash();
+                        Status status_returned = daController.updateRefereesToGame(game_details);
+                        if(status_returned==success){
+                            return game_details;
+                        }
+                        else{
+                            throw new ScheduleRefereeFailed("the status that returned is failure");
+                        }
 
                     }
 
@@ -165,38 +193,35 @@ public class DomainController implements DomainControllerInterface {
                         else {
                             curr_game.setSecondary_referee_ID2(referee_id);
                             cache.put(game_id, curr_game);
-                            return daController.updateRefereesToGame(curr_game.convertToHash());
+                            HashMap<String,String> game_details = curr_game.convertToHash();
+                            Status status_returned = daController.updateRefereesToGame(game_details);
+                            if(status_returned==success){
+                                return game_details;
+                            }
+                            else{
+                                throw new ScheduleRefereeFailed("the status that returned is failure");
+                            }
                         }
 
                     } else {
 
                         curr_game.setSecondary_referee_ID1(referee_id);
                         cache.put(game_id, curr_game);
-                        return daController.updateRefereesToGame(curr_game.convertToHash());
-
+                        HashMap<String,String> game_details = curr_game.convertToHash();
+                        Status status_returned = daController.updateRefereesToGame(game_details);
+                        if(status_returned==success){
+                            return game_details;
+                        }
+                        else{
+                            throw new ScheduleRefereeFailed("the status that returned is failure");
+                        }
                     }
-
-
-
             }
-
-            //update the game object, update cache and db.
-
-
-        } catch (Exception e) {
-
-            System.out.println(e.getMessage());
-            return failure;
-
-
-        }
-        return failure;
+            return null;
     }
-
         public Status assign_referee_to_league(String referee_id,String league_id){
 
         try {
-
             //checking the if the league id exists in memory
             HashMap<String,String>  league_details = daController.findLeague(league_id);
             Referee curr_referee = null;
@@ -224,17 +249,11 @@ public class DomainController implements DomainControllerInterface {
 
             else{
                 throw new ScheduleRefereeFailed("The referee is already schedule to another league");
-
             }
         }catch(Exception e){
 
             System.out.println(e.getMessage());
             return failure;
-
-
         }
-
     }
-
-
 }
