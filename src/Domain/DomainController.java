@@ -12,13 +12,13 @@ import static Service.Status.success;
 
 public class DomainController implements DomainControllerInterface {
     DAControllerInterface daController;
-    HashMap<String,Object> cache;
+    HashMap<String,Object> cache=  new HashMap<>();
 
     //remember when using constructor in acceptance / integration tests to send DAController.getInstance()
     public DomainController(DAControllerInterface daController) {
 
         this.daController = daController;
-        HashMap<String,Object> cache=new HashMap<>();
+        //HashMap<String,Object> cache = new HashMap<>();
     }
 
 
@@ -29,10 +29,10 @@ public class DomainController implements DomainControllerInterface {
 
     }
 
-    public HashMap<String,String> findGame(String game_id){
-        HashMap<String,String> game_row = daController.findGame(game_id);
-        return game_row;
-    }
+//    public HashMap<String,String> findGame(String game_id){
+//        HashMap<String,String> game_row = daController.findGame(game_id);
+//        return game_row;
+//    }
 
     public Status games_placement(String date, int hour , String leagueID,String game_id){
 
@@ -82,14 +82,22 @@ public class DomainController implements DomainControllerInterface {
         try {
 
             //check if the game exists in the cache
-            Game curr_game = (Game) cache.get(game_id);
+            Game curr_game =null;
+            if(cache.containsKey(game_id)) {
+                 curr_game = (Game) cache.get(game_id);
+            }
+
             //if not - import game from db
             if (curr_game == null) {
                 HashMap<String, String> game_details = daController.findGame(game_id);
                 curr_game = new Game(game_details.get("home_team"), game_details.get("external_team"));
                 curr_game.setGame_id(game_id);
                 curr_game.setDate(game_details.get("date"));
+
+                String hour_detail = game_details.get("hour");
+                if (hour_detail !=null ){
                 curr_game.setHour(Integer.parseInt(game_details.get("hour")));
+                }
                 curr_game.setCourtID(game_details.get("court"));
                 curr_game.setLeagueID(game_details.get("league"));
                 curr_game.setMain_referee_ID(game_details.get("main_referee"));
@@ -99,8 +107,10 @@ public class DomainController implements DomainControllerInterface {
             }
 
             //check if the referee exists in the cache
-            Referee curr_referee = (Referee) cache.get(referee_id);
-
+            Referee curr_referee = null ;
+            if(cache.containsKey(referee_id)) {
+                curr_referee = (Referee) cache.get(referee_id);
+            }
             if (curr_referee == null) {
                 //checking the if the referee id exists in memory
                 HashMap<String, String> referee_details = daController.findReferee(referee_id);
@@ -187,9 +197,11 @@ public class DomainController implements DomainControllerInterface {
 
             //checking the if the league id exists in memory
             HashMap<String,String>  league_details = daController.findLeague(league_id);
-
+            Referee curr_referee = null;
             //checking the league id exists in cache
-            Referee curr_referee = (Referee) cache.get(referee_id);
+            if (cache.containsKey("referee_id")) {
+                curr_referee = (Referee) cache.get(referee_id);
+            }
 
             if (curr_referee==null){
                 //checking the if the referee id exists in memory
@@ -202,7 +214,7 @@ public class DomainController implements DomainControllerInterface {
             }
 
             //checking the referee have no league
-            if (curr_referee.getLeagueID() ==null||curr_referee.getLeagueID().equals("NULL") ){
+            if (curr_referee.getLeagueID() ==null||curr_referee.getLeagueID().equals("NULL")||curr_referee.getLeagueID().equals("") ){
                 curr_referee.setLeagueID(league_id);
                 daController.updateLeagueToReferee(referee_id, league_id);
                 return success;

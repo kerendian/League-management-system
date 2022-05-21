@@ -172,7 +172,7 @@ public static DAController getInstance(){return  instance;};
                 String league_idFromDB = rs.getString("leagueID");
                 if (league_idFromDB.equals(league_id)) {
                     league_details.put("league_id", league_idFromDB);
-                    league_details.put("season_year", rs.getString("seasonID"));
+                    league_details.put("season_id", rs.getString("seasonID"));
                     league_details.put("policy_id", rs.getString("policyID"));
 
                 }
