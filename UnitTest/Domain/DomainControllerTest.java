@@ -1,10 +1,17 @@
 package Domain;
 
+import Exceptions.ImportDataException;
+import Exceptions.ObjectIDNotExistException;
 import Service.Status;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.jupiter.api.function.Executable;
+
+
+
 import static org.junit.Assert.*;
 
 public class DomainControllerTest {
@@ -77,8 +84,13 @@ private static DomainController dc;
     //          (+) the check should check also the exception type , no?
 
     @Test
-    public void assign_referee_without_league_to_game(){
+    public void assign_referee_with_league_to_game(){
         Status  res = dc.assign_referee_to_game("REF1","GAME1",1);
+        assertEquals(Status.success,res);
+    }
+    @Test
+    public void assign_referee_without_league_to_game(){
+        Status  res = dc.assign_referee_to_game("REF2","GAME1",1);
         assertEquals(Status.failure,res);
     }
 
@@ -92,6 +104,12 @@ private static DomainController dc;
     public void assign_without_league_referee_to_game_without_league(){
         Status  res = dc.assign_referee_to_game("REF2","GAME2",1);
         assertEquals(Status.failure,res);
+        assertThrows(ObjectIDNotExistException.class, new Executable() {
+            @Override
+            public void execute() throws Throwable {
+
+            }
+        });
     }
 
 
