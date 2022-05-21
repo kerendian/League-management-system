@@ -57,18 +57,40 @@ public class StubDAController implements DAControllerInterface
 
     @Override
     public HashMap<String, String> findReferee(String referee_id) throws ObjectIDNotExistException {
-        HashMap<String, String> referee_row_data = new HashMap<>();
-        referee_row_data.put("refereeID", "REF1");
-        referee_row_data.put("qualification", "20 YEARS EXPERIENCE");
-        referee_row_data.put("username", "Moshe");
-        referee_row_data.put("password", "123456");
-        referee_row_data.put("refNum", "1");
-        referee_row_data.put("leagueID", "");
+        HashMap<String, String> referee_row_data1 = new HashMap<>();
+        referee_row_data1.put("refereeID", "REF1");
+        referee_row_data1.put("qualification", "20 YEARS EXPERIENCE");
+        referee_row_data1.put("username", "Moshe");
+        referee_row_data1.put("password", "123456");
+        referee_row_data1.put("refNum", "1");
+        referee_row_data1.put("leagueID", "LEAGUE1");
+
+        HashMap<String, String> referee_row_data2 = new HashMap<>();
+        referee_row_data2.put("refereeID", "REF1");
+        referee_row_data2.put("qualification", "20 YEARS EXPERIENCE");
+        referee_row_data2.put("username", "Moshe");
+        referee_row_data2.put("password", "123456");
+        referee_row_data2.put("refNum", "1");
+        referee_row_data2.put("leagueID", "LEAGUE1");
+
+        HashMap<String, String> referee_row_data3 = new HashMap<>();
+        referee_row_data3.put("refereeID", "REF3");
+        referee_row_data3.put("qualification", "22 YEARS EXPERIENCE");
+        referee_row_data3.put("username", "David");
+        referee_row_data3.put("password", "123456");
+        referee_row_data3.put("refNum", "2");
+        referee_row_data3.put("leagueID", "LEAGUE1");
 
 
 
-        if(referee_row_data.get("refereeID").equals(referee_id)){
-            return referee_row_data;
+        if(referee_row_data1.get("refereeID").equals(referee_id)){
+            return referee_row_data1;
+        }
+        if(referee_row_data2.get("refereeID").equals(referee_id)){
+            return referee_row_data2;
+        }
+        if(referee_row_data3.get("refereeID").equals(referee_id)){
+            return referee_row_data3;
         }
         else{
             throw new ObjectIDNotExistException("The referee id is not found in the DB");

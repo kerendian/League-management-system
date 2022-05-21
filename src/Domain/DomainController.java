@@ -107,16 +107,18 @@ public class DomainController implements DomainControllerInterface {
             }
 
             //check if the referee exists in the cache
-            Referee curr_referee = null ;
+            Referee curr_referee =null;
             if(cache.containsKey(referee_id)) {
                 curr_referee = (Referee) cache.get(referee_id);
             }
             if (curr_referee == null) {
+
                 //checking the if the referee id exists in memory
                 HashMap<String, String> referee_details = daController.findReferee(referee_id);
                 curr_referee = new Referee(referee_details.get("username"), referee_details.get("password"), referee_details.get("refNum"));
                 curr_referee.setQualification(referee_details.get("qualification"));
                 curr_referee.setLeagueID(referee_details.get("leagueID"));
+                curr_referee.setRefereeID(referee_id);
                 cache.put(curr_referee.getRefereeID(), curr_referee);
             }
 
