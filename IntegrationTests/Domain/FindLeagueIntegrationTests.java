@@ -20,64 +20,59 @@ import java.util.HashMap;
 
 import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.*;
-
-public class FindGameIntegrationTests {
-    //integrating find game from Domain controller with find game from DAController
+public class FindLeagueIntegrationTests {
+    //integrating find league from Domain controller with find league from DAController
     static DomainController dc;
     @BeforeClass
     public static void setUp() throws Exception
     {
-        DAControllerInterface my_stub = new StubFindGame();
+        DAControllerInterface my_stub = new StabFindLeague();
         dc = new DomainController(my_stub);
         DBConnector dbc = DBConnector.getInstance();
         Connection conn = dbc.connect();
-        String sql = "INSERT INTO Games(gameID,homeTeam_ID,externalTeam_ID,leagueID) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO Leagues(leagueID,seasonID,policyID) VALUES(?,?,?)";
         PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setString(1, "GAME1");
-        stmt.setString(2, "TEAM1");
-        stmt.setString(3, "TEAM2");
-        stmt.setString(4, "LEAGUE1");
+        stmt.setString(1, "LEAGUE1");
+        stmt.setString(2, "SEASON1");
+        stmt.setString(3, "POLICY1");
         stmt.executeUpdate();
         stmt.close();
         //_________________________________________________________________
-        sql = "INSERT INTO Games(gameID,homeTeam_ID,externalTeam_ID) VALUES(?,?,?)";
+        sql = "INSERT INTO Leagues(leagueID,seasonID,policyID) VALUES(?,?,?)";
         stmt = conn.prepareStatement(sql);
-        stmt.setString(1, "GAME2");
-        stmt.setString(2, "TEAM2");
-        stmt.setString(3, "TEAM3");
-        stmt.executeUpdate();
-        stmt.close();
-        //_________________________________________________________________
-        sql = "INSERT INTO Games(gameID,homeTeam_ID,externalTeam_ID,leagueID) VALUES(?,?,?,?)";
-        stmt = conn.prepareStatement(sql);
-        stmt.setString(1, "GAME3");
-        stmt.setString(2, "TEAM1");
-        stmt.setString(3, "TEAM2");
-        stmt.setString(4, "LEAGUE1");
-        stmt.executeUpdate();
-        stmt.close();
-//        //_________________________________________________________________
-        sql = "INSERT INTO Games(gameID,homeTeam_ID,externalTeam_ID,leagueID,main_referee_ID,secondary_referee_ID1) VALUES(?,?,?,?,?,?)";
-        stmt = conn.prepareStatement(sql);
-        stmt.setString(1, "GAME4");
-        stmt.setString(2, "TEAM1");
-        stmt.setString(3, "TEAM2");
-        stmt.setString(4, "LEAGUE1");
-        stmt.setString(5, "REF1");
-        stmt.setString(6, "REF2");
-        stmt.executeUpdate();
-        stmt.close();
-        //_________________________________________________________________
-        sql = "INSERT INTO Games(gameID,homeTeam_ID,externalTeam_ID) VALUES(?,?,?)";
-        stmt = conn.prepareStatement(sql);
-        stmt.setString(1, "GAME5");
-        stmt.setString(2, "TEAM2");
-        stmt.setString(3, "TEAM1");
+        stmt.setString(1, "LEAGUE2");
+        stmt.setString(2, "SEASON1");
+        stmt.setString(3, "POLICY2");
         stmt.executeUpdate();
         stmt.close();
 
         dbc.disconnect(conn);
+    }
 
+    //============ assign referee to league ===========
+
+    @Test
+    public void assign_valid_referee_to_league() throws ObjectIDNotExistException, SQLException, ScheduleRefereeFailed, ImportDataException {
+        //(+)
+        HashMap<String,String>  referee_details = dc.assign_referee_to_league("REF4","LEAGUE1");
+        assertEquals("REF4",referee_details.get("refereeID"));
+        assertEquals("LEAGUE1",referee_details.get("leagueID"));
+    }
+
+    @Test(expected = ObjectIDNotExistException.class)
+    public void assign_invalid_referee_to_league() throws ObjectIDNotExistException, SQLException, ScheduleRefereeFailed, ImportDataException {
+        //(-)
+        HashMap<String,String>  res = dc.assign_referee_to_league("REF7","LEAGUE1");
+    }
+
+    @Test(expected = ObjectIDNotExistException.class)
+    public void assign_referee_to_invalid_league() throws ObjectIDNotExistException, SQLException, ScheduleRefereeFailed, ImportDataException {
+        HashMap<String,String>  res = dc.assign_referee_to_league("REF4","LEAGUE7");
+    }
+
+    @Test(expected = ScheduleRefereeFailed.class)
+    public void assign_referee_with_league_to_league() throws ObjectIDNotExistException, SQLException, ScheduleRefereeFailed, ImportDataException {
+        HashMap<String,String>  res = dc.assign_referee_to_league("REF1","LEAGUE1");
     }
 
     //====== assign referee to game =========
@@ -128,6 +123,7 @@ public class FindGameIntegrationTests {
     public void games_placement_valid1() throws InvalidDateException, ImportDataException, ParseException, ScheduleRefereeFailed, SQLException, ObjectIDNotExistException, ScheduleGameFailed {
         //(+) policy1
         ArrayList<HashMap<String, String>> res = dc.games_placement("2022/08/02",12,"LEAGUE1","GAME2");
+        System.out.println(res);
         assertEquals(1,res.size());
         assertEquals("2022/08/02",res.get(0).get("date"));
         assertEquals("12",res.get(0).get("hour"));
@@ -181,42 +177,23 @@ public class FindGameIntegrationTests {
         ArrayList<HashMap<String, String>> res = dc.games_placement("2022/08/02", 12, "LEAGUE2", "GAME5");
     }
 
-
     @AfterClass
-    public static void tearDown() throws Exception
-    {
+    public static void tearDown() throws Exception {
         DBConnector dbc = DBConnector.getInstance();
         Connection conn = dbc.connect();
-        String sql = "DELETE FROM Games WHERE gameID = ?";
+        String sql = "DELETE FROM Leagues WHERE leagueID = ?";
         PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setString(1, "GAME1");
+        stmt.setString(1, "LEAGUE1");
         stmt.executeUpdate();
         stmt.close();
-        //_____________________________________________________
-        sql = "DELETE FROM Games WHERE gameID = ?";
+        //______________________________________________________
+        sql = "DELETE FROM Leagues WHERE leagueID = ?";
         stmt = conn.prepareStatement(sql);
-        stmt.setString(1, "GAME2");
-        stmt.executeUpdate();
-        stmt.close();
-        //_____________________________________________________
-        sql = "DELETE FROM Games WHERE gameID = ?";
-        stmt = conn.prepareStatement(sql);
-        stmt.setString(1, "GAME3");
-        stmt.executeUpdate();
-        stmt.close();
-        //_____________________________________________________
-        sql = "DELETE FROM Games WHERE gameID = ?";
-        stmt = conn.prepareStatement(sql);
-        stmt.setString(1, "GAME4");
-        stmt.executeUpdate();
-        stmt.close();
-        //_____________________________________________________
-        sql = "DELETE FROM Games WHERE gameID = ?";
-        stmt = conn.prepareStatement(sql);
-        stmt.setString(1, "GAME5");
+        stmt.setString(1, "LEAGUE2");
         stmt.executeUpdate();
         stmt.close();
 
         dbc.disconnect(conn);
+
     }
 }
