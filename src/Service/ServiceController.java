@@ -63,15 +63,6 @@ public class ServiceController {
 
 
     }
-//    TODO: remove if dont need
-//    public String getUserType_mem(){ return user;}
-
-
-//    public Status schedualeGame(String game_id, String date, String  time, String court_id,String league_id){
-//
-//        //domainController.games_placement();
-//    }
-
 
 
     public HashMap<String,String> assign_referee_to_game(String referee_id,String game_id, int ref_type) throws ObjectIDNotExistException, SQLException, ScheduleRefereeFailed, ImportDataException, NullPointerException {

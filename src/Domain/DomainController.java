@@ -265,9 +265,5 @@ public class DomainController implements DomainControllerInterface {
             else {
                 throw new ScheduleRefereeFailed("The referee is already schedule to another league");
             }
-        //}catch(Exception e){
-          //  System.out.println(e.getMessage());
-            //return failure;
-        //}
     }
 }
