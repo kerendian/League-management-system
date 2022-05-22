@@ -94,7 +94,7 @@ public static DAController getInstance(){return  instance;};
                 rs.close();
                 stmt.close();
                 dbc.disconnect(conn);
-                throw new ImportDataException("could not import the game data");
+                throw new ObjectIDNotExistException("The game id is not found in the DB");
             }
             rs.close();
             stmt.close();
