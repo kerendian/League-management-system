@@ -211,6 +211,7 @@ public class FindGameIntegrationTests {
         stmt.executeUpdate();
         stmt.close();
         //_____________________________________________________
+
         sql = "DELETE FROM Games WHERE gameID = ?";
         stmt = conn.prepareStatement(sql);
         stmt.setString(1, "GAME5");

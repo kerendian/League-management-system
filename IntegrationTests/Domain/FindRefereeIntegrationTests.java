@@ -1,13 +1,14 @@
 package Domain;
-
+import DataAccess.DAController;
 import DataAccess.DAControllerInterface;
 import DataAccess.DBConnector;
 import Exceptions.*;
 import Exceptions.NullPointerException;
 import org.junit.AfterClass;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
+import org.testng.annotations.AfterTest;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,29 +19,57 @@ import java.util.HashMap;
 
 import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.*;
-public class FindLeagueIntegrationTests {
-    //integrating find league from Domain controller with find league from DAController
+
+public class FindRefereeIntegrationTests {
+    //integrating find referee from Domain controller with find referee from DAController
     static DomainController dc;
     @BeforeClass
     public static void setUp() throws Exception
     {
-        DAControllerInterface my_stub = new StabFindLeague();
+        DAControllerInterface my_stub = new StubFindReferee();
         dc = new DomainController(my_stub);
         DBConnector dbc = DBConnector.getInstance();
         Connection conn = dbc.connect();
-        String sql = "INSERT INTO Leagues(leagueID,seasonID,policyID) VALUES(?,?,?)";
+        String sql = "INSERT INTO Referees(refereeID,qualification,userName,password,refNum,leagueID) VALUES(?,?,?,?,?,?)";
         PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setString(1, "LEAGUE1");
-        stmt.setString(2, "SEASON1");
-        stmt.setString(3, "POLICY1");
+        stmt.setString(1, "REF1");
+        stmt.setString(2, "20 YEARS EXPERIENCE");
+        stmt.setString(3, "Moshe1");
+        stmt.setString(4, "123456");
+        stmt.setString(5, "1");
+        stmt.setString(6, "LEAGUE1");
         stmt.executeUpdate();
         stmt.close();
         //_________________________________________________________________
-        sql = "INSERT INTO Leagues(leagueID,seasonID,policyID) VALUES(?,?,?)";
+        sql = "INSERT INTO Referees(refereeID,qualification,userName,password,refNum,leagueID) VALUES(?,?,?,?,?,?)";
         stmt = conn.prepareStatement(sql);
-        stmt.setString(1, "LEAGUE2");
-        stmt.setString(2, "SEASON1");
-        stmt.setString(3, "POLICY2");
+        stmt.setString(1, "REF2");
+        stmt.setString(2, "20 YEARS EXPERIENCE");
+        stmt.setString(3, "Moshe2");
+        stmt.setString(4, "123456");
+        stmt.setString(5, "2");
+        stmt.setString(6, "LEAGUE1");
+        stmt.executeUpdate();
+        stmt.close();
+        //_________________________________________________________________
+        sql = "INSERT INTO Referees(refereeID,qualification,userName,password,refNum,leagueID) VALUES(?,?,?,?,?,?)";
+        stmt = conn.prepareStatement(sql);
+        stmt.setString(1, "REF3");
+        stmt.setString(2, "22 YEARS EXPERIENCE");
+        stmt.setString(3, "David");
+        stmt.setString(4, "123456");
+        stmt.setString(5, "3");
+        stmt.setString(6, "LEAGUE1");
+        stmt.executeUpdate();
+        stmt.close();
+//        //_________________________________________________________________
+        sql = "INSERT INTO Referees(refereeID,qualification,userName,password,refNum) VALUES(?,?,?,?,?)";
+        stmt = conn.prepareStatement(sql);
+        stmt.setString(1, "REF4");
+        stmt.setString(2, "20 YEARS EXPERIENCE");
+        stmt.setString(3, "Moshe3");
+        stmt.setString(4, "123456");
+        stmt.setString(5, "4");
         stmt.executeUpdate();
         stmt.close();
 
@@ -115,83 +144,17 @@ public class FindLeagueIntegrationTests {
     public void assign_without_league_referee_to_game_without_league() throws ObjectIDNotExistException, SQLException, ScheduleRefereeFailed, ImportDataException, NullPointerException {
         HashMap<String,String>  res = dc.assign_referee_to_game("REF4","GAME2",1);
     }
-    //============== schedule game tests =============
 
-    @Test
-    public void games_placement_valid1() throws InvalidDateException, ImportDataException, ParseException, ScheduleRefereeFailed, SQLException, ObjectIDNotExistException, ScheduleGameFailed {
-        //(+) policy1
-        ArrayList<HashMap<String, String>> res = dc.games_placement("2022/08/02",12,"LEAGUE1","GAME2");
-        System.out.println(res);
-        assertEquals(1,res.size());
-        assertEquals("2022/08/02",res.get(0).get("date"));
-        assertEquals("12",res.get(0).get("hour"));
-        assertEquals("LEAGUE1", res.get(0).get("league"));
-        assertEquals("GAME2", res.get(0).get("game_id"));
-        assertEquals("COURT2", res.get(0).get("court"));
-    }
-
-    @Test(expected = InvalidDateException.class)//policy1
-    public void games_placement_invalid_date() throws InvalidDateException, ImportDataException, ParseException, ScheduleRefereeFailed, SQLException, ObjectIDNotExistException, ScheduleGameFailed {
-        //date expired
-        ArrayList<HashMap<String, String>> res = dc.games_placement("2021/08/02",12,"LEAGUE1","GAME2");
-    }
-
-    @Test(expected = ScheduleGameFailed.class)//policy1
-    public void games_placement_team_has_game() throws InvalidDateException, ImportDataException, ParseException, ScheduleRefereeFailed, SQLException, ObjectIDNotExistException, ScheduleGameFailed {
-        //one of the teams of this game has game in the same day
-        ArrayList<HashMap<String, String>> res = dc.games_placement("2022/08/02",12,"LEAGUE1","GAME1");
-    }
-
-    @Test(expected = ObjectIDNotExistException.class)//policy1
-    public void games_placement_invalid_gameid() throws InvalidDateException, ImportDataException, ParseException, ScheduleRefereeFailed, SQLException, ObjectIDNotExistException, ScheduleGameFailed {
-        ArrayList<HashMap<String, String>> res = dc.games_placement("2022/08/02",12,"LEAGUE1","GAME7");
-    }
-
-    @Test(expected = ObjectIDNotExistException.class)//policy1
-    public void games_placement_invalid_leagueid() throws InvalidDateException, ImportDataException, ParseException, ScheduleRefereeFailed, SQLException, ObjectIDNotExistException, ScheduleGameFailed {
-        ArrayList<HashMap<String, String>> res = dc.games_placement("2022/08/02",12,"LEAGUE7","GAME2");
-    }
-    @Test
-    public void games_placement_valid2() throws InvalidDateException, ImportDataException, ParseException, ScheduleRefereeFailed, SQLException, ObjectIDNotExistException, ScheduleGameFailed {
-        //(+) policy1
-        ArrayList<HashMap<String, String>> res = dc.games_placement("2022/08/02",12,"LEAGUE2","GAME2");
-        assertEquals(2,res.size());
-        assertEquals("2022/08/02",res.get(0).get("date"));
-        assertEquals("12",res.get(0).get("hour"));
-        assertEquals("LEAGUE2", res.get(0).get("league"));
-        assertEquals("GAME2", res.get(0).get("game_id"));
-        assertEquals("COURT2", res.get(0).get("court"));
-        //game2
-        assertEquals("2022/08/03",res.get(1).get("date"));
-        assertEquals("12",res.get(1).get("hour"));
-        assertEquals("LEAGUE2", res.get(1).get("league"));
-        assertThat("GAME2", not(res.get(1).get("game_id")));
-        assertEquals("COURT3", res.get(1).get("court"));
-    }
-
-    @Test(expected = ScheduleGameFailed.class)
-    public void games_placement_has_game() throws InvalidDateException, ImportDataException, ParseException, ScheduleRefereeFailed, SQLException, ObjectIDNotExistException, ScheduleGameFailed {
-        //policy 2 , has game
-        ArrayList<HashMap<String, String>> res = dc.games_placement("2022/08/02", 12, "LEAGUE2", "GAME5");
-    }
 
     @AfterClass
     public static void tearDown() throws Exception {
         DBConnector dbc = DBConnector.getInstance();
         Connection conn = dbc.connect();
-        String sql = "DELETE FROM Leagues WHERE leagueID = ?";
+        String sql = "DELETE FROM Referees";
         PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setString(1, "LEAGUE1");
-        stmt.executeUpdate();
-        stmt.close();
-        //______________________________________________________
-        sql = "DELETE FROM Leagues WHERE leagueID = ?";
-        stmt = conn.prepareStatement(sql);
-        stmt.setString(1, "LEAGUE2");
         stmt.executeUpdate();
         stmt.close();
 
         dbc.disconnect(conn);
-
     }
 }

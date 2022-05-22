@@ -42,9 +42,7 @@ public class StabFindCourt extends AbsStubDAController {
             dbc.disconnect(conn);
             throw new ObjectIDNotExistException("The league id is not found in the DB");
         }
-        //} catch (Exception e) {
-        //System.out.println(e.getMessage());
-        //}
+
         return court_details;
     }
 

@@ -236,7 +236,7 @@ public abstract class AbsStubDAController implements DAControllerInterface {
 
     @Override
     public boolean check_game_date_validation(String team_id, String date) throws SQLException {
-        if(team_id=="TEAM2"||team_id=="TEAM3"){
+        if(team_id.equals("TEAM2") || team_id.equals("TEAM3")){
             return true;
         }
         else{

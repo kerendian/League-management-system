@@ -23,7 +23,7 @@ public class StabFindTeam extends AbsStubDAController{
             String team_idFromDB = rs.getString("teamID");
             if (team_idFromDB.equals(team_id)) {
                 team_details.put("team_id", team_idFromDB);
-                team_details.put("court_id", rs.getString("courtID"));
+                team_details.put("court_id", rs.getString("team_courtID"));
 
             }
             else{
