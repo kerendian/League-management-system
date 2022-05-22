@@ -47,7 +47,7 @@ public class StubFindReferee extends AbsStubDAController{
             rs.close();
             stmt.close();
             dbc.disconnect(conn);
-            throw new ImportDataException("could not import the referee data");
+            throw new ObjectIDNotExistException("The referee id is not found in the DB");
         }
         rs.close();
         stmt.close();
