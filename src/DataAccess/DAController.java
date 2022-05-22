@@ -149,12 +149,7 @@ public static DAController getInstance(){return  instance;};
             rs.close();
             stmt.close();
             dbc.disconnect(conn);
-        //}
 
-        //catch (Exception e)
-        //{
-            //System.out.println(e.getMessage());
-        //}
         return referee_details;
     }
 
@@ -296,13 +291,10 @@ public static DAController getInstance(){return  instance;};
             dbc.disconnect(conn);
             return Status.success;
 
-
         //} catch (Exception e) {
            //System.out.println(e.getMessage());
            // return Status.failure;
         //}
-
-
 
     }
 
