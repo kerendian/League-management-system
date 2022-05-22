@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class Game {
-    int counter = 4;
+    int counter = 10;
     String game_id;
     String date;
     int hour;

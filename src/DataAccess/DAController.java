@@ -144,7 +144,7 @@ public static DAController getInstance(){return  instance;};
                 rs.close();
                 stmt.close();
                 dbc.disconnect(conn);
-                throw new ImportDataException("could not import the referee data");
+                throw new ObjectIDNotExistException("The referee id is not found in the DB");
             }
             rs.close();
             stmt.close();
@@ -311,7 +311,7 @@ public static DAController getInstance(){return  instance;};
                 String team_idFromDB = rs.getString("teamID");
                 if (team_idFromDB.equals(team_id)) {
                     team_details.put("team_id", team_idFromDB);
-                    team_details.put("court_id", rs.getString("courtID"));
+                    team_details.put("court_id", rs.getString("team_courtID"));
 
                 }
                 else{

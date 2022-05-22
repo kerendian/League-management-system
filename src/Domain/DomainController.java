@@ -105,12 +105,15 @@ public class DomainController implements DomainControllerInterface {
                         array_to_return.add(game_details2);
                         return array_to_return;
                     }
+                    else{
+                        throw new ScheduleGameFailed("one of the teams in this game has already game at this date");
+                    }
                 }
             }
             else{
                 throw new ScheduleGameFailed("one of the teams in this game has already game at this date");
             }
-            return array_to_return;
+          //  return array_to_return;
     }
 
 
