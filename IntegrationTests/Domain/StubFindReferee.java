@@ -12,6 +12,7 @@ import java.util.HashMap;
 public class StubFindReferee extends AbsStubDAController{
 
     //bring referee details without games
+    @Override
     public HashMap<String,String>  findReferee(String referee_id) throws SQLException, ObjectIDNotExistException, ImportDataException {
         HashMap<String,String> referee_details = new HashMap<>();
 

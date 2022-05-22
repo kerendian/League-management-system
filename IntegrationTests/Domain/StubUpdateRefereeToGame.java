@@ -11,6 +11,7 @@ import java.util.HashMap;
 
 public class StubUpdateRefereeToGame extends AbsStubDAController{
 
+    @Override
     public Status updateRefereesToGame(HashMap<String,String> game_details) throws SQLException {
         //try {
         String sql = "UPDATE Games " +

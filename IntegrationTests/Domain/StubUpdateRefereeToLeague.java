@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.HashMap;
 public class StubUpdateRefereeToLeague extends AbsStubDAController{
 
+    @Override
     public Status updateLeagueToReferee(String referee_id, String league_id) throws SQLException {
 
         //try {
