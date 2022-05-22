@@ -142,7 +142,7 @@ public abstract class AbsStubDAController implements DAControllerInterface {
     }
 
     @Override
-    public HashMap<String, String> findLeague(String league_id) throws ObjectIDNotExistException {
+    public HashMap<String, String> findLeague(String league_id) throws ObjectIDNotExistException, SQLException {
         HashMap<String, String> league_row_data = new HashMap<>();
         league_row_data.put("league_id", "LEAGUE1");
         league_row_data.put("policy_id", "POLICY1");
@@ -166,7 +166,7 @@ public abstract class AbsStubDAController implements DAControllerInterface {
     }
 
     @Override
-    public HashMap<String, String> findCourt(String court_id) throws ObjectIDNotExistException {
+    public HashMap<String, String> findCourt(String court_id) throws ObjectIDNotExistException, SQLException {
         HashMap<String, String> court_row_data = new HashMap<>();
         court_row_data.put("court_id", "COURT1");
         court_row_data.put("name", "Ramat Gan stadium");
@@ -180,7 +180,7 @@ public abstract class AbsStubDAController implements DAControllerInterface {
     }
 
     @Override
-    public Status games_placement(HashMap<String, String> game_details) {
+    public Status games_placement(HashMap<String, String> game_details) throws SQLException {
         return Status.success;
     }
 
@@ -207,7 +207,7 @@ public abstract class AbsStubDAController implements DAControllerInterface {
     }
 
     @Override
-    public HashMap<String, String> findTeam(String team_id) throws ObjectIDNotExistException {
+    public HashMap<String, String> findTeam(String team_id) throws ObjectIDNotExistException, SQLException {
 
         HashMap<String, String> team_row_data1 = new HashMap<>();
         HashMap<String, String> team_row_data2 = new HashMap<>();
