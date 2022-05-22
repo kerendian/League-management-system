@@ -12,7 +12,7 @@ import java.sql.PreparedStatement;
 
 import static org.junit.Assert.*;
 
-public class FindGameintegrationTests {
+public class FindGameIntegrationTests {
     //integrating find user from Domain controller with find user from DAController
     static DomainController dc;
     @BeforeClass
