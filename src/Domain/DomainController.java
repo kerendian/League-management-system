@@ -81,7 +81,7 @@ public class DomainController implements DomainControllerInterface {
             HashMap<String, String> external_team_details = daController.findTeam(curr_game.getExternal_team_ID());
             HashMap<String, String> league_details = daController.findLeague(leagueID);
             if(daController.check_game_date_validation(home_team_details.get("team_id"), date) && daController.check_game_date_validation(external_team_details.get("team_id"), date)){
-                if(league_details.get("policy_id")=="POLICY1"){
+                if(league_details.get("policy_id").equals("POLICY1")){
                     curr_game.game_placement(date,hour,leagueID,league_details.get("policy_id"), home_team_details.get("court_id"), external_team_details.get("court_id"));
                     cache.put(curr_game.getGame_id(),curr_game);
                     //updating the details in the db
