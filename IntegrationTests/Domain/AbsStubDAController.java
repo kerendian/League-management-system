@@ -1,6 +1,8 @@
 package Domain;
 
 import DataAccess.DAControllerInterface;
+import DataAccess.DBConnector;
+import Exceptions.ImportDataException;
 import Exceptions.ObjectIDNotExistException;
 import Service.Status;
 
@@ -8,8 +10,29 @@ import java.sql.SQLException;
 import java.util.HashMap;
 
 public abstract class AbsStubDAController implements DAControllerInterface {
+    DBConnector dbc = DBConnector.getInstance();
+
+    public UserStatus findUser(String userName, String password, String userType)
+    {
+        if (userName.equals("Alice") && userType.equals("Referees"))
+        {
+            if (password.equals("test1234"))
+            {
+                return UserStatus.Valid;
+            }
+            else
+            {
+                return UserStatus.WrongPassword;
+            }
+        }
+        else
+        {
+            return UserStatus.WrongType;
+        }
+    }
+
     @Override
-    public HashMap<String, String> findGame(String game_id) throws ObjectIDNotExistException {
+    public HashMap<String, String> findGame(String game_id) throws ObjectIDNotExistException, SQLException, ImportDataException {
         //good case
         HashMap<String, String> game_row_data1 = new HashMap<>();
         game_row_data1.put("game_id", "GAME1");
@@ -66,7 +89,7 @@ public abstract class AbsStubDAController implements DAControllerInterface {
 
 
     @Override
-    public HashMap<String, String> findReferee(String referee_id) throws ObjectIDNotExistException {
+    public HashMap<String, String> findReferee(String referee_id) throws ObjectIDNotExistException, SQLException, ImportDataException {
         HashMap<String, String> referee_row_data4 = new HashMap<>();
         referee_row_data4.put("refereeID", "REF4");
         referee_row_data4.put("qualification", "20 YEARS EXPERIENCE");
@@ -162,7 +185,7 @@ public abstract class AbsStubDAController implements DAControllerInterface {
     }
 
     @Override
-    public Status updateRefereesToGame(HashMap<String, String> game_details) {
+    public Status updateRefereesToGame(HashMap<String, String> game_details) throws SQLException {
         if(game_details.get("main_referee") == "REF1" && game_details.get("game_id") == "GAME1"){
             return Status.success;
         }
@@ -176,7 +199,7 @@ public abstract class AbsStubDAController implements DAControllerInterface {
     }
 
     @Override
-    public Status updateLeagueToReferee(String referee_id, String league_id) {
+    public Status updateLeagueToReferee(String referee_id, String league_id) throws SQLException {
         if (league_id.equals("LEAGUE1") && referee_id.equals("REF4")){
             return Status.success;
         }

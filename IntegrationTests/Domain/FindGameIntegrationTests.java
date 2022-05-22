@@ -21,14 +21,23 @@ public class FindGameIntegrationTests {
         dc = new DomainController(DAController.getInstance());
         DBConnector dbc = DBConnector.getInstance();
         Connection conn = dbc.connect();
-        String sql = "INSERT INTO Referees(refereeID,userName,password) VALUES(?,?,?)";
+        String sql = "INSERT INTO Games(gameID,homeTeam_ID,externalTeam_ID,leagueID) VALUES(?,?,?,?)";
         PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setString(1, "ref1");
-        stmt.setString(2, "Alice");
-        stmt.setString(3, "test1234");
+        stmt.setString(1, "GAME1");
+        stmt.setString(2, "TEAM1");
+        stmt.setString(3, "TEAM2");
+        stmt.setString(4, "LEAGUE1");
         stmt.executeUpdate();
         stmt.close();
-        dbc.disconnect(conn);
+        //_________________________________________________________________
+        sql = "INSERT INTO Games(gameID,homeTeam_ID,externalTeam_ID,leagueID) VALUES(?,?,?,?)";
+        stmt = conn.prepareStatement(sql);
+        stmt.setString(1, "GAME3");
+        stmt.setString(2, "TEAM1");
+        stmt.setString(3, "TEAM2");
+        stmt.setString(4, "LEAGUE1");
+        stmt.executeUpdate();
+        stmt.close();
 
     }
 }
