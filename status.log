@@ -690,3 +690,367 @@
   <message>user Bob tried to log in to the system as Referees with wrong username or user type</message>
 </record>
 </log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-23T14:06:14.240422800Z</date>
+  <millis>1653314774240</millis>
+  <nanos>422800</nanos>
+  <sequence>0</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Bob tried to log in to the system as Referees with wrong username or user type</message>
+</record>
+<record>
+  <date>2022-05-23T14:06:14.260370200Z</date>
+  <millis>1653314774260</millis>
+  <nanos>370200</nanos>
+  <sequence>1</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Alice tried to log in to the system as Referees with wrong password</message>
+</record>
+<record>
+  <date>2022-05-23T14:06:14.263361900Z</date>
+  <millis>1653314774263</millis>
+  <nanos>361900</nanos>
+  <sequence>2</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Alice tried to log in to the system as UnionRepresentors with wrong username or user type</message>
+</record>
+<record>
+  <date>2022-05-23T14:06:14.265356100Z</date>
+  <millis>1653314774265</millis>
+  <nanos>356100</nanos>
+  <sequence>3</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Alice logged in to the system as Referees</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-23T14:09:42.684200600Z</date>
+  <millis>1653314982684</millis>
+  <nanos>200600</nanos>
+  <sequence>0</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Alice logged in to the system as Referees</message>
+</record>
+<record>
+  <date>2022-05-23T14:09:42.696173400Z</date>
+  <millis>1653314982696</millis>
+  <nanos>173400</nanos>
+  <sequence>1</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Alice tried to log in to the system as Referees with wrong password</message>
+</record>
+<record>
+  <date>2022-05-23T14:09:42.699163700Z</date>
+  <millis>1653314982699</millis>
+  <nanos>163700</nanos>
+  <sequence>2</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Alice tried to log in to the system as UnionRepresentors with wrong username or user type</message>
+</record>
+<record>
+  <date>2022-05-23T14:09:42.702153800Z</date>
+  <millis>1653314982702</millis>
+  <nanos>153800</nanos>
+  <sequence>3</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Bob tried to log in to the system as Referees with wrong username or user type</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-23T14:10:27.225089500Z</date>
+  <millis>1653315027225</millis>
+  <nanos>89500</nanos>
+  <sequence>0</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Alice tried to log in to the system as UnionRepresentors with wrong username or user type</message>
+</record>
+<record>
+  <date>2022-05-23T14:10:27.238055500Z</date>
+  <millis>1653315027238</millis>
+  <nanos>55500</nanos>
+  <sequence>1</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Alice tried to log in to the system as Referees with wrong password</message>
+</record>
+<record>
+  <date>2022-05-23T14:10:27.242044600Z</date>
+  <millis>1653315027242</millis>
+  <nanos>44600</nanos>
+  <sequence>2</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Bob tried to log in to the system as Referees with wrong username or user type</message>
+</record>
+<record>
+  <date>2022-05-23T14:10:27.245036700Z</date>
+  <millis>1653315027245</millis>
+  <nanos>36700</nanos>
+  <sequence>3</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Alice logged in to the system as Referees</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-23T14:30:20.017138700Z</date>
+  <millis>1653316220017</millis>
+  <nanos>138700</nanos>
+  <sequence>0</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Alice logged in to the system as Referees</message>
+</record>
+<record>
+  <date>2022-05-23T14:30:20.031101300Z</date>
+  <millis>1653316220031</millis>
+  <nanos>101300</nanos>
+  <sequence>1</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Alice tried to log in to the system as UnionRepresentors with wrong username or user type</message>
+</record>
+<record>
+  <date>2022-05-23T14:30:20.035124800Z</date>
+  <millis>1653316220035</millis>
+  <nanos>124800</nanos>
+  <sequence>2</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Bob tried to log in to the system as Referees with wrong username or user type</message>
+</record>
+<record>
+  <date>2022-05-23T14:30:20.036087100Z</date>
+  <millis>1653316220036</millis>
+  <nanos>87100</nanos>
+  <sequence>3</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Alice tried to log in to the system as Referees with wrong password</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-23T14:40:59.017348100Z</date>
+  <millis>1653316859017</millis>
+  <nanos>348100</nanos>
+  <sequence>0</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Bob tried to log in to the system as Referees with wrong username or user type</message>
+</record>
+<record>
+  <date>2022-05-23T14:40:59.030852300Z</date>
+  <millis>1653316859030</millis>
+  <nanos>852300</nanos>
+  <sequence>1</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Alice tried to log in to the system as UnionRepresentors with wrong username or user type</message>
+</record>
+<record>
+  <date>2022-05-23T14:40:59.033844Z</date>
+  <millis>1653316859033</millis>
+  <nanos>844000</nanos>
+  <sequence>2</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Alice logged in to the system as Referees</message>
+</record>
+<record>
+  <date>2022-05-23T14:40:59.035841500Z</date>
+  <millis>1653316859035</millis>
+  <nanos>841500</nanos>
+  <sequence>3</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Alice tried to log in to the system as Referees with wrong password</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-23T14:44:23.101276500Z</date>
+  <millis>1653317063101</millis>
+  <nanos>276500</nanos>
+  <sequence>0</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Alice logged in to the system as Referees</message>
+</record>
+<record>
+  <date>2022-05-23T14:44:23.111276Z</date>
+  <millis>1653317063111</millis>
+  <nanos>276000</nanos>
+  <sequence>1</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Alice tried to log in to the system as Referees with wrong password</message>
+</record>
+<record>
+  <date>2022-05-23T14:44:23.114266300Z</date>
+  <millis>1653317063114</millis>
+  <nanos>266300</nanos>
+  <sequence>2</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Bob tried to log in to the system as Referees with wrong username or user type</message>
+</record>
+<record>
+  <date>2022-05-23T14:44:23.116268200Z</date>
+  <millis>1653317063116</millis>
+  <nanos>268200</nanos>
+  <sequence>3</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Alice tried to log in to the system as UnionRepresentors with wrong username or user type</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-23T14:48:30.717317400Z</date>
+  <millis>1653317310717</millis>
+  <nanos>317400</nanos>
+  <sequence>0</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Alice logged in to the system as Referees</message>
+</record>
+<record>
+  <date>2022-05-23T14:48:30.728287300Z</date>
+  <millis>1653317310728</millis>
+  <nanos>287300</nanos>
+  <sequence>1</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Bob tried to log in to the system as Referees with wrong username or user type</message>
+</record>
+<record>
+  <date>2022-05-23T14:48:30.730283400Z</date>
+  <millis>1653317310730</millis>
+  <nanos>283400</nanos>
+  <sequence>2</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Alice tried to log in to the system as UnionRepresentors with wrong username or user type</message>
+</record>
+<record>
+  <date>2022-05-23T14:48:30.732276300Z</date>
+  <millis>1653317310732</millis>
+  <nanos>276300</nanos>
+  <sequence>3</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Alice tried to log in to the system as Referees with wrong password</message>
+</record>
+</log>

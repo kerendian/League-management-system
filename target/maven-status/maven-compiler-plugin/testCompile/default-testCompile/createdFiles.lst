@@ -1,4 +1,4 @@
 UnitTest\Domain\DomainControllerTest.class
 AcceptanceTests\Service\LogInAcceptanceTest.class
+IntegrationTests\Domain\LogInIntegrationTest.class
 UnitTest\Domain\StubDAController.class
-IntegrationTests\Domain\LogInIntegrationTests.class

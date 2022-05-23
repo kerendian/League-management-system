@@ -20,6 +20,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                     <target>1.8</target>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
