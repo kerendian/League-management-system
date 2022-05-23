@@ -20,7 +20,7 @@ public class StubUpdateRefereeToLeague extends AbsStubDAController{
         Connection conn = dbc.connect();
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(sql);
-        System.out.println("row was updated successfully!");
+        //System.out.println("row was updated successfully!");
         stmt.close();
         dbc.disconnect(conn);
         return Status.success;

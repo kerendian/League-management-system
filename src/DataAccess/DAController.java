@@ -280,6 +280,8 @@ public static DAController getInstance(){return  instance;};
     public Status updateLeagueToReferee(String referee_id, String league_id) throws SQLException {
 
         //try {
+
+
             String sql = "UPDATE Referees " +
                     "SET leagueID = '" + league_id + "'," +
                     "WHERE refereeID = '" + referee_id + "';";

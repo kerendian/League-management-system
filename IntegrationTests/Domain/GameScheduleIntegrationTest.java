@@ -227,6 +227,7 @@ public class GameScheduleIntegrationTest {
         @AfterClass
         public static void tearDown() throws Exception
         {
+
             DBConnector dbc = DBConnector.getInstance();
             Connection conn = dbc.connect();
 

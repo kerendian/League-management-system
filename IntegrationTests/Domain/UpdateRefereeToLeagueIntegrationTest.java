@@ -61,6 +61,16 @@ public class UpdateRefereeToLeagueIntegrationTest {
         stmt.setString(6, "LEAGUE1");
         stmt.executeUpdate();
         stmt.close();
+        sql = "INSERT INTO Referees(refereeID,qualification,userName,password,refNum) VALUES(?,?,?,?,?)";
+        stmt = conn.prepareStatement(sql);
+        stmt.setString(1, "REF4");
+        stmt.setString(2, "20 YEARS EXPERIENCE");
+        stmt.setString(3, "david2");
+        stmt.setString(4, "123456");
+        stmt.setString(5, "10");
+
+        stmt.executeUpdate();
+        stmt.close();
         dbc.disconnect(conn);
 
     }
@@ -102,11 +112,14 @@ public class UpdateRefereeToLeagueIntegrationTest {
     //supposeto fall
     @Test(expected = NullPointerException.class)
     public void assign_referee_to_game_without_league() throws ObjectIDNotExistException, SQLException, ScheduleRefereeFailed, ImportDataException, NullPointerException {
+        dc.setCache(new HashMap<>());
+        System.out.println(dc.getCache());
         HashMap<String,String>  res = dc.assign_referee_to_game("REF1","GAME2",1);
     }
 
     @Test(expected = NullPointerException.class)
     public void assign_without_league_referee_to_game_without_league() throws ObjectIDNotExistException, SQLException, ScheduleRefereeFailed, ImportDataException, NullPointerException {
+
         HashMap<String,String>  res = dc.assign_referee_to_game("REF4","GAME2",1);
     }
     //============== schedule game tests =============
