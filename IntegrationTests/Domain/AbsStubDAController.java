@@ -195,6 +195,7 @@ public abstract class AbsStubDAController implements DAControllerInterface {
         else if(game_details.get("secondary_referee_2").equals("REF3") && game_details.get("game_id").equals("GAME4")){
             return Status.success;
         }
+
         return Status.failure;
     }
 

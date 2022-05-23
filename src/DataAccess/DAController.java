@@ -240,7 +240,7 @@ public static DAController getInstance(){return  instance;};
             Connection conn = dbc.connect();
             Statement stmt = conn.createStatement();
             boolean rs = stmt.execute(sql);
-            System.out.println("row was updated successfully!");
+          //  System.out.println("row was updated successfully!");
             stmt.close();
             dbc.disconnect(conn);
             return Status.success;
@@ -263,7 +263,7 @@ public static DAController getInstance(){return  instance;};
             Connection conn = dbc.connect();
             Statement stmt = conn.createStatement();
             boolean rs = stmt.execute(sql);
-            System.out.println("row was updated successfully!");
+            //System.out.println("row was updated successfully!");
             stmt.close();
             dbc.disconnect(conn);
             return Status.success;
@@ -280,13 +280,15 @@ public static DAController getInstance(){return  instance;};
     public Status updateLeagueToReferee(String referee_id, String league_id) throws SQLException {
 
         //try {
+
+
             String sql = "UPDATE Referees " +
                     "SET leagueID = '" + league_id + "'," +
                     "WHERE refereeID = '" + referee_id + "';";
             Connection conn = dbc.connect();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-            System.out.println("row was updated successfully!");
+            //System.out.println("row was updated successfully!");
             stmt.close();
             dbc.disconnect(conn);
             return Status.success;

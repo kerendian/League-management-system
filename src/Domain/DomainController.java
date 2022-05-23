@@ -27,6 +27,10 @@ public class DomainController implements DomainControllerInterface {
         //HashMap<String,Object> cache = new HashMap<>();
     }
 
+    public void setCache(HashMap<String, Object> cache) {
+        this.cache = cache;
+    }
+
     public HashMap<String, Object> getCache() {
         return cache;
     }
@@ -71,13 +75,14 @@ public class DomainController implements DomainControllerInterface {
                 HashMap<String,String> game_details = daController.findGame(game_id);
                 curr_game = new Game(game_details.get("home_team"),game_details.get("external_team"));
                 curr_game.setGame_id(game_id);
+                curr_game.setLeagueID(game_details.get("league"));
         }
         //updating basic details
         if(date_isvalid(date)) {
             curr_game.setDate(date);
         }
         curr_game.setHour(hour);
-        curr_game.setLeagueID(leagueID);
+
 
         //try {
             //find teams and courts
@@ -194,6 +199,7 @@ public class DomainController implements DomainControllerInterface {
                         }
                         else{
                             throw new ScheduleRefereeFailed("the status that returned is failure");
+
                         }
 
                     }

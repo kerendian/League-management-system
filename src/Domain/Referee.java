@@ -64,10 +64,14 @@ public class Referee extends SignedUser {
     }
 
 
+
+
     @Override
     public String toString() {
         return "Referee{" +
-                "userName='" + userName + '\'' +
+                "refereeID='" + refereeID + '\'' +
+                ", leagueID='" + leagueID + '\'' +
+                ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }
