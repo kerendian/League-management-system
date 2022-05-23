@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="iw"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DAController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Maven Quick Start Archetype</a> &gt; <a href="index.source.html" class="el_package">DataAccess</a> &gt; <span class="el_source">DAController.java</span></div><h1>DAController.java</h1><pre class="source lang-java linenums">package DataAccess;
+
+import Domain.UserStatus;
+import Exceptions.ImportDataException;
+import Exceptions.ObjectIDNotExistException;
+import Service.Status;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.HashMap;
+
+public class DAController implements DAControllerInterface {
+<span class="fc" id="L15">private static DAController instance = new DAController() ;</span>
+<span class="fc" id="L16">DBConnector dbc = DBConnector.getInstance();</span>
+<span class="fc" id="L17">private DAController(){}</span>
+
+<span class="fc" id="L19">public static DAController getInstance(){return  instance;};</span>
+    public UserStatus findUser(String userName, String password, String userType)
+    {
+<span class="fc" id="L22">        UserStatus  us = null;</span>
+        try {
+<span class="fc" id="L24">            String sql = &quot;SELECT * FROM &quot;+ userType + &quot; WHERE userName = '&quot; + userName + &quot;';&quot; ;</span>
+<span class="fc" id="L25">            Connection conn = dbc.connect();</span>
+<span class="fc" id="L26">            Statement stmt = conn.createStatement();</span>
+<span class="fc" id="L27">            ResultSet rs = stmt.executeQuery(sql);</span>
+<span class="fc bfc" id="L28" title="All 2 branches covered.">            if (rs.next())</span>
+            {
+<span class="fc" id="L30">                String passFromDB = rs.getString(&quot;password&quot;);</span>
+<span class="fc bfc" id="L31" title="All 2 branches covered.">                if (passFromDB.equals(password))</span>
+                {
+<span class="fc" id="L33">                    us = UserStatus.Valid;</span>
+                }
+                else
+                {
+<span class="fc" id="L37">                    us = UserStatus.WrongPassword;</span>
+                }
+<span class="fc" id="L39">            }</span>
+            else
+            {
+<span class="fc" id="L42">                us = UserStatus.WrongType;</span>
+            }
+<span class="fc" id="L44">            rs.close();</span>
+<span class="fc" id="L45">            stmt.close();</span>
+<span class="fc" id="L46">            dbc.disconnect(conn);</span>
+        }
+<span class="nc" id="L48">        catch (Exception e)</span>
+        {
+<span class="nc" id="L50">            System.out.println(e.getMessage());</span>
+<span class="fc" id="L51">        }</span>
+<span class="fc" id="L52">    return us;</span>
+    }
+
+    public HashMap&lt;String,String&gt;  findGame(String game_id) throws SQLException, ObjectIDNotExistException, ImportDataException {
+<span class="fc" id="L56">        HashMap&lt;String,String&gt; game_details = new HashMap&lt;&gt;();</span>
+
+<span class="fc" id="L58">            String sql = &quot;SELECT * FROM Games WHERE gameID = '&quot; + game_id + &quot;';&quot; ;</span>
+<span class="fc" id="L59">            Connection conn = dbc.connect();</span>
+<span class="fc" id="L60">            Statement stmt = conn.createStatement();</span>
+<span class="fc" id="L61">            ResultSet rs = stmt.executeQuery(sql);</span>
+            //reading the rows that returned
+<span class="fc bfc" id="L63" title="All 2 branches covered.">            if (rs.next())</span>
+            {
+<span class="fc" id="L65">                String game_idFromDB = rs.getString(&quot;gameID&quot;);</span>
+<span class="pc bpc" id="L66" title="1 of 2 branches missed.">                if (game_idFromDB.equals(game_id))</span>
+<span class="fc" id="L67">                {   game_details.put(&quot;game_id&quot;,rs.getString(&quot;gameID&quot;));</span>
+<span class="fc" id="L68">                    game_details.put(&quot;date&quot;,rs.getString(&quot;date&quot;));</span>
+<span class="fc" id="L69">                    game_details.put(&quot;hour&quot;,rs.getString(&quot;hour&quot;));</span>
+<span class="fc" id="L70">                    game_details.put(&quot;home_team&quot;,rs.getString(&quot;homeTeam_ID&quot;));</span>
+<span class="fc" id="L71">                    game_details.put(&quot;external_team&quot;,rs.getString(&quot;externalTeam_ID&quot;));</span>
+<span class="fc" id="L72">                    game_details.put( &quot;main_referee&quot; ,   rs.getString(&quot;main_referee_ID&quot;));</span>
+<span class="fc" id="L73">                    game_details.put( &quot;secondary_referee_1&quot; ,   rs.getString(&quot;secondary_referee_ID1&quot;));</span>
+<span class="fc" id="L74">                    game_details.put(  &quot;secondary_referee_2&quot;,   rs.getString(&quot;secondary_referee_ID2&quot;));</span>
+<span class="fc" id="L75">                    game_details.put(  &quot;court&quot;, rs.getString(&quot;courtID&quot;));</span>
+<span class="fc" id="L76">                    game_details.put( &quot;league&quot; , rs.getString(&quot;leagueID&quot;));</span>
+<span class="fc" id="L77">                    game_details.put(  &quot;result&quot;, rs.getString(&quot;result&quot;));</span>
+
+
+                }
+                else
+                {
+//                    game_details = null;
+<span class="nc" id="L84">                    rs.close();</span>
+<span class="nc" id="L85">                    stmt.close();</span>
+<span class="nc" id="L86">                    dbc.disconnect(conn);</span>
+<span class="nc" id="L87">                    throw new ObjectIDNotExistException(&quot;The game id is not found in the DB&quot;);</span>
+                }
+<span class="fc" id="L89">            }</span>
+            else
+            {
+<span class="fc" id="L92">                rs.close();</span>
+<span class="fc" id="L93">                stmt.close();</span>
+<span class="fc" id="L94">                dbc.disconnect(conn);</span>
+<span class="fc" id="L95">                throw new ObjectIDNotExistException(&quot;The game id is not found in the DB&quot;);</span>
+            }
+<span class="fc" id="L97">            rs.close();</span>
+<span class="fc" id="L98">            stmt.close();</span>
+<span class="fc" id="L99">            dbc.disconnect(conn);</span>
+
+<span class="fc" id="L101">        return game_details;</span>
+    }
+
+
+    //bring referee details without games
+    public HashMap&lt;String,String&gt;  findReferee(String referee_id) throws SQLException, ObjectIDNotExistException, ImportDataException {
+<span class="fc" id="L107">        HashMap&lt;String,String&gt; referee_details = new HashMap&lt;&gt;();</span>
+
+<span class="fc" id="L109">            String sql = &quot;SELECT * FROM Referees WHERE refereeID = '&quot; + referee_id + &quot;';&quot; ;</span>
+<span class="fc" id="L110">            Connection conn = dbc.connect();</span>
+<span class="fc" id="L111">            Statement stmt = conn.createStatement();</span>
+<span class="fc" id="L112">            ResultSet rs = stmt.executeQuery(sql);</span>
+            //reading the rows that returned
+<span class="fc bfc" id="L114" title="All 2 branches covered.">            if (rs.next())</span>
+            {
+<span class="fc" id="L116">                String referee_idFromDB = rs.getString(&quot;refereeID&quot;);</span>
+<span class="pc bpc" id="L117" title="1 of 2 branches missed.">                if (referee_idFromDB.equals(referee_id))</span>
+<span class="fc" id="L118">                {   referee_details.put(&quot;refereeID&quot;,rs.getString(&quot;refereeID&quot;));</span>
+<span class="fc" id="L119">                    referee_details.put(&quot;refNum&quot;,rs.getString(&quot;refNum&quot;));</span>
+<span class="fc" id="L120">                    referee_details.put(&quot;leagueID&quot;,rs.getString(&quot;leagueID&quot;));</span>
+<span class="fc" id="L121">                    referee_details.put(&quot;qualification&quot;,rs.getString(&quot;qualification&quot;));</span>
+<span class="fc" id="L122">                    referee_details.put(&quot;username&quot;,rs.getString(&quot;userName&quot;));</span>
+<span class="fc" id="L123">                    referee_details.put(&quot;password&quot;,rs.getString(&quot;password&quot;));</span>
+
+                }
+                else
+                {
+<span class="nc" id="L128">                    rs.close();</span>
+<span class="nc" id="L129">                    stmt.close();</span>
+<span class="nc" id="L130">                    dbc.disconnect(conn);</span>
+<span class="nc" id="L131">                    throw new ObjectIDNotExistException(&quot;The referee id is not found in the DB&quot;);</span>
+                }
+<span class="fc" id="L133">            }</span>
+            else
+            {
+<span class="fc" id="L136">                rs.close();</span>
+<span class="fc" id="L137">                stmt.close();</span>
+<span class="fc" id="L138">                dbc.disconnect(conn);</span>
+<span class="fc" id="L139">                throw new ObjectIDNotExistException(&quot;The referee id is not found in the DB&quot;);</span>
+            }
+<span class="fc" id="L141">            rs.close();</span>
+<span class="fc" id="L142">            stmt.close();</span>
+<span class="fc" id="L143">            dbc.disconnect(conn);</span>
+
+<span class="fc" id="L145">        return referee_details;</span>
+    }
+
+
+    public HashMap&lt;String,String&gt;  findLeague(String league_id) throws SQLException, ObjectIDNotExistException {
+<span class="fc" id="L150">        HashMap&lt;String, String&gt; league_details = new HashMap&lt;&gt;();</span>
+        //try {
+<span class="fc" id="L152">            String sql = &quot;SELECT * FROM Leagues WHERE leagueID = '&quot; + league_id + &quot;';&quot;;</span>
+<span class="fc" id="L153">            Connection conn = dbc.connect();</span>
+<span class="fc" id="L154">            Statement stmt = conn.createStatement();</span>
+<span class="fc" id="L155">            ResultSet rs = stmt.executeQuery(sql);</span>
+            //reading the rows that returned
+<span class="fc bfc" id="L157" title="All 2 branches covered.">            if (rs.next()) {</span>
+<span class="fc" id="L158">                String league_idFromDB = rs.getString(&quot;leagueID&quot;);</span>
+<span class="pc bpc" id="L159" title="1 of 2 branches missed.">                if (league_idFromDB.equals(league_id)) {</span>
+<span class="fc" id="L160">                    league_details.put(&quot;league_id&quot;, league_idFromDB);</span>
+<span class="fc" id="L161">                    league_details.put(&quot;season_id&quot;, rs.getString(&quot;seasonID&quot;));</span>
+<span class="fc" id="L162">                    league_details.put(&quot;policy_id&quot;, rs.getString(&quot;policyID&quot;));</span>
+
+                }
+                else{
+<span class="nc" id="L166">                    System.out.println(&quot;The retrieval from the database was performed but there is no equality between the line and the argument&quot;);</span>
+                }
+
+
+<span class="fc" id="L170">                rs.close();</span>
+<span class="fc" id="L171">                stmt.close();</span>
+<span class="fc" id="L172">                dbc.disconnect(conn);</span>
+<span class="fc" id="L173">            }</span>
+            else{
+<span class="fc" id="L175">                rs.close();</span>
+<span class="fc" id="L176">                stmt.close();</span>
+<span class="fc" id="L177">                dbc.disconnect(conn);</span>
+<span class="fc" id="L178">                throw new ObjectIDNotExistException(&quot;The league id is not found in the DB&quot;);</span>
+            }
+
+<span class="fc" id="L181">        return league_details;</span>
+    }
+
+//    public HashMap&lt;String,String&gt;  findCourt(String court_id) throws SQLException, ObjectIDNotExistException {
+//        HashMap&lt;String, String&gt; court_details = new HashMap&lt;&gt;();
+//        //try {
+//            String sql = &quot;SELECT * FROM Courts WHERE courtID = '&quot; + court_id + &quot;';&quot;;
+//            Connection conn = dbc.connect();
+//            Statement stmt = conn.createStatement();
+//            ResultSet rs = stmt.executeQuery(sql);
+//            //reading the rows that returned
+//            if (rs.next()) {
+//                String court_idFromDB = rs.getString(&quot;courtID&quot;);
+//                if (court_idFromDB.equals(court_id)) {
+//                    court_details.put(&quot;court_id&quot;, court_idFromDB);
+//                    court_details.put(&quot;name&quot;, rs.getString(&quot;name&quot;));
+//
+//                }
+//                else{
+//                    System.out.println(&quot;The retrieval from the database was performed but there is no equality between the line and the argument&quot;);
+//                }
+//
+//                rs.close();
+//                stmt.close();
+//                dbc.disconnect(conn);
+//            }
+//            else{
+//                rs.close();
+//                stmt.close();
+//                dbc.disconnect(conn);
+//                throw new ObjectIDNotExistException(&quot;The league id is not found in the DB&quot;);
+//            }
+//
+//        return court_details;
+//    }
+
+    public Status games_placement(HashMap&lt;String,String&gt; game_details) throws SQLException {
+        //try {
+<span class="fc" id="L219">            String sql = &quot;UPDATE Games &quot; +</span>
+<span class="fc" id="L220">                    &quot;SET date = '&quot; + game_details.get(&quot;date&quot;) + &quot;',&quot;+</span>
+<span class="fc" id="L221">                    &quot;hour = '&quot; + game_details.get(&quot;hour&quot;) + &quot;',&quot;+</span>
+<span class="fc" id="L222">                    &quot;homeTeam_ID = '&quot; + game_details.get(&quot;home_team&quot;) + &quot;',&quot;+</span>
+<span class="fc" id="L223">                    &quot;externalTeam_ID = '&quot; + game_details.get(&quot;external_team&quot;) + &quot;',&quot;+</span>
+<span class="fc" id="L224">                    &quot;courtID = '&quot; + game_details.get(&quot;court&quot;) + &quot;',&quot;+</span>
+<span class="fc" id="L225">                    &quot;leagueID = '&quot; + game_details.get(&quot;league&quot;) + &quot;'&quot;+</span>
+<span class="fc" id="L226">                    &quot;WHERE gameID = '&quot; + game_details.get(&quot;game_id&quot;) + &quot;';&quot;;</span>
+<span class="fc" id="L227">            Connection conn = dbc.connect();</span>
+<span class="fc" id="L228">            Statement stmt = conn.createStatement();</span>
+<span class="fc" id="L229">            boolean rs = stmt.execute(sql);</span>
+<span class="fc" id="L230">            stmt.close();</span>
+<span class="fc" id="L231">            dbc.disconnect(conn);</span>
+<span class="fc" id="L232">            return Status.success;</span>
+    }
+
+    public Status updateRefereesToGame(HashMap&lt;String,String&gt; game_details) throws SQLException {
+<span class="fc" id="L236">            String sql = &quot;UPDATE Games &quot; +</span>
+<span class="fc" id="L237">                    &quot;SET main_referee_ID = '&quot; + game_details.get(&quot;main_referee&quot;) + &quot;',&quot;+</span>
+<span class="fc" id="L238">                    &quot;secondary_referee_ID1 = '&quot; + game_details.get(&quot;secondary_referee_1&quot;) + &quot;',&quot;+</span>
+<span class="fc" id="L239">                    &quot;secondary_referee_ID2 = '&quot; + game_details.get(&quot;secondary_referee_2&quot;) + &quot;'&quot;+</span>
+<span class="fc" id="L240">                    &quot;WHERE gameID = '&quot; + game_details.get(&quot;game_id&quot;) + &quot;';&quot;;</span>
+<span class="fc" id="L241">            Connection conn = dbc.connect();</span>
+<span class="fc" id="L242">            Statement stmt = conn.createStatement();</span>
+<span class="fc" id="L243">            boolean rs = stmt.execute(sql);</span>
+<span class="fc" id="L244">            stmt.close();</span>
+<span class="fc" id="L245">            dbc.disconnect(conn);</span>
+<span class="fc" id="L246">            return Status.success;</span>
+    }
+
+
+    public Status updateLeagueToReferee(String referee_id, String league_id) throws SQLException {
+<span class="fc" id="L251">        String sql = &quot;UPDATE Referees &quot; +</span>
+                &quot;SET leagueID = '&quot; + league_id + &quot;'&quot; +
+                &quot;WHERE refereeID = '&quot; + referee_id + &quot;';&quot;;
+<span class="fc" id="L254">        Connection conn = dbc.connect();</span>
+<span class="fc" id="L255">        Statement stmt = conn.createStatement();</span>
+<span class="fc" id="L256">        boolean rs = stmt.execute(sql);</span>
+<span class="fc" id="L257">        stmt.close();</span>
+<span class="fc" id="L258">        dbc.disconnect(conn);</span>
+<span class="fc" id="L259">        return Status.success;</span>
+    }
+
+    public HashMap&lt;String,String&gt;  findTeam(String team_id) throws SQLException, ObjectIDNotExistException {
+<span class="fc" id="L263">        HashMap&lt;String, String&gt; team_details = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L264">            String sql = &quot;SELECT * FROM Teams WHERE teamID = '&quot; + team_id + &quot;';&quot;;</span>
+<span class="fc" id="L265">            Connection conn = dbc.connect();</span>
+<span class="fc" id="L266">            Statement stmt = conn.createStatement();</span>
+<span class="fc" id="L267">            ResultSet rs = stmt.executeQuery(sql);</span>
+            //reading the rows that returned
+<span class="pc bpc" id="L269" title="1 of 2 branches missed.">            if (rs.next()) {</span>
+<span class="fc" id="L270">                String team_idFromDB = rs.getString(&quot;teamID&quot;);</span>
+<span class="pc bpc" id="L271" title="1 of 2 branches missed.">                if (team_idFromDB.equals(team_id)) {</span>
+<span class="fc" id="L272">                    team_details.put(&quot;team_id&quot;, team_idFromDB);</span>
+<span class="fc" id="L273">                    team_details.put(&quot;court_id&quot;, rs.getString(&quot;team_courtID&quot;));</span>
+                }
+                else{
+<span class="nc" id="L276">                    System.out.println(&quot;The retrieval from the database was performed but there is no equality between the line and the argument&quot;);</span>
+                }
+<span class="fc" id="L278">                rs.close();</span>
+<span class="fc" id="L279">                stmt.close();</span>
+<span class="fc" id="L280">                dbc.disconnect(conn);</span>
+<span class="fc" id="L281">            }</span>
+            else{
+<span class="nc" id="L283">                rs.close();</span>
+<span class="nc" id="L284">                stmt.close();</span>
+<span class="nc" id="L285">                dbc.disconnect(conn);</span>
+<span class="nc" id="L286">                throw new ObjectIDNotExistException(&quot;The team id is not found in the DB&quot;);</span>
+            }
+
+<span class="fc" id="L289">        return team_details;</span>
+    }
+
+    public boolean check_game_date_validation(String team_id, String date) throws SQLException {
+<span class="fc" id="L293">        String sql = &quot;SELECT * FROM Games WHERE (homeTeam_ID = '&quot; + team_id + &quot;'&quot;+</span>
+                &quot;OR externalTeam_ID = '&quot; + team_id + &quot;')&quot;+
+                &quot;AND date = '&quot; + date + &quot;';&quot;;
+<span class="fc" id="L296">        Connection conn = dbc.connect();</span>
+<span class="fc" id="L297">        Statement stmt = conn.createStatement();</span>
+<span class="fc" id="L298">        ResultSet rs = stmt.executeQuery(sql);</span>
+        //reading the rows that returned
+<span class="fc bfc" id="L300" title="All 2 branches covered.">        if (rs.next()) {</span>
+<span class="fc" id="L301">            rs.close();</span>
+<span class="fc" id="L302">            stmt.close();</span>
+<span class="fc" id="L303">            dbc.disconnect(conn);</span>
+<span class="fc" id="L304">            return false;</span>
+            }
+
+        else {
+<span class="fc" id="L308">            rs.close();</span>
+<span class="fc" id="L309">            stmt.close();</span>
+<span class="fc" id="L310">            dbc.disconnect(conn);</span>
+<span class="fc" id="L311">            return true;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

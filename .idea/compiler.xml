@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="League-management-system" target="16" />
+      <module name="League-management-system" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

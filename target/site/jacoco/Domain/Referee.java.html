@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="iw"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Referee.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Maven Quick Start Archetype</a> &gt; <a href="index.source.html" class="el_package">Domain</a> &gt; <span class="el_source">Referee.java</span></div><h1>Referee.java</h1><pre class="source lang-java linenums">package Domain;
+
+import java.util.HashMap;
+
+public class Referee extends SignedUser {
+
+    String refereeID;
+    String refNum;
+    String leagueID;
+    String qualification;
+
+<span class="fc" id="L12">    int counter= 5;</span>
+
+
+    public String getRefereeID() {
+<span class="fc" id="L16">        return refereeID;</span>
+    }
+
+    public void setRefereeID(String refereeID) {
+<span class="fc" id="L20">        this.refereeID = refereeID;</span>
+<span class="fc" id="L21">    }</span>
+
+    public String getRefNum() {
+<span class="fc" id="L24">        return refNum;</span>
+    }
+
+    public void setRefNum(String refNum) {
+<span class="fc" id="L28">        this.refNum = refNum;</span>
+<span class="fc" id="L29">    }</span>
+
+    public String getLeagueID() {
+<span class="fc" id="L32">        return leagueID;</span>
+    }
+
+    public void setLeagueID(String league) {
+<span class="fc" id="L36">        this.leagueID = league;</span>
+<span class="fc" id="L37">    }</span>
+
+    public String getQualification() {
+<span class="fc" id="L40">        return qualification;</span>
+    }
+
+    public void setQualification(String qualification) {
+<span class="fc" id="L44">        this.qualification = qualification;</span>
+<span class="fc" id="L45">    }</span>
+
+    public Referee(String userName, String password, String refNum) {
+<span class="fc" id="L48">        super(userName, password);</span>
+<span class="fc" id="L49">        this.refNum = refNum;</span>
+<span class="fc" id="L50">        this.refereeID = &quot;REF&quot;+ counter++;</span>
+<span class="fc" id="L51">    }</span>
+
+
+    public HashMap&lt;String,String&gt; get_referee_details(){
+<span class="fc" id="L55">        HashMap&lt;String,String&gt; referee_details = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L56">        referee_details.put(&quot;refereeID&quot;,this.refereeID);</span>
+<span class="fc" id="L57">        referee_details.put(&quot;refNum&quot;,this.refNum);</span>
+<span class="fc" id="L58">        referee_details.put(&quot;leagueID&quot;,this.leagueID);</span>
+<span class="fc" id="L59">        referee_details.put(&quot;qualification&quot;,this.qualification);</span>
+<span class="fc" id="L60">        referee_details.put(&quot;username&quot;,this.userName);</span>
+<span class="fc" id="L61">        referee_details.put(&quot;password&quot;,this.password);</span>
+<span class="fc" id="L62">        return referee_details;</span>
+    }
+
+
+
+
+    @Override
+    public String toString() {
+<span class="fc" id="L70">        return &quot;Referee{&quot; +</span>
+                &quot;refereeID='&quot; + refereeID + '\'' +
+                &quot;, leagueID='&quot; + leagueID + '\'' +
+                &quot;, userName='&quot; + userName + '\'' +
+                &quot;, password='&quot; + password + '\'' +
+                '}';
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

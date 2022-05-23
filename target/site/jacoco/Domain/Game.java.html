@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="iw"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Game.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Maven Quick Start Archetype</a> &gt; <a href="index.source.html" class="el_package">Domain</a> &gt; <span class="el_source">Game.java</span></div><h1>Game.java</h1><pre class="source lang-java linenums">package Domain;
+
+import Exceptions.InvalidDateException;
+
+import java.sql.Time;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+
+public class Game {
+<span class="fc" id="L12">    int counter = 10;</span>
+    String game_id;
+    String date;
+    int hour;
+    String home_team_ID;
+    String external_team_ID;
+//    String result;
+    String main_referee_ID;
+    String secondary_referee_ID1;
+    String secondary_referee_ID2;
+    String courtID;
+    String leagueID;
+
+<span class="fc" id="L25">    public Game(String home_team, String external_team) {</span>
+<span class="fc" id="L26">        this.home_team_ID = home_team;</span>
+<span class="fc" id="L27">        this.external_team_ID = external_team;</span>
+<span class="fc" id="L28">        this.game_id = &quot;GAME&quot;+counter++;</span>
+<span class="fc" id="L29">    }</span>
+
+    public String getGame_id() {
+<span class="fc" id="L32">        return game_id;</span>
+    }
+
+    public void setGame_id(String game_id) {
+<span class="fc" id="L36">        this.game_id = game_id;</span>
+<span class="fc" id="L37">    }</span>
+
+    public String getDate() {
+<span class="nc" id="L40">        return date;</span>
+    }
+
+    public void setDate(String date) {
+<span class="fc" id="L44">        this.date = date;</span>
+<span class="fc" id="L45">    }</span>
+
+    public int getHour() {
+<span class="nc" id="L48">        return hour;</span>
+    }
+
+    public void setHour(int hour) {
+<span class="fc" id="L52">        this.hour = hour;</span>
+<span class="fc" id="L53">    }</span>
+
+    public String getHome_team_ID() {
+<span class="fc" id="L56">        return home_team_ID;</span>
+    }
+
+    public String getExternal_team_ID() {
+<span class="fc" id="L60">        return external_team_ID;</span>
+    }
+
+    public String getMain_referee_ID() {
+<span class="fc" id="L64">        return main_referee_ID;</span>
+    }
+
+    public void setMain_referee_ID(String main_referee_ID) {
+<span class="fc" id="L68">        this.main_referee_ID = main_referee_ID;</span>
+<span class="fc" id="L69">    }</span>
+
+    public String getSecondary_referee_ID1() {
+<span class="fc" id="L72">        return secondary_referee_ID1;</span>
+    }
+
+    public void setSecondary_referee_ID1(String secondary_referee_ID1) {
+<span class="fc" id="L76">        this.secondary_referee_ID1 = secondary_referee_ID1;</span>
+<span class="fc" id="L77">    }</span>
+
+    public String getSecondary_referee_ID2() {
+<span class="fc" id="L80">        return secondary_referee_ID2;</span>
+    }
+
+    public void setSecondary_referee_ID2(String secondary_referee_ID2) {
+<span class="fc" id="L84">        this.secondary_referee_ID2 = secondary_referee_ID2;</span>
+<span class="fc" id="L85">    }</span>
+
+//    public String getCourtID() {
+//        return courtID;
+//    }
+
+    public void setCourtID(String courtID) {
+<span class="fc" id="L92">        this.courtID = courtID;</span>
+<span class="fc" id="L93">    }</span>
+
+    public String getLeagueID() {
+<span class="fc" id="L96">        return leagueID;</span>
+    }
+
+    public void setLeagueID(String leagueID) {
+<span class="fc" id="L100">        this.leagueID = leagueID;</span>
+<span class="fc" id="L101">    }</span>
+
+    public Game game_placement(String date, int hour , String leagueID,String PolicyID,String home_court_id,String external_court_id) throws ParseException, InvalidDateException {
+<span class="fc" id="L104">        this.date = date;</span>
+<span class="fc" id="L105">        this.hour = hour;</span>
+<span class="fc" id="L106">        this.courtID = home_court_id;</span>
+<span class="fc" id="L107">        this.leagueID = leagueID;</span>
+
+        //placement game to policy
+
+<span class="pc bpc" id="L111" title="1 of 3 branches missed.">        switch(PolicyID){</span>
+            case &quot;POLICY1&quot;:
+<span class="fc" id="L113">                return GamePlacementPolicy1.add_game_to_league(this,home_court_id,external_court_id);</span>
+            case &quot;POLICY2&quot;:
+<span class="fc" id="L115">                Game game2 =  GamePlacementPolicy2.add_game_to_league(this,home_court_id,external_court_id);</span>
+<span class="fc" id="L116">                String date2 = DomainController.getNextDate(date);</span>
+<span class="fc" id="L117">                game2.setDate(date2);</span>
+<span class="fc" id="L118">                game2.setHour(hour);</span>
+<span class="fc" id="L119">                return game2;</span>
+
+        }
+
+<span class="nc" id="L123">        return this;</span>
+    }
+
+    public HashMap&lt;String,String&gt; convertToHash(){
+<span class="fc" id="L127">        HashMap&lt;String,String&gt; my_hash = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L128">        my_hash.put(&quot;game_id&quot;,this.game_id);</span>
+<span class="fc" id="L129">        my_hash.put(&quot;date&quot;,this.date);</span>
+<span class="fc" id="L130">        my_hash.put(&quot;hour&quot;,Integer.toString(this.hour));</span>
+<span class="fc" id="L131">        my_hash.put(&quot;home_team&quot;,this.home_team_ID);</span>
+<span class="fc" id="L132">        my_hash.put(&quot;external_team&quot;,this.external_team_ID);</span>
+<span class="fc" id="L133">        my_hash.put(&quot;main_referee&quot;,this.main_referee_ID);</span>
+<span class="fc" id="L134">        my_hash.put(&quot;secondary_referee_1&quot;,this.secondary_referee_ID1);</span>
+<span class="fc" id="L135">        my_hash.put(&quot;secondary_referee_2&quot;,this.secondary_referee_ID2);</span>
+<span class="fc" id="L136">        my_hash.put(&quot;court&quot;,this.courtID);</span>
+<span class="fc" id="L137">        my_hash.put(&quot;league&quot;,this.leagueID);</span>
+<span class="fc" id="L138">        return my_hash;</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="nc" id="L143">        return &quot;Game{&quot; +</span>
+                &quot;game_id='&quot; + game_id + '\'' +
+                &quot;, date='&quot; + date + '\'' +
+                &quot;, hour=&quot; + hour +
+                &quot;, home_team_ID='&quot; + home_team_ID + '\'' +
+                &quot;, external_team_ID='&quot; + external_team_ID + '\'' +
+                &quot;, main_referee_ID='&quot; + main_referee_ID + '\'' +
+                &quot;, secondary_referee_ID1='&quot; + secondary_referee_ID1 + '\'' +
+                &quot;, secondary_referee_ID2='&quot; + secondary_referee_ID2 + '\'' +
+                &quot;, courtID='&quot; + courtID + '\'' +
+                &quot;, leagueID='&quot; + leagueID + '\'' +
+                '}';
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
