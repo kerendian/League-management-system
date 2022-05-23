@@ -135,6 +135,8 @@ public class FindRefereeIntegrationTests {
 
     @Test(expected = NullPointerException.class)
     public void assign_referee_without_league_to_game() throws ObjectIDNotExistException, SQLException, ScheduleRefereeFailed, ImportDataException, NullPointerException {
+        dc.setCache(new HashMap<>());
+
         HashMap<String,String>  res = dc.assign_referee_to_game("REF4","GAME1",1);
     }
 

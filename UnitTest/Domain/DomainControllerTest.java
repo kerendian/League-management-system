@@ -186,4 +186,12 @@ private static DomainController dc;
         //policy 2 , has game
         ArrayList<HashMap<String, String>> res = dc.games_placement("2022/08/02", 12, "LEAGUE2", "GAME5");
     }
+
+    @After
+    public void tearDown() throws Exception{
+        dc.setCache(new HashMap<>());
+    }
+
+
+
 }

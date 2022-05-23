@@ -15,6 +15,7 @@ import java.sql.PreparedStatement;
 import static org.junit.Assert.*;
 
 public class LogInAcceptanceTest {
+
     private static ServiceController sc;
 
     @BeforeClass

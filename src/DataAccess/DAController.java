@@ -278,28 +278,17 @@ public static DAController getInstance(){return  instance;};
 
 
     public Status updateLeagueToReferee(String referee_id, String league_id) throws SQLException {
-
         //try {
-
-
-            String sql = "UPDATE Referees " +
-                    "SET leagueID = '" + league_id + "'," +
-                    "WHERE refereeID = '" + referee_id + "';";
-            Connection conn = dbc.connect();
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-            //System.out.println("row was updated successfully!");
-            stmt.close();
-            dbc.disconnect(conn);
-            return Status.success;
-
-        //} catch (Exception e) {
-           //System.out.println(e.getMessage());
-           // return Status.failure;
-        //}
-
+        String sql = "UPDATE Referees " +
+                "SET leagueID = '" + league_id + "'" +
+                "WHERE refereeID = '" + referee_id + "';";
+        Connection conn = dbc.connect();
+        Statement stmt = conn.createStatement();
+        boolean rs = stmt.execute(sql);
+        stmt.close();
+        dbc.disconnect(conn);
+        return Status.success;
     }
-
 
     public HashMap<String,String>  findTeam(String team_id) throws SQLException, ObjectIDNotExistException {
         HashMap<String, String> team_details = new HashMap<>();
@@ -329,7 +318,7 @@ public static DAController getInstance(){return  instance;};
                 rs.close();
                 stmt.close();
                 dbc.disconnect(conn);
-                throw new ObjectIDNotExistException("The league id is not found in the DB");
+                throw new ObjectIDNotExistException("The team id is not found in the DB");
             }
         //} catch (Exception e) {
            // System.out.println(e.getMessage());

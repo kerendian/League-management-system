@@ -23,7 +23,7 @@ public class StubUpdateRefereeToGame extends AbsStubDAController{
         Connection conn = dbc.connect();
         Statement stmt = conn.createStatement();
         boolean rs = stmt.execute(sql);
-        System.out.println("row was updated successfully!");
+        //System.out.println("row was updated successfully!");
         stmt.close();
         dbc.disconnect(conn);
         return Status.success;

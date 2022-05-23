@@ -8,6 +8,7 @@ import Domain.DomainController;
 import Domain.StubFindGame;
 import Exceptions.*;
 import Exceptions.NullPointerException;
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -121,6 +122,58 @@ public class UpdateRefereeToGameIntegrationTest {
 
     }
 
+    //============ login user ===========
+    @Test
+    public void findValidUser()
+    {
+        UserStatus res = dc.findUser("Alice","test1234","Referees");
+        assertEquals(UserStatus.Valid,res);
+    }
+    @Test
+    public void findUserWithWrongPassword()
+    {
+        UserStatus res = dc.findUser("Alice","test12","Referees");
+        assertEquals(UserStatus.WrongPassword,res);
+    }
+    @Test
+    public void findUserWithWrongUserName()
+    {
+        UserStatus res = dc.findUser("Bob","test1234","Referees");
+        assertEquals(UserStatus.WrongType,res);
+    }
+    @Test
+    public void findUserWithWrongUserType()
+    {
+        UserStatus res = dc.findUser("Alice","test1234","UnionRepresentors");
+        assertEquals(UserStatus.WrongType,res);
+    }
+
+    //============ assign referee to league ===========
+
+
+    @Test(expected = ObjectIDNotExistException.class)
+    public void assign_invalid_referee_to_league() throws ObjectIDNotExistException, SQLException, ScheduleRefereeFailed, ImportDataException {
+        //(-)
+        HashMap<String,String>  res = dc.assign_referee_to_league("REF7","LEAGUE1");
+    }
+
+    @Test(expected = ObjectIDNotExistException.class)
+    public void assign_referee_to_invalid_league() throws ObjectIDNotExistException, SQLException, ScheduleRefereeFailed, ImportDataException {
+        HashMap<String,String>  res = dc.assign_referee_to_league("REF4","LEAGUE7");
+    }
+
+    @Test(expected = ScheduleRefereeFailed.class)
+    public void assign_referee_with_league_to_league() throws ObjectIDNotExistException, SQLException, ScheduleRefereeFailed, ImportDataException {
+        HashMap<String,String>  res = dc.assign_referee_to_league("REF1","LEAGUE1");
+    }
+
+    @Test
+    public void assign_valid_referee_to_league() throws ObjectIDNotExistException, SQLException, ScheduleRefereeFailed, ImportDataException {
+        //(+)
+        HashMap<String,String>  referee_details = dc.assign_referee_to_league("REF4","LEAGUE1");
+        assertEquals("REF4",referee_details.get("refereeID"));
+        assertEquals("LEAGUE1",referee_details.get("leagueID"));
+    }
     //====== assign referee to game =========
     @Test
     public void assign_main_referee_to_game_valid() throws ObjectIDNotExistException, SQLException, ScheduleRefereeFailed, ImportDataException, NullPointerException {
@@ -154,8 +207,6 @@ public class UpdateRefereeToGameIntegrationTest {
         HashMap<String,String>  res = dc.assign_referee_to_game("REF4","GAME1",1);
     }
 
-
-    //supposeto fall
     @Test(expected = NullPointerException.class)
     public void assign_referee_to_game_without_league() throws ObjectIDNotExistException, SQLException, ScheduleRefereeFailed, ImportDataException, NullPointerException {
         dc.setCache(new HashMap<>());
@@ -203,7 +254,7 @@ public class UpdateRefereeToGameIntegrationTest {
     }
     @Test
     public void games_placement_valid2() throws InvalidDateException, ImportDataException, ParseException, ScheduleRefereeFailed, SQLException, ObjectIDNotExistException, ScheduleGameFailed {
-        //(+) policy2
+        //(+) policy1
         ArrayList<HashMap<String, String>> res = dc.games_placement("2022/08/02",12,"LEAGUE2","GAME2");
         assertEquals(2,res.size());
         assertEquals("2022/08/02",res.get(0).get("date"));
@@ -226,9 +277,10 @@ public class UpdateRefereeToGameIntegrationTest {
     }
 
 
-    @AfterClass
-    public static void tearDown() throws Exception
+    @After
+    public void tearDown() throws Exception
     {
+        dc.setCache(new HashMap<>());
         DBConnector dbc = DBConnector.getInstance();
         Connection conn = dbc.connect();
 
