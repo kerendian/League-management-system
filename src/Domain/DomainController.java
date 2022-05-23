@@ -31,6 +31,10 @@ public class DomainController implements DomainControllerInterface {
         return cache;
     }
 
+    public void setCache(HashMap<String, Object> cache) {
+        this.cache = cache;
+    }
+
     public UserStatus findUser(String userName, String password, String userType)
     {
         UserStatus us = daController.findUser(userName,password,userType);
