@@ -1,7 +1,5 @@
-//2
-
 package Domain;
-//good
+//2
 import DataAccess.DAControllerInterface;
 import DataAccess.DBConnector;
 import Exceptions.*;

@@ -1,5 +1,5 @@
 package Domain;
-//good
+//2
 import DataAccess.DAControllerInterface;
 import DataAccess.DBConnector;
 import Exceptions.ImportDataException;
@@ -186,13 +186,13 @@ public abstract class AbsStubDAController implements DAControllerInterface {
 
     @Override
     public Status updateRefereesToGame(HashMap<String, String> game_details) throws SQLException {
-        if(game_details.get("main_referee").equals("REF1") && game_details.get("game_id").equals("GAME1")){
+        if(game_details.get("main_referee") == "REF1" && game_details.get("game_id") == "GAME1"){
             return Status.success;
         }
-        else if(game_details.get("secondary_referee_1").equals("REF1") && game_details.get("game_id").equals("GAME3")){
+        else if(game_details.get("secondary_referee_1") == "REF1" && game_details.get("game_id") == "GAME3"){
             return Status.success;
         }
-        else if(game_details.get("secondary_referee_2").equals("REF3") && game_details.get("game_id").equals("GAME4")){
+        else if(game_details.get("secondary_referee_2") == "REF3" && game_details.get("game_id") == "GAME4"){
             return Status.success;
         }
 
