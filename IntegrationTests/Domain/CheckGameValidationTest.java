@@ -39,8 +39,8 @@ public class CheckGameValidationTest {
         stmt.executeUpdate();
         stmt.close();
 
-         sql = "INSERT INTO Games(gameID,homeTeam_ID,externalTeam_ID,leagueID) VALUES(?,?,?,?)";
-         stmt = conn.prepareStatement(sql);
+        sql = "INSERT INTO Games(gameID,homeTeam_ID,externalTeam_ID,leagueID) VALUES(?,?,?,?)";
+        stmt = conn.prepareStatement(sql);
         stmt.setString(1, "GAME1");
         stmt.setString(2, "TEAM1");
         stmt.setString(3, "TEAM2");
