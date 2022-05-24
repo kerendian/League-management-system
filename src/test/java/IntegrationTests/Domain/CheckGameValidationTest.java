@@ -195,6 +195,7 @@ public class CheckGameValidationTest {
     @AfterClass
     public static void tearDown() throws Exception
     {
+
         DBConnector dbc = DBConnector.getInstance();
         Connection conn = dbc.connect();
         String sql = "DELETE FROM Games";

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="4" failures="0" name="IntegrationTests.Domain.LogInIntegrationTest" time="0.021" errors="0" skipped="0">
+<testsuite tests="4" failures="0" name="IntegrationTests.Domain.LogInIntegrationTest" time="0.015" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="15.0.2+7-27"/>
@@ -60,8 +60,8 @@
     <property name="sun.stdout.encoding" value="cp862"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="IntegrationTests.Domain.LogInIntegrationTest" name="findUserWithWrongPassword" time="0.005"/>
-  <testcase classname="IntegrationTests.Domain.LogInIntegrationTest" name="findUserWithWrongUserName" time="0.005"/>
-  <testcase classname="IntegrationTests.Domain.LogInIntegrationTest" name="findUserWithWrongUserType" time="0.006"/>
-  <testcase classname="IntegrationTests.Domain.LogInIntegrationTest" name="findValidUser" time="0.005"/>
+  <testcase classname="IntegrationTests.Domain.LogInIntegrationTest" name="findValidUser" time="0"/>
+  <testcase classname="IntegrationTests.Domain.LogInIntegrationTest" name="findUserWithWrongPassword" time="0.015"/>
+  <testcase classname="IntegrationTests.Domain.LogInIntegrationTest" name="findUserWithWrongUserType" time="0"/>
+  <testcase classname="IntegrationTests.Domain.LogInIntegrationTest" name="findUserWithWrongUserName" time="0"/>
 </testsuite>

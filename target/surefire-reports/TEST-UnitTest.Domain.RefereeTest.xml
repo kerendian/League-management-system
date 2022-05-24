@@ -61,7 +61,7 @@
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
   <testcase classname="UnitTest.Domain.RefereeTest" name="setRefNum" time="0"/>
+  <testcase classname="UnitTest.Domain.RefereeTest" name="getRefNum" time="0"/>
   <testcase classname="UnitTest.Domain.RefereeTest" name="getQualification" time="0"/>
   <testcase classname="UnitTest.Domain.RefereeTest" name="testToString" time="0"/>
-  <testcase classname="UnitTest.Domain.RefereeTest" name="getRefNum" time="0"/>
 </testsuite>

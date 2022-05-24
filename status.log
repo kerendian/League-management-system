@@ -16810,3 +16810,2487 @@
   <message>null has no league</message>
 </record>
 </log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-23T19:28:45.579910400Z</date>
+  <millis>1653334125579</millis>
+  <nanos>910400</nanos>
+  <sequence>0</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>GAME2 has no league</message>
+</record>
+<record>
+  <date>2022-05-23T19:28:45.584898Z</date>
+  <millis>1653334125584</millis>
+  <nanos>898000</nanos>
+  <sequence>1</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>GAME2 has no league</message>
+</record>
+<record>
+  <date>2022-05-23T19:28:45.585866200Z</date>
+  <millis>1653334125585</millis>
+  <nanos>866200</nanos>
+  <sequence>2</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>LEAGUE1 already schedual to GAME4</message>
+</record>
+<record>
+  <date>2022-05-23T19:28:45.590851200Z</date>
+  <millis>1653334125590</millis>
+  <nanos>851200</nanos>
+  <sequence>3</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF3 set as secondary referee to GAME4</message>
+</record>
+<record>
+  <date>2022-05-23T19:28:45.596863Z</date>
+  <millis>1653334125596</millis>
+  <nanos>863000</nanos>
+  <sequence>4</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME2was scheduled to the system with POLICY1</message>
+</record>
+<record>
+  <date>2022-05-23T19:28:45.597829300Z</date>
+  <millis>1653334125597</millis>
+  <nanos>829300</nanos>
+  <sequence>5</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as main referee to GAME1</message>
+</record>
+<record>
+  <date>2022-05-23T19:28:45.597829300Z</date>
+  <millis>1653334125597</millis>
+  <nanos>829300</nanos>
+  <sequence>6</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as secondary referee to GAME3</message>
+</record>
+<record>
+  <date>2022-05-23T19:28:45.598827300Z</date>
+  <millis>1653334125598</millis>
+  <nanos>827300</nanos>
+  <sequence>7</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>null has no league</message>
+</record>
+<record>
+  <date>2022-05-23T19:28:45.607835Z</date>
+  <millis>1653334125607</millis>
+  <nanos>835000</nanos>
+  <sequence>8</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME2 and GAME10 was scheduled to the system with POLICY2</message>
+</record>
+<record>
+  <date>2022-05-23T19:28:45.612865100Z</date>
+  <millis>1653334125612</millis>
+  <nanos>865100</nanos>
+  <sequence>9</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME5 scheduled game was faild with POLICY2, one of the teams in this game has already game at this date</message>
+</record>
+<record>
+  <date>2022-05-23T19:28:45.615825200Z</date>
+  <millis>1653334125615</millis>
+  <nanos>825200</nanos>
+  <sequence>10</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME1 scheduled game was faild with POLICY2, one of the teams in this game has already game at this date</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-23T19:29:14.862667400Z</date>
+  <millis>1653334154862</millis>
+  <nanos>667400</nanos>
+  <sequence>0</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Alice logged in to the system as Referees</message>
+</record>
+<record>
+  <date>2022-05-23T19:29:14.869649600Z</date>
+  <millis>1653334154869</millis>
+  <nanos>649600</nanos>
+  <sequence>1</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Alice tried to log in to the system as UnionRepresentors with wrong username or user type</message>
+</record>
+<record>
+  <date>2022-05-23T19:29:14.874638400Z</date>
+  <millis>1653334154874</millis>
+  <nanos>638400</nanos>
+  <sequence>2</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Alice tried to log in to the system as Referees with wrong password</message>
+</record>
+<record>
+  <date>2022-05-23T19:29:14.878625900Z</date>
+  <millis>1653334154878</millis>
+  <nanos>625900</nanos>
+  <sequence>3</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Bob tried to log in to the system as Referees with wrong username or user type</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T07:12:07.158554800Z</date>
+  <millis>1653376327158</millis>
+  <nanos>554800</nanos>
+  <sequence>0</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Bob tried to log in to the system as Referees with wrong username or user type</message>
+</record>
+<record>
+  <date>2022-05-24T07:12:07.186479100Z</date>
+  <millis>1653376327186</millis>
+  <nanos>479100</nanos>
+  <sequence>1</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Alice tried to log in to the system as UnionRepresentors with wrong username or user type</message>
+</record>
+<record>
+  <date>2022-05-24T07:12:07.190480900Z</date>
+  <millis>1653376327190</millis>
+  <nanos>480900</nanos>
+  <sequence>2</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Alice logged in to the system as Referees</message>
+</record>
+<record>
+  <date>2022-05-24T07:12:07.194457400Z</date>
+  <millis>1653376327194</millis>
+  <nanos>457400</nanos>
+  <sequence>3</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Alice tried to log in to the system as Referees with wrong password</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T07:17:42.143927Z</date>
+  <millis>1653376662143</millis>
+  <nanos>927000</nanos>
+  <sequence>0</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Alice tried to log in to the system as Referees with wrong password</message>
+</record>
+<record>
+  <date>2022-05-24T07:17:42.157890500Z</date>
+  <millis>1653376662157</millis>
+  <nanos>890500</nanos>
+  <sequence>1</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Alice tried to log in to the system as UnionRepresentors with wrong username or user type</message>
+</record>
+<record>
+  <date>2022-05-24T07:17:42.161880300Z</date>
+  <millis>1653376662161</millis>
+  <nanos>880300</nanos>
+  <sequence>2</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Alice logged in to the system as Referees</message>
+</record>
+<record>
+  <date>2022-05-24T07:17:42.166865400Z</date>
+  <millis>1653376662166</millis>
+  <nanos>865400</nanos>
+  <sequence>3</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Service.ServiceController</class>
+  <method>logIn</method>
+  <thread>1</thread>
+  <message>user Bob tried to log in to the system as Referees with wrong username or user type</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T07:22:28.543727Z</date>
+  <millis>1653376948543</millis>
+  <nanos>727000</nanos>
+  <sequence>0</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>null has no league</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:28.556723500Z</date>
+  <millis>1653376948556</millis>
+  <nanos>723500</nanos>
+  <sequence>1</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>GAME2 has no league</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:28.569658800Z</date>
+  <millis>1653376948569</millis>
+  <nanos>658800</nanos>
+  <sequence>2</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as secondary referee to GAME3</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:28.571659800Z</date>
+  <millis>1653376948571</millis>
+  <nanos>659800</nanos>
+  <sequence>3</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>GAME2 has no league</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:28.574646400Z</date>
+  <millis>1653376948574</millis>
+  <nanos>646400</nanos>
+  <sequence>4</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>LEAGUE1 already schedual to GAME4</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:28.587609Z</date>
+  <millis>1653376948587</millis>
+  <nanos>609000</nanos>
+  <sequence>5</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as main referee to GAME1</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:28.601587500Z</date>
+  <millis>1653376948601</millis>
+  <nanos>587500</nanos>
+  <sequence>6</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF3 set as secondary referee to GAME4</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:28.699355900Z</date>
+  <millis>1653376948699</millis>
+  <nanos>355900</nanos>
+  <sequence>7</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_league</method>
+  <thread>1</thread>
+  <message>REF1 already schedule to another league</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:28.714342800Z</date>
+  <millis>1653376948714</millis>
+  <nanos>342800</nanos>
+  <sequence>8</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_league</method>
+  <thread>1</thread>
+  <message>LEAGUE1 set to REF4</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:28.967267800Z</date>
+  <millis>1653376948967</millis>
+  <nanos>267800</nanos>
+  <sequence>9</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME8was scheduled to the system with POLICY1</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:28.995154500Z</date>
+  <millis>1653376948995</millis>
+  <nanos>154500</nanos>
+  <sequence>10</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME2 and GAME10 was scheduled to the system with POLICY2</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.006125400Z</date>
+  <millis>1653376949006</millis>
+  <nanos>125400</nanos>
+  <sequence>11</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME1 scheduled game was faild with POLICY2, one of the teams in this game has already game at this date</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.014102200Z</date>
+  <millis>1653376949014</millis>
+  <nanos>102200</nanos>
+  <sequence>12</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME5 scheduled game was faild with POLICY2, one of the teams in this game has already game at this date</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.031142600Z</date>
+  <millis>1653376949031</millis>
+  <nanos>142600</nanos>
+  <sequence>13</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>findUser</method>
+  <thread>1</thread>
+  <message>user Alice tried to log in to the system as Referees with wrong password</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.033137500Z</date>
+  <millis>1653376949033</millis>
+  <nanos>137500</nanos>
+  <sequence>14</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>findUser</method>
+  <thread>1</thread>
+  <message>user Bob tried to log in to the system as Referees with wrong username or user type</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.035131800Z</date>
+  <millis>1653376949035</millis>
+  <nanos>131800</nanos>
+  <sequence>15</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>findUser</method>
+  <thread>1</thread>
+  <message>user Alice tried to log in to the system as UnionRepresentors with wrong username or user type</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.037168800Z</date>
+  <millis>1653376949037</millis>
+  <nanos>168800</nanos>
+  <sequence>16</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>findUser</method>
+  <thread>1</thread>
+  <message>user Alice logged in to the system as Referees</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.117688600Z</date>
+  <millis>1653376949117</millis>
+  <nanos>688600</nanos>
+  <sequence>17</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>null has no league</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.118687Z</date>
+  <millis>1653376949118</millis>
+  <nanos>687000</nanos>
+  <sequence>18</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>GAME2 has no league</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.119685600Z</date>
+  <millis>1653376949119</millis>
+  <nanos>685600</nanos>
+  <sequence>19</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as secondary referee to GAME3</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.120680600Z</date>
+  <millis>1653376949120</millis>
+  <nanos>680600</nanos>
+  <sequence>20</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>GAME2 has no league</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.120680600Z</date>
+  <millis>1653376949120</millis>
+  <nanos>680600</nanos>
+  <sequence>21</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>LEAGUE1 already schedual to GAME4</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.121677700Z</date>
+  <millis>1653376949121</millis>
+  <nanos>677700</nanos>
+  <sequence>22</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as main referee to GAME1</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.122679500Z</date>
+  <millis>1653376949122</millis>
+  <nanos>679500</nanos>
+  <sequence>23</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF3 set as secondary referee to GAME4</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.126663800Z</date>
+  <millis>1653376949126</millis>
+  <nanos>663800</nanos>
+  <sequence>24</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME2was scheduled to the system with POLICY1</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.132648100Z</date>
+  <millis>1653376949132</millis>
+  <nanos>648100</nanos>
+  <sequence>25</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME2 and GAME10 was scheduled to the system with POLICY2</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.134643100Z</date>
+  <millis>1653376949134</millis>
+  <nanos>643100</nanos>
+  <sequence>26</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME1 scheduled game was faild with POLICY2, one of the teams in this game has already game at this date</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.137634700Z</date>
+  <millis>1653376949137</millis>
+  <nanos>634700</nanos>
+  <sequence>27</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME5 scheduled game was faild with POLICY2, one of the teams in this game has already game at this date</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.210950800Z</date>
+  <millis>1653376949210</millis>
+  <nanos>950800</nanos>
+  <sequence>28</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>null has no league</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.212945300Z</date>
+  <millis>1653376949212</millis>
+  <nanos>945300</nanos>
+  <sequence>29</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>GAME2 has no league</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.215937500Z</date>
+  <millis>1653376949215</millis>
+  <nanos>937500</nanos>
+  <sequence>30</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as secondary referee to GAME3</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.217931800Z</date>
+  <millis>1653376949217</millis>
+  <nanos>931800</nanos>
+  <sequence>31</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>GAME2 has no league</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.220924Z</date>
+  <millis>1653376949220</millis>
+  <nanos>924000</nanos>
+  <sequence>32</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>LEAGUE1 already schedual to GAME4</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.223923Z</date>
+  <millis>1653376949223</millis>
+  <nanos>923000</nanos>
+  <sequence>33</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as main referee to GAME1</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.226947200Z</date>
+  <millis>1653376949226</millis>
+  <nanos>947200</nanos>
+  <sequence>34</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF3 set as secondary referee to GAME4</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.234916800Z</date>
+  <millis>1653376949234</millis>
+  <nanos>916800</nanos>
+  <sequence>35</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME2was scheduled to the system with POLICY1</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.235884400Z</date>
+  <millis>1653376949235</millis>
+  <nanos>884400</nanos>
+  <sequence>36</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME2 and GAME10 was scheduled to the system with POLICY2</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.236914600Z</date>
+  <millis>1653376949236</millis>
+  <nanos>914600</nanos>
+  <sequence>37</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME1 scheduled game was faild with POLICY2, one of the teams in this game has already game at this date</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.238879300Z</date>
+  <millis>1653376949238</millis>
+  <nanos>879300</nanos>
+  <sequence>38</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME5 scheduled game was faild with POLICY2, one of the teams in this game has already game at this date</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.331382200Z</date>
+  <millis>1653376949331</millis>
+  <nanos>382200</nanos>
+  <sequence>39</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>null has no league</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.332381Z</date>
+  <millis>1653376949332</millis>
+  <nanos>381000</nanos>
+  <sequence>40</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>GAME2 has no league</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.333377900Z</date>
+  <millis>1653376949333</millis>
+  <nanos>377900</nanos>
+  <sequence>41</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as secondary referee to GAME3</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.335371Z</date>
+  <millis>1653376949335</millis>
+  <nanos>371000</nanos>
+  <sequence>42</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_league</method>
+  <thread>1</thread>
+  <message>REF1 already schedule to another league</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.335371Z</date>
+  <millis>1653376949335</millis>
+  <nanos>371000</nanos>
+  <sequence>43</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>GAME2 has no league</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.336368900Z</date>
+  <millis>1653376949336</millis>
+  <nanos>368900</nanos>
+  <sequence>44</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>LEAGUE1 already schedual to GAME4</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.337366700Z</date>
+  <millis>1653376949337</millis>
+  <nanos>366700</nanos>
+  <sequence>45</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as main referee to GAME1</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.338365Z</date>
+  <millis>1653376949338</millis>
+  <nanos>365000</nanos>
+  <sequence>46</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF3 set as secondary referee to GAME4</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.341392Z</date>
+  <millis>1653376949341</millis>
+  <nanos>392000</nanos>
+  <sequence>47</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_league</method>
+  <thread>1</thread>
+  <message>LEAGUE1 set to REF4</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.347371300Z</date>
+  <millis>1653376949347</millis>
+  <nanos>371300</nanos>
+  <sequence>48</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME2was scheduled to the system with POLICY1</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.350362400Z</date>
+  <millis>1653376949350</millis>
+  <nanos>362400</nanos>
+  <sequence>49</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME2 and GAME10 was scheduled to the system with POLICY2</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.354319600Z</date>
+  <millis>1653376949354</millis>
+  <nanos>319600</nanos>
+  <sequence>50</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME1 scheduled game was faild with POLICY2, one of the teams in this game has already game at this date</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.356313600Z</date>
+  <millis>1653376949356</millis>
+  <nanos>313600</nanos>
+  <sequence>51</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME5 scheduled game was faild with POLICY2, one of the teams in this game has already game at this date</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.435068300Z</date>
+  <millis>1653376949435</millis>
+  <nanos>68300</nanos>
+  <sequence>52</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>null has no league</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.437069500Z</date>
+  <millis>1653376949437</millis>
+  <nanos>69500</nanos>
+  <sequence>53</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>GAME2 has no league</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.438028100Z</date>
+  <millis>1653376949438</millis>
+  <nanos>28100</nanos>
+  <sequence>54</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as secondary referee to GAME3</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.440055Z</date>
+  <millis>1653376949440</millis>
+  <nanos>55000</nanos>
+  <sequence>55</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_league</method>
+  <thread>1</thread>
+  <message>REF1 already schedule to another league</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.440055Z</date>
+  <millis>1653376949440</millis>
+  <nanos>55000</nanos>
+  <sequence>56</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>GAME2 has no league</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.441019600Z</date>
+  <millis>1653376949441</millis>
+  <nanos>19600</nanos>
+  <sequence>57</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>LEAGUE1 already schedual to GAME4</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.442016800Z</date>
+  <millis>1653376949442</millis>
+  <nanos>16800</nanos>
+  <sequence>58</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as main referee to GAME1</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.444011500Z</date>
+  <millis>1653376949444</millis>
+  <nanos>11500</nanos>
+  <sequence>59</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF3 set as secondary referee to GAME4</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.445008900Z</date>
+  <millis>1653376949445</millis>
+  <nanos>8900</nanos>
+  <sequence>60</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_league</method>
+  <thread>1</thread>
+  <message>LEAGUE1 set to REF4</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.505318400Z</date>
+  <millis>1653376949505</millis>
+  <nanos>318400</nanos>
+  <sequence>61</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME2was scheduled to the system with POLICY1</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.509307800Z</date>
+  <millis>1653376949509</millis>
+  <nanos>307800</nanos>
+  <sequence>62</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME2 and GAME10 was scheduled to the system with POLICY2</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.513297Z</date>
+  <millis>1653376949513</millis>
+  <nanos>297000</nanos>
+  <sequence>63</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME1 scheduled game was faild with POLICY2, one of the teams in this game has already game at this date</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.516289100Z</date>
+  <millis>1653376949516</millis>
+  <nanos>289100</nanos>
+  <sequence>64</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME5 scheduled game was faild with POLICY2, one of the teams in this game has already game at this date</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.656348300Z</date>
+  <millis>1653376949656</millis>
+  <nanos>348300</nanos>
+  <sequence>65</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>null has no league</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.657345800Z</date>
+  <millis>1653376949657</millis>
+  <nanos>345800</nanos>
+  <sequence>66</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>GAME2 has no league</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.658343300Z</date>
+  <millis>1653376949658</millis>
+  <nanos>343300</nanos>
+  <sequence>67</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as secondary referee to GAME3</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.658343300Z</date>
+  <millis>1653376949658</millis>
+  <nanos>343300</nanos>
+  <sequence>68</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>GAME2 has no league</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.659340Z</date>
+  <millis>1653376949659</millis>
+  <nanos>340000</nanos>
+  <sequence>69</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>LEAGUE1 already schedual to GAME4</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.660337800Z</date>
+  <millis>1653376949660</millis>
+  <nanos>337800</nanos>
+  <sequence>70</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as main referee to GAME1</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.661334300Z</date>
+  <millis>1653376949661</millis>
+  <nanos>334300</nanos>
+  <sequence>71</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF3 set as secondary referee to GAME4</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.675297800Z</date>
+  <millis>1653376949675</millis>
+  <nanos>297800</nanos>
+  <sequence>72</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME2was scheduled to the system with POLICY1</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.690256600Z</date>
+  <millis>1653376949690</millis>
+  <nanos>256600</nanos>
+  <sequence>73</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME2 and GAME10 was scheduled to the system with POLICY2</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.691254400Z</date>
+  <millis>1653376949691</millis>
+  <nanos>254400</nanos>
+  <sequence>74</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME1 scheduled game was faild with POLICY2, one of the teams in this game has already game at this date</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.693249400Z</date>
+  <millis>1653376949693</millis>
+  <nanos>249400</nanos>
+  <sequence>75</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME5 scheduled game was faild with POLICY2, one of the teams in this game has already game at this date</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.746106300Z</date>
+  <millis>1653376949746</millis>
+  <nanos>106300</nanos>
+  <sequence>76</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>findUser</method>
+  <thread>1</thread>
+  <message>user Bob tried to log in to the system as Referees with wrong username or user type</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.748101400Z</date>
+  <millis>1653376949748</millis>
+  <nanos>101400</nanos>
+  <sequence>77</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>findUser</method>
+  <thread>1</thread>
+  <message>user Alice tried to log in to the system as Referees with wrong password</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.750096500Z</date>
+  <millis>1653376949750</millis>
+  <nanos>96500</nanos>
+  <sequence>78</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>findUser</method>
+  <thread>1</thread>
+  <message>user Alice tried to log in to the system as UnionRepresentors with wrong username or user type</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.752090300Z</date>
+  <millis>1653376949752</millis>
+  <nanos>90300</nanos>
+  <sequence>79</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>findUser</method>
+  <thread>1</thread>
+  <message>user Alice logged in to the system as Referees</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.881855500Z</date>
+  <millis>1653376949881</millis>
+  <nanos>855500</nanos>
+  <sequence>80</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>null has no league</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.923836500Z</date>
+  <millis>1653376949923</millis>
+  <nanos>836500</nanos>
+  <sequence>81</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>GAME2 has no league</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:29.967290600Z</date>
+  <millis>1653376949967</millis>
+  <nanos>290600</nanos>
+  <sequence>82</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as secondary referee to GAME3</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:30.006966600Z</date>
+  <millis>1653376950006</millis>
+  <nanos>966600</nanos>
+  <sequence>83</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_league</method>
+  <thread>1</thread>
+  <message>REF1 already schedule to another league</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:30.046037800Z</date>
+  <millis>1653376950046</millis>
+  <nanos>37800</nanos>
+  <sequence>84</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>GAME2 has no league</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:30.088165100Z</date>
+  <millis>1653376950088</millis>
+  <nanos>165100</nanos>
+  <sequence>85</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>LEAGUE1 already schedual to GAME4</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:30.132895700Z</date>
+  <millis>1653376950132</millis>
+  <nanos>895700</nanos>
+  <sequence>86</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as main referee to GAME1</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:30.177331700Z</date>
+  <millis>1653376950177</millis>
+  <nanos>331700</nanos>
+  <sequence>87</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF3 set as secondary referee to GAME4</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:30.221548600Z</date>
+  <millis>1653376950221</millis>
+  <nanos>548600</nanos>
+  <sequence>88</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_league</method>
+  <thread>1</thread>
+  <message>LEAGUE1 set to REF4</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:30.436193900Z</date>
+  <millis>1653376950436</millis>
+  <nanos>193900</nanos>
+  <sequence>89</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME2was scheduled to the system with POLICY1</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:30.473095500Z</date>
+  <millis>1653376950473</millis>
+  <nanos>95500</nanos>
+  <sequence>90</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME2 and GAME10 was scheduled to the system with POLICY2</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:30.548893900Z</date>
+  <millis>1653376950548</millis>
+  <nanos>893900</nanos>
+  <sequence>91</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME1 scheduled game was faild with POLICY2, one of the teams in this game has already game at this date</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:30.590782100Z</date>
+  <millis>1653376950590</millis>
+  <nanos>782100</nanos>
+  <sequence>92</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME5 scheduled game was faild with POLICY2, one of the teams in this game has already game at this date</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:30.635664300Z</date>
+  <millis>1653376950635</millis>
+  <nanos>664300</nanos>
+  <sequence>93</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>findUser</method>
+  <thread>1</thread>
+  <message>user Bob tried to log in to the system as Referees with wrong username or user type</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:30.672597800Z</date>
+  <millis>1653376950672</millis>
+  <nanos>597800</nanos>
+  <sequence>94</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>findUser</method>
+  <thread>1</thread>
+  <message>user Alice tried to log in to the system as Referees with wrong password</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:30.708500100Z</date>
+  <millis>1653376950708</millis>
+  <nanos>500100</nanos>
+  <sequence>95</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>findUser</method>
+  <thread>1</thread>
+  <message>user Alice tried to log in to the system as UnionRepresentors with wrong username or user type</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:30.743404200Z</date>
+  <millis>1653376950743</millis>
+  <nanos>404200</nanos>
+  <sequence>96</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>findUser</method>
+  <thread>1</thread>
+  <message>user Alice logged in to the system as Referees</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:30.829725500Z</date>
+  <millis>1653376950829</millis>
+  <nanos>725500</nanos>
+  <sequence>97</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>null has no league</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:30.850703Z</date>
+  <millis>1653376950850</millis>
+  <nanos>703000</nanos>
+  <sequence>98</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>GAME2 has no league</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:30.869652100Z</date>
+  <millis>1653376950869</millis>
+  <nanos>652100</nanos>
+  <sequence>99</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as secondary referee to GAME3</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:30.888569700Z</date>
+  <millis>1653376950888</millis>
+  <nanos>569700</nanos>
+  <sequence>100</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_league</method>
+  <thread>1</thread>
+  <message>REF1 already schedule to another league</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:30.909388Z</date>
+  <millis>1653376950909</millis>
+  <nanos>388000</nanos>
+  <sequence>101</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>GAME2 has no league</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:30.930741100Z</date>
+  <millis>1653376950930</millis>
+  <nanos>741100</nanos>
+  <sequence>102</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>LEAGUE1 already schedual to GAME4</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:30.953127700Z</date>
+  <millis>1653376950953</millis>
+  <nanos>127700</nanos>
+  <sequence>103</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as main referee to GAME1</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:30.974503200Z</date>
+  <millis>1653376950974</millis>
+  <nanos>503200</nanos>
+  <sequence>104</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF3 set as secondary referee to GAME4</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:30.997420800Z</date>
+  <millis>1653376950997</millis>
+  <nanos>420800</nanos>
+  <sequence>105</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_league</method>
+  <thread>1</thread>
+  <message>LEAGUE1 set to REF4</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:31.097776500Z</date>
+  <millis>1653376951097</millis>
+  <nanos>776500</nanos>
+  <sequence>106</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME2was scheduled to the system with POLICY1</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:31.122209800Z</date>
+  <millis>1653376951122</millis>
+  <nanos>209800</nanos>
+  <sequence>107</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME2 and GAME10 was scheduled to the system with POLICY2</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:31.166364100Z</date>
+  <millis>1653376951166</millis>
+  <nanos>364100</nanos>
+  <sequence>108</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME1 scheduled game was faild with POLICY2, one of the teams in this game has already game at this date</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:31.187901700Z</date>
+  <millis>1653376951187</millis>
+  <nanos>901700</nanos>
+  <sequence>109</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME5 scheduled game was faild with POLICY2, one of the teams in this game has already game at this date</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:31.207989200Z</date>
+  <millis>1653376951207</millis>
+  <nanos>989200</nanos>
+  <sequence>110</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>findUser</method>
+  <thread>1</thread>
+  <message>user Bob tried to log in to the system as Referees with wrong username or user type</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:31.229456200Z</date>
+  <millis>1653376951229</millis>
+  <nanos>456200</nanos>
+  <sequence>111</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>findUser</method>
+  <thread>1</thread>
+  <message>user Alice tried to log in to the system as Referees with wrong password</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:31.248930500Z</date>
+  <millis>1653376951248</millis>
+  <nanos>930500</nanos>
+  <sequence>112</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>findUser</method>
+  <thread>1</thread>
+  <message>user Alice tried to log in to the system as UnionRepresentors with wrong username or user type</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:31.270677900Z</date>
+  <millis>1653376951270</millis>
+  <nanos>677900</nanos>
+  <sequence>113</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>findUser</method>
+  <thread>1</thread>
+  <message>user Alice logged in to the system as Referees</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:31.300185Z</date>
+  <millis>1653376951300</millis>
+  <nanos>185000</nanos>
+  <sequence>114</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>null has no league</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:31.301182100Z</date>
+  <millis>1653376951301</millis>
+  <nanos>182100</nanos>
+  <sequence>115</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>GAME2 has no league</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:31.302181800Z</date>
+  <millis>1653376951302</millis>
+  <nanos>181800</nanos>
+  <sequence>116</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as secondary referee to GAME3</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:31.302181800Z</date>
+  <millis>1653376951302</millis>
+  <nanos>181800</nanos>
+  <sequence>117</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_league</method>
+  <thread>1</thread>
+  <message>REF1 already schedule to another league</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:31.303179400Z</date>
+  <millis>1653376951303</millis>
+  <nanos>179400</nanos>
+  <sequence>118</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>GAME2 has no league</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:31.303179400Z</date>
+  <millis>1653376951303</millis>
+  <nanos>179400</nanos>
+  <sequence>119</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>LEAGUE1 already schedual to GAME4</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:31.304176700Z</date>
+  <millis>1653376951304</millis>
+  <nanos>176700</nanos>
+  <sequence>120</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as main referee to GAME1</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:31.304176700Z</date>
+  <millis>1653376951304</millis>
+  <nanos>176700</nanos>
+  <sequence>121</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF3 set as secondary referee to GAME4</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:31.305174500Z</date>
+  <millis>1653376951305</millis>
+  <nanos>174500</nanos>
+  <sequence>122</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_league</method>
+  <thread>1</thread>
+  <message>LEAGUE1 set to REF4</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:31.306171200Z</date>
+  <millis>1653376951306</millis>
+  <nanos>171200</nanos>
+  <sequence>123</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME2was scheduled to the system with POLICY1</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:31.307166700Z</date>
+  <millis>1653376951307</millis>
+  <nanos>166700</nanos>
+  <sequence>124</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME2 and GAME10 was scheduled to the system with POLICY2</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:31.309161100Z</date>
+  <millis>1653376951309</millis>
+  <nanos>161100</nanos>
+  <sequence>125</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME1 scheduled game was faild with POLICY2, one of the teams in this game has already game at this date</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:31.310158300Z</date>
+  <millis>1653376951310</millis>
+  <nanos>158300</nanos>
+  <sequence>126</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME5 scheduled game was faild with POLICY2, one of the teams in this game has already game at this date</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:31.310158300Z</date>
+  <millis>1653376951310</millis>
+  <nanos>158300</nanos>
+  <sequence>127</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>findUser</method>
+  <thread>1</thread>
+  <message>user Bob tried to log in to the system as Referees with wrong username or user type</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:31.311156Z</date>
+  <millis>1653376951311</millis>
+  <nanos>156000</nanos>
+  <sequence>128</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>findUser</method>
+  <thread>1</thread>
+  <message>user Alice tried to log in to the system as Referees with wrong password</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:31.312153500Z</date>
+  <millis>1653376951312</millis>
+  <nanos>153500</nanos>
+  <sequence>129</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>findUser</method>
+  <thread>1</thread>
+  <message>user Alice tried to log in to the system as UnionRepresentors with wrong username or user type</message>
+</record>
+<record>
+  <date>2022-05-24T07:22:31.312153500Z</date>
+  <millis>1653376951312</millis>
+  <nanos>153500</nanos>
+  <sequence>130</sequence>
+  <logger>Service.ServiceController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>findUser</method>
+  <thread>1</thread>
+  <message>user Alice logged in to the system as Referees</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T10:08:32.521485800Z</date>
+  <millis>1653386912521</millis>
+  <nanos>485800</nanos>
+  <sequence>0</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>findUser</method>
+  <thread>1</thread>
+  <message>user Alice tried to log in to the system as UnionRepresentors with wrong username or user type</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T10:08:51.444834300Z</date>
+  <millis>1653386931444</millis>
+  <nanos>834300</nanos>
+  <sequence>0</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>GAME2 has no league</message>
+</record>
+<record>
+  <date>2022-05-24T10:08:51.460458700Z</date>
+  <millis>1653386931460</millis>
+  <nanos>458700</nanos>
+  <sequence>1</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as secondary referee to GAME3</message>
+</record>
+<record>
+  <date>2022-05-24T10:08:51.460458700Z</date>
+  <millis>1653386931460</millis>
+  <nanos>458700</nanos>
+  <sequence>2</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>null has no league</message>
+</record>
+<record>
+  <date>2022-05-24T10:08:51.460458700Z</date>
+  <millis>1653386931460</millis>
+  <nanos>458700</nanos>
+  <sequence>3</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>GAME2 has no league</message>
+</record>
+<record>
+  <date>2022-05-24T10:08:51.460458700Z</date>
+  <millis>1653386931460</millis>
+  <nanos>458700</nanos>
+  <sequence>4</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as main referee to GAME1</message>
+</record>
+<record>
+  <date>2022-05-24T10:08:51.460458700Z</date>
+  <millis>1653386931460</millis>
+  <nanos>458700</nanos>
+  <sequence>5</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>LEAGUE1 already schedual to GAME4</message>
+</record>
+<record>
+  <date>2022-05-24T10:08:51.476078800Z</date>
+  <millis>1653386931476</millis>
+  <nanos>78800</nanos>
+  <sequence>6</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME5 scheduled game was faild with POLICY2, one of the teams in this game has already game at this date</message>
+</record>
+<record>
+  <date>2022-05-24T10:08:51.476078800Z</date>
+  <millis>1653386931476</millis>
+  <nanos>78800</nanos>
+  <sequence>7</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME1 scheduled game was faild with POLICY2, one of the teams in this game has already game at this date</message>
+</record>
+<record>
+  <date>2022-05-24T10:08:51.491701800Z</date>
+  <millis>1653386931491</millis>
+  <nanos>701800</nanos>
+  <sequence>8</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME2was scheduled to the system with POLICY1</message>
+</record>
+<record>
+  <date>2022-05-24T10:08:51.491701800Z</date>
+  <millis>1653386931491</millis>
+  <nanos>701800</nanos>
+  <sequence>9</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF3 set as secondary referee to GAME4</message>
+</record>
+<record>
+  <date>2022-05-24T10:08:51.507320Z</date>
+  <millis>1653386931507</millis>
+  <nanos>320000</nanos>
+  <sequence>10</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME2 and GAME10 was scheduled to the system with POLICY2</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T10:11:07.665357Z</date>
+  <millis>1653387067665</millis>
+  <nanos>357000</nanos>
+  <sequence>0</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as secondary referee to GAME3</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T10:11:07.809452500Z</date>
+  <millis>1653387067809</millis>
+  <nanos>452500</nanos>
+  <sequence>7</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_league</method>
+  <thread>1</thread>
+  <message>REF1 already schedule to another league</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T10:11:08.064898600Z</date>
+  <millis>1653387068064</millis>
+  <nanos>898600</nanos>
+  <sequence>9</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME2 and GAME10 was scheduled to the system with POLICY2</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T10:11:08.127717400Z</date>
+  <millis>1653387068127</millis>
+  <nanos>717400</nanos>
+  <sequence>13</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>findUser</method>
+  <thread>1</thread>
+  <message>user Alice tried to log in to the system as UnionRepresentors with wrong username or user type</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T10:11:08.227450500Z</date>
+  <millis>1653387068227</millis>
+  <nanos>450500</nanos>
+  <sequence>17</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as secondary referee to GAME3</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T10:11:08.377921400Z</date>
+  <millis>1653387068377</millis>
+  <nanos>921400</nanos>
+  <sequence>28</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as secondary referee to GAME3</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T10:11:08.544956300Z</date>
+  <millis>1653387068544</millis>
+  <nanos>956300</nanos>
+  <sequence>39</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as secondary referee to GAME3</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T10:11:08.680104100Z</date>
+  <millis>1653387068680</millis>
+  <nanos>104100</nanos>
+  <sequence>52</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as secondary referee to GAME3</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T10:11:08.800945700Z</date>
+  <millis>1653387068800</millis>
+  <nanos>945700</nanos>
+  <sequence>61</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME2 and GAME10 was scheduled to the system with POLICY2</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T10:11:08.962371100Z</date>
+  <millis>1653387068962</millis>
+  <nanos>371100</nanos>
+  <sequence>65</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as secondary referee to GAME3</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T10:11:09.043025300Z</date>
+  <millis>1653387069043</millis>
+  <nanos>25300</nanos>
+  <sequence>76</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>findUser</method>
+  <thread>1</thread>
+  <message>user Alice logged in to the system as Referees</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T10:11:09.179294100Z</date>
+  <millis>1653387069179</millis>
+  <nanos>294100</nanos>
+  <sequence>80</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as secondary referee to GAME3</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T10:11:10.093038600Z</date>
+  <millis>1653387070093</millis>
+  <nanos>38600</nanos>
+  <sequence>97</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as secondary referee to GAME3</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T10:11:10.583072500Z</date>
+  <millis>1653387070583</millis>
+  <nanos>72500</nanos>
+  <sequence>114</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as secondary referee to GAME3</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T10:13:01.432320900Z</date>
+  <millis>1653387181432</millis>
+  <nanos>320900</nanos>
+  <sequence>0</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>findUser</method>
+  <thread>1</thread>
+  <message>user Alice tried to log in to the system as Referees with wrong password</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T10:13:34.737763700Z</date>
+  <millis>1653387214737</millis>
+  <nanos>763700</nanos>
+  <sequence>0</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as main referee to GAME1</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T10:13:34.878354100Z</date>
+  <millis>1653387214878</millis>
+  <nanos>354100</nanos>
+  <sequence>7</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_league</method>
+  <thread>1</thread>
+  <message>REF1 already schedule to another league</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T10:13:35.112661300Z</date>
+  <millis>1653387215112</millis>
+  <nanos>661300</nanos>
+  <sequence>9</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME8was scheduled to the system with POLICY1</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T10:13:35.159505700Z</date>
+  <millis>1653387215159</millis>
+  <nanos>505700</nanos>
+  <sequence>13</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>findUser</method>
+  <thread>1</thread>
+  <message>user Alice logged in to the system as Referees</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T10:13:35.253235500Z</date>
+  <millis>1653387215253</millis>
+  <nanos>235500</nanos>
+  <sequence>17</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as main referee to GAME1</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T10:13:35.331340800Z</date>
+  <millis>1653387215331</millis>
+  <nanos>340800</nanos>
+  <sequence>28</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as main referee to GAME1</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T10:13:35.425103900Z</date>
+  <millis>1653387215425</millis>
+  <nanos>103900</nanos>
+  <sequence>39</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_league</method>
+  <thread>1</thread>
+  <message>REF1 already schedule to another league</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T10:13:35.518839800Z</date>
+  <millis>1653387215518</millis>
+  <nanos>839800</nanos>
+  <sequence>52</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_league</method>
+  <thread>1</thread>
+  <message>REF1 already schedule to another league</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T10:13:35.581318600Z</date>
+  <millis>1653387215581</millis>
+  <nanos>318600</nanos>
+  <sequence>61</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME2was scheduled to the system with POLICY1</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T10:13:35.753387200Z</date>
+  <millis>1653387215753</millis>
+  <nanos>387200</nanos>
+  <sequence>65</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>REF1 set as main referee to GAME1</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T10:13:35.831579500Z</date>
+  <millis>1653387215831</millis>
+  <nanos>579500</nanos>
+  <sequence>76</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>findUser</method>
+  <thread>1</thread>
+  <message>user Alice logged in to the system as Referees</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T10:13:35.971813800Z</date>
+  <millis>1653387215971</millis>
+  <nanos>813800</nanos>
+  <sequence>80</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_league</method>
+  <thread>1</thread>
+  <message>REF1 already schedule to another league</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T10:13:36.893817200Z</date>
+  <millis>1653387216893</millis>
+  <nanos>817200</nanos>
+  <sequence>97</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_league</method>
+  <thread>1</thread>
+  <message>REF1 already schedule to another league</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-24T10:13:37.362110100Z</date>
+  <millis>1653387217362</millis>
+  <nanos>110100</nanos>
+  <sequence>114</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_league</method>
+  <thread>1</thread>
+  <message>REF1 already schedule to another league</message>
+</record>
+</log>

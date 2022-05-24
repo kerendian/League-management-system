@@ -60,6 +60,6 @@
     <property name="sun.stdout.encoding" value="cp862"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="UnitTest.Domain.SeasonTest" name="setSeasonID" time="0"/>
   <testcase classname="UnitTest.Domain.SeasonTest" name="getSeasonID" time="0"/>
+  <testcase classname="UnitTest.Domain.SeasonTest" name="setSeasonID" time="0"/>
 </testsuite>

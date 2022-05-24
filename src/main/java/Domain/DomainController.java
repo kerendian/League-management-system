@@ -24,10 +24,9 @@ import static Service.Status.success;
 public class DomainController implements DomainControllerInterface {
     DAControllerInterface daController;
     HashMap<String,Object> cache=  new HashMap<>();
-    private static final Logger logger = Logger.getLogger(ServiceController.class.getName());
+    private static final Logger logger = Logger.getLogger(DomainController.class.getName());
     FileHandler fileHandler;
 
-    //remember when using constructor in acceptance / integration tests to send DAController.getInstance()
     public DomainController(DAControllerInterface daController) {
 
         this.daController = daController;
@@ -50,11 +49,24 @@ public class DomainController implements DomainControllerInterface {
         return cache;
     }
 
-
-
     public UserStatus findUser(String userName, String password, String userType)
     {
         UserStatus us = daController.findUser(userName,password,userType);
+        if (us == UserStatus.Valid)
+        {
+            logger.log(Level.INFO,"user "+ userName + " logged in to the system as " + userType);
+
+        }
+        else if (us == UserStatus.WrongPassword)
+        {
+            logger.log(Level.WARNING,"user "+ userName + " tried to log in to the system as " + userType + " with wrong password");
+        }
+        else
+        {
+            logger.log(Level.WARNING,"user "+ userName + " tried to log in to the system as " + userType + " with wrong username or user type");
+        }
+        fileHandler.close();
+
         return us;
 
     }
@@ -96,49 +108,55 @@ public class DomainController implements DomainControllerInterface {
         }
         curr_game.setHour(hour);
 
+        //find teams and courts
+        HashMap<String, String> home_team_details = daController.findTeam(curr_game.getHome_team_ID());
+        HashMap<String, String> external_team_details = daController.findTeam(curr_game.getExternal_team_ID());
+        HashMap<String, String> league_details = daController.findLeague(leagueID);
+        if(daController.check_game_date_validation(home_team_details.get("team_id"), date) && daController.check_game_date_validation(external_team_details.get("team_id"), date)){
+            if(league_details.get("policy_id").equals("POLICY1")){
+                curr_game.game_placement(date,hour,leagueID,league_details.get("policy_id"), home_team_details.get("court_id"), external_team_details.get("court_id"));
+                cache.put(curr_game.getGame_id(),curr_game);
+                //updating the details in the db
+                HashMap<String, String> game_details = curr_game.convertToHash();
+                daController.games_placement(game_details);
+                array_to_return.add(game_details);
+                logger.log(Level.INFO,curr_game.getGame_id()+"was scheduled to the system with POLICY1");
+                fileHandler.close();
 
-        //try {
-            //find teams and courts
-            HashMap<String, String> home_team_details = daController.findTeam(curr_game.getHome_team_ID());
-            HashMap<String, String> external_team_details = daController.findTeam(curr_game.getExternal_team_ID());
-            HashMap<String, String> league_details = daController.findLeague(leagueID);
-            if(daController.check_game_date_validation(home_team_details.get("team_id"), date) && daController.check_game_date_validation(external_team_details.get("team_id"), date)){
-                if(league_details.get("policy_id").equals("POLICY1")){
-                    curr_game.game_placement(date,hour,leagueID,league_details.get("policy_id"), home_team_details.get("court_id"), external_team_details.get("court_id"));
+                return array_to_return;
+            }
+            else{
+                String date_game2 = getNextDate(date);
+                if(daController.check_game_date_validation(home_team_details.get("team_id"), date_game2) && daController.check_game_date_validation(external_team_details.get("team_id"), date_game2)){
+                    Game game2 = curr_game.game_placement(date,hour,leagueID,league_details.get("policy_id"), home_team_details.get("court_id"), external_team_details.get("court_id"));
+                    cache.put(game2.getGame_id(),game2);
                     cache.put(curr_game.getGame_id(),curr_game);
                     //updating the details in the db
                     HashMap<String, String> game_details = curr_game.convertToHash();
+                    HashMap<String, String> game_details2 = game2.convertToHash();
                     daController.games_placement(game_details);
+                    daController.games_placement(game_details2);
                     array_to_return.add(game_details);
-                    logger.log(Level.INFO,curr_game.getGame_id()+"was scheduled to the system with POLICY1");
+                    array_to_return.add(game_details2);
+                    logger.log(Level.INFO,curr_game.getGame_id()+" and "+game2.getGame_id()+" was scheduled to the system with POLICY2");
+                    fileHandler.close();
+
                     return array_to_return;
                 }
                 else{
-                    String date_game2 = getNextDate(date);
-                    if(daController.check_game_date_validation(home_team_details.get("team_id"), date_game2) && daController.check_game_date_validation(external_team_details.get("team_id"), date_game2)){
-                        Game game2 = curr_game.game_placement(date,hour,leagueID,league_details.get("policy_id"), home_team_details.get("court_id"), external_team_details.get("court_id"));
-                        cache.put(game2.getGame_id(),game2);
-                        cache.put(curr_game.getGame_id(),curr_game);
-                        //updating the details in the db
-                        HashMap<String, String> game_details = curr_game.convertToHash();
-                        HashMap<String, String> game_details2 = game2.convertToHash();
-                        daController.games_placement(game_details);
-                        daController.games_placement(game_details2);
-                        array_to_return.add(game_details);
-                        array_to_return.add(game_details2);
-                        logger.log(Level.INFO,curr_game.getGame_id()+" and "+game2.getGame_id()+" was scheduled to the system with POLICY2");
-                        return array_to_return;
-                    }
-                    else{
-                        logger.log(Level.WARNING,curr_game.getGame_id()+ " scheduled game was faild with POLICY2, one of the teams in this game has already game at this date");
-                        throw new ScheduleGameFailed("one of the teams in this game has already game at this date");
-                    }
+                    logger.log(Level.WARNING,curr_game.getGame_id()+ " scheduled game was faild with POLICY2, one of the teams in this game has already game at this date");
+                    fileHandler.close();
+
+                    throw new ScheduleGameFailed("one of the teams in this game has already game at this date");
                 }
             }
-            else{
-                logger.log(Level.WARNING,curr_game.getGame_id()+ " scheduled game was faild with POLICY2, one of the teams in this game has already game at this date");
-                throw new ScheduleGameFailed("one of the teams in this game has already game at this date");
-            }
+        }
+        else{
+            logger.log(Level.WARNING,curr_game.getGame_id()+ " scheduled game was faild with POLICY2, one of the teams in this game has already game at this date");
+            fileHandler.close();
+
+            throw new ScheduleGameFailed("one of the teams in this game has already game at this date");
+        }
           //  return array_to_return;
     }
 
@@ -186,21 +204,29 @@ public class DomainController implements DomainControllerInterface {
             //if the game has no league raise error
             if (curr_game.getLeagueID() == null || curr_game.getLeagueID().equals("NULL") || curr_game.getLeagueID().equals("")) {
                 logger.log(Level.WARNING,curr_game.getGame_id()+ " has no league");
+                fileHandler.close();
+
                 throw new NullPointerException("the game is not schedule to any league");
             }
             //if the referee has no league raise error
             if (curr_referee.getLeagueID() == null || curr_referee.getLeagueID().equals("NULL") || curr_referee.getLeagueID().equals("")) {
                 logger.log(Level.WARNING,curr_referee.getLeagueID()+ " has no league");
+                fileHandler.close();
+
                 throw new NullPointerException("the referee is not schedule to any league");
             }
 
             // if the leagues are not equal
             if (!curr_referee.getLeagueID().equals(curr_game.getLeagueID())) {
                 logger.log(Level.WARNING,curr_referee.getLeagueID()+" and "+ curr_game.getGame_id()+" has no the same league");
+                fileHandler.close();
+
                 throw new ScheduleRefereeFailed("the chosen referee and the chosen game are not belong to the same league");
             }
             if(curr_referee.getRefereeID().equals(curr_game.getMain_referee_ID()) || curr_referee.getRefereeID().equals(curr_game.getSecondary_referee_ID1()) || curr_referee.getRefereeID().equals(curr_game.getSecondary_referee_ID2())){
                 logger.log(Level.WARNING,curr_referee.getLeagueID()+ " already schedual to "+curr_game.getGame_id());
+                fileHandler.close();
+
                 throw new ScheduleRefereeFailed("the chosen referee already schedual to this game");
             }
             // if the type is not available
@@ -208,6 +234,8 @@ public class DomainController implements DomainControllerInterface {
                 case 1:
                     if (curr_game.getMain_referee_ID() != null && !(curr_game.getMain_referee_ID().equals("NULL")) && !(curr_game.getMain_referee_ID().equals(""))) {
                         logger.log(Level.WARNING,curr_game.getGame_id()+"already has main referee schedule");
+                        fileHandler.close();
+
                         throw new ScheduleRefereeFailed("the chosen game is already has a main referee");
 
                     } else {
@@ -217,11 +245,15 @@ public class DomainController implements DomainControllerInterface {
                         HashMap<String,String> game_details = curr_game.convertToHash();
                         Status status_returned = daController.updateRefereesToGame(game_details);
                         logger.log(Level.INFO,referee_id+" set as main referee to "+curr_game.getGame_id());
+                        fileHandler.close();
+
                         if(status_returned==success){
                             return game_details;
                         }
                         else{
                             logger.log(Level.WARNING,"schedule "+ referee_id+" to "+ curr_game.getGame_id() +" failed");
+                            fileHandler.close();
+
                             throw new ScheduleRefereeFailed("the status that returned is failure");
 
                         }
@@ -234,6 +266,8 @@ public class DomainController implements DomainControllerInterface {
                         //no available schedule
                         if (curr_game.getSecondary_referee_ID2() != null && !(curr_game.getSecondary_referee_ID2().equals("NULL")) && !(curr_game.getSecondary_referee_ID2().equals(""))) {
                             logger.log(Level.WARNING,curr_game.getGame_id()+"already has 2 secondary referee schedule");
+                            fileHandler.close();
+
                             throw new ScheduleRefereeFailed("the chosen game is already has secondary referees");
                         }
                         //secondary referee2
@@ -244,10 +278,14 @@ public class DomainController implements DomainControllerInterface {
                             Status status_returned = daController.updateRefereesToGame(game_details);
                             if(status_returned==success){
                                 logger.log(Level.INFO,referee_id+" set as secondary referee to "+curr_game.getGame_id());
+                                fileHandler.close();
+
                                 return game_details;
                             }
                             else{
                                 logger.log(Level.WARNING,"schedule "+ referee_id+" to "+ curr_game.getGame_id() +" failed");
+                                fileHandler.close();
+
                                 throw new ScheduleRefereeFailed("the status that returned is failure");
                             }
                         }
@@ -260,10 +298,14 @@ public class DomainController implements DomainControllerInterface {
                         Status status_returned = daController.updateRefereesToGame(game_details);
                         if(status_returned==success){
                             logger.log(Level.INFO,referee_id+" set as secondary referee to "+curr_game.getGame_id());
+                            fileHandler.close();
+
                             return game_details;
                         }
                         else{
                             logger.log(Level.WARNING,"schedule "+ referee_id+" to "+ curr_game.getGame_id() +" failed");
+                            fileHandler.close();
+
                             throw new ScheduleRefereeFailed("the status that returned is failure");
                         }
                     }
@@ -299,15 +341,21 @@ public class DomainController implements DomainControllerInterface {
                 if (status_returned == success) {
                     cache.put(curr_referee.getRefereeID(), curr_referee);
                     logger.log(Level.INFO,league_id+" set to "+curr_referee.getRefereeID());
+                    fileHandler.close();
+
                     return curr_referee.get_referee_details();
                 }
                 else {
                     logger.log(Level.WARNING,league_id+" failed set to "+curr_referee.getRefereeID());
+                    fileHandler.close();
+
                     throw new ScheduleRefereeFailed("the status that returned is failure");
                 }
             }
             else {
                 logger.log(Level.WARNING,curr_referee.getRefereeID()+" already schedule to another league");
+                fileHandler.close();
+
                 throw new ScheduleRefereeFailed("The referee is already schedule to another league");
             }
     }

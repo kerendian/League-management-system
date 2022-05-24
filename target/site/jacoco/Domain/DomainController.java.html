@@ -24,205 +24,237 @@ import static Service.Status.success;
 public class DomainController implements DomainControllerInterface {
     DAControllerInterface daController;
 <span class="fc" id="L26">    HashMap&lt;String,Object&gt; cache=  new HashMap&lt;&gt;();</span>
-<span class="fc" id="L27">    private static final Logger logger = Logger.getLogger(ServiceController.class.getName());</span>
+<span class="fc" id="L27">    private static final Logger logger = Logger.getLogger(DomainController.class.getName());</span>
     FileHandler fileHandler;
 
-    //remember when using constructor in acceptance / integration tests to send DAController.getInstance()
-<span class="fc" id="L31">    public DomainController(DAControllerInterface daController) {</span>
+<span class="fc" id="L30">    public DomainController(DAControllerInterface daController) {</span>
 
-<span class="fc" id="L33">        this.daController = daController;</span>
-<span class="fc" id="L34">        HashMap&lt;String,Object&gt; cache = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L32">        this.daController = daController;</span>
+<span class="fc" id="L33">        HashMap&lt;String,Object&gt; cache = new HashMap&lt;&gt;();</span>
         try
         {
-<span class="fc" id="L37">            this.fileHandler = new FileHandler(&quot;status.log&quot;,true);</span>
-<span class="fc" id="L38">            logger.addHandler(fileHandler);</span>
-<span class="fc" id="L39">            logger.setUseParentHandlers(false);</span>
-<span class="nc" id="L40">        } catch (IOException e) {</span>
-<span class="nc" id="L41">            e.printStackTrace();</span>
-<span class="fc" id="L42">        }</span>
-<span class="fc" id="L43">    }</span>
+<span class="fc" id="L36">            this.fileHandler = new FileHandler(&quot;status.log&quot;,true);</span>
+<span class="fc" id="L37">            logger.addHandler(fileHandler);</span>
+<span class="fc" id="L38">            logger.setUseParentHandlers(false);</span>
+<span class="nc" id="L39">        } catch (IOException e) {</span>
+<span class="nc" id="L40">            e.printStackTrace();</span>
+<span class="fc" id="L41">        }</span>
+<span class="fc" id="L42">    }</span>
 
     public void setCache(HashMap&lt;String, Object&gt; cache) {
-<span class="fc" id="L46">        this.cache = cache;</span>
-<span class="fc" id="L47">    }</span>
+<span class="fc" id="L45">        this.cache = cache;</span>
+<span class="fc" id="L46">    }</span>
 
     public HashMap&lt;String, Object&gt; getCache() {
-<span class="nc" id="L50">        return cache;</span>
+<span class="nc" id="L49">        return cache;</span>
     }
-
-
 
     public UserStatus findUser(String userName, String password, String userType)
     {
-<span class="fc" id="L57">        UserStatus us = daController.findUser(userName,password,userType);</span>
-<span class="fc" id="L58">        return us;</span>
+<span class="fc" id="L54">        UserStatus us = daController.findUser(userName,password,userType);</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">        if (us == UserStatus.Valid)</span>
+        {
+<span class="fc" id="L57">            logger.log(Level.INFO,&quot;user &quot;+ userName + &quot; logged in to the system as &quot; + userType);</span>
+
+        }
+<span class="fc bfc" id="L60" title="All 2 branches covered.">        else if (us == UserStatus.WrongPassword)</span>
+        {
+<span class="fc" id="L62">            logger.log(Level.WARNING,&quot;user &quot;+ userName + &quot; tried to log in to the system as &quot; + userType + &quot; with wrong password&quot;);</span>
+        }
+        else
+        {
+<span class="fc" id="L66">            logger.log(Level.WARNING,&quot;user &quot;+ userName + &quot; tried to log in to the system as &quot; + userType + &quot; with wrong username or user type&quot;);</span>
+        }
+<span class="fc" id="L68">        fileHandler.close();</span>
+
+<span class="fc" id="L70">        return us;</span>
 
     }
     public static String getNextDate(String  curDate) throws ParseException, InvalidDateException {
-<span class="fc" id="L62">        final SimpleDateFormat format = new SimpleDateFormat(&quot;yyyy/MM/dd&quot;);</span>
-<span class="fc" id="L63">        final Date date = format.parse(curDate);</span>
-<span class="fc" id="L64">        final Calendar calendar = Calendar.getInstance();</span>
-<span class="fc" id="L65">        calendar.setTime(date);</span>
-<span class="fc" id="L66">        calendar.add(Calendar.DAY_OF_YEAR, 1);</span>
-<span class="fc" id="L67">        return format.format(calendar.getTime());</span>
+<span class="fc" id="L74">        final SimpleDateFormat format = new SimpleDateFormat(&quot;yyyy/MM/dd&quot;);</span>
+<span class="fc" id="L75">        final Date date = format.parse(curDate);</span>
+<span class="fc" id="L76">        final Calendar calendar = Calendar.getInstance();</span>
+<span class="fc" id="L77">        calendar.setTime(date);</span>
+<span class="fc" id="L78">        calendar.add(Calendar.DAY_OF_YEAR, 1);</span>
+<span class="fc" id="L79">        return format.format(calendar.getTime());</span>
     }
     public boolean date_isvalid(String date) throws InvalidDateException, ParseException {
-<span class="fc bfc" id="L70" title="All 2 branches covered.">        if (new SimpleDateFormat(&quot;yyyy/MM/dd&quot;).parse(date).before(new Date())) {</span>
-<span class="fc" id="L71">            throw new InvalidDateException(&quot;this date expired&quot;);</span>
+<span class="fc bfc" id="L82" title="All 2 branches covered.">        if (new SimpleDateFormat(&quot;yyyy/MM/dd&quot;).parse(date).before(new Date())) {</span>
+<span class="fc" id="L83">            throw new InvalidDateException(&quot;this date expired&quot;);</span>
         }
-<span class="fc" id="L73">        return true;</span>
+<span class="fc" id="L85">        return true;</span>
     }
 
 
     public ArrayList&lt;HashMap&lt;String,String&gt;&gt; games_placement(String date, int hour , String leagueID, String game_id) throws ObjectIDNotExistException, SQLException, ImportDataException, ParseException, InvalidDateException, ScheduleRefereeFailed, ScheduleGameFailed {
-<span class="fc" id="L78">        ArrayList&lt;HashMap&lt;String,String&gt;&gt; array_to_return = new ArrayList&lt;HashMap&lt;String,String&gt;&gt;();</span>
+<span class="fc" id="L90">        ArrayList&lt;HashMap&lt;String,String&gt;&gt; array_to_return = new ArrayList&lt;HashMap&lt;String,String&gt;&gt;();</span>
         //checking if the game_id in the local memory
-<span class="fc" id="L80">        Game origin_game =null;</span>
-<span class="fc bfc" id="L81" title="All 2 branches covered.">        if(cache.containsKey(game_id)) {</span>
-<span class="fc" id="L82">            origin_game = (Game) cache.get(game_id);</span>
+<span class="fc" id="L92">        Game origin_game =null;</span>
+<span class="fc bfc" id="L93" title="All 2 branches covered.">        if(cache.containsKey(game_id)) {</span>
+<span class="fc" id="L94">            origin_game = (Game) cache.get(game_id);</span>
         }
-<span class="fc" id="L84">        Game curr_game = origin_game;</span>
+<span class="fc" id="L96">        Game curr_game = origin_game;</span>
         //if not- load the game details from db
-<span class="fc bfc" id="L86" title="All 2 branches covered.">        if (curr_game==null) {</span>
+<span class="fc bfc" id="L98" title="All 2 branches covered.">        if (curr_game==null) {</span>
             //create game object if not exsists
-<span class="fc" id="L88">                HashMap&lt;String,String&gt; game_details = daController.findGame(game_id);</span>
-<span class="fc" id="L89">                curr_game = new Game(game_details.get(&quot;home_team&quot;),game_details.get(&quot;external_team&quot;));</span>
-<span class="fc" id="L90">                curr_game.setGame_id(game_id);</span>
-<span class="fc" id="L91">                curr_game.setLeagueID(game_details.get(&quot;league&quot;));</span>
+<span class="fc" id="L100">                HashMap&lt;String,String&gt; game_details = daController.findGame(game_id);</span>
+<span class="fc" id="L101">                curr_game = new Game(game_details.get(&quot;home_team&quot;),game_details.get(&quot;external_team&quot;));</span>
+<span class="fc" id="L102">                curr_game.setGame_id(game_id);</span>
+<span class="fc" id="L103">                curr_game.setLeagueID(game_details.get(&quot;league&quot;));</span>
         }
         //updating basic details
-<span class="pc bpc" id="L94" title="1 of 2 branches missed.">        if(date_isvalid(date)) {</span>
-<span class="fc" id="L95">            curr_game.setDate(date);</span>
+<span class="pc bpc" id="L106" title="1 of 2 branches missed.">        if(date_isvalid(date)) {</span>
+<span class="fc" id="L107">            curr_game.setDate(date);</span>
         }
-<span class="fc" id="L97">        curr_game.setHour(hour);</span>
+<span class="fc" id="L109">        curr_game.setHour(hour);</span>
 
+        //find teams and courts
+<span class="fc" id="L112">        HashMap&lt;String, String&gt; home_team_details = daController.findTeam(curr_game.getHome_team_ID());</span>
+<span class="fc" id="L113">        HashMap&lt;String, String&gt; external_team_details = daController.findTeam(curr_game.getExternal_team_ID());</span>
+<span class="fc" id="L114">        HashMap&lt;String, String&gt; league_details = daController.findLeague(leagueID);</span>
+<span class="fc bfc" id="L115" title="All 4 branches covered.">        if(daController.check_game_date_validation(home_team_details.get(&quot;team_id&quot;), date) &amp;&amp; daController.check_game_date_validation(external_team_details.get(&quot;team_id&quot;), date)){</span>
+<span class="fc bfc" id="L116" title="All 2 branches covered.">            if(league_details.get(&quot;policy_id&quot;).equals(&quot;POLICY1&quot;)){</span>
+<span class="fc" id="L117">                curr_game.game_placement(date,hour,leagueID,league_details.get(&quot;policy_id&quot;), home_team_details.get(&quot;court_id&quot;), external_team_details.get(&quot;court_id&quot;));</span>
+<span class="fc" id="L118">                cache.put(curr_game.getGame_id(),curr_game);</span>
+                //updating the details in the db
+<span class="fc" id="L120">                HashMap&lt;String, String&gt; game_details = curr_game.convertToHash();</span>
+<span class="fc" id="L121">                daController.games_placement(game_details);</span>
+<span class="fc" id="L122">                array_to_return.add(game_details);</span>
+<span class="fc" id="L123">                logger.log(Level.INFO,curr_game.getGame_id()+&quot;was scheduled to the system with POLICY1&quot;);</span>
+<span class="fc" id="L124">                fileHandler.close();</span>
 
-        //try {
-            //find teams and courts
-<span class="fc" id="L102">            HashMap&lt;String, String&gt; home_team_details = daController.findTeam(curr_game.getHome_team_ID());</span>
-<span class="fc" id="L103">            HashMap&lt;String, String&gt; external_team_details = daController.findTeam(curr_game.getExternal_team_ID());</span>
-<span class="fc" id="L104">            HashMap&lt;String, String&gt; league_details = daController.findLeague(leagueID);</span>
-<span class="fc bfc" id="L105" title="All 4 branches covered.">            if(daController.check_game_date_validation(home_team_details.get(&quot;team_id&quot;), date) &amp;&amp; daController.check_game_date_validation(external_team_details.get(&quot;team_id&quot;), date)){</span>
-<span class="fc bfc" id="L106" title="All 2 branches covered.">                if(league_details.get(&quot;policy_id&quot;).equals(&quot;POLICY1&quot;)){</span>
-<span class="fc" id="L107">                    curr_game.game_placement(date,hour,leagueID,league_details.get(&quot;policy_id&quot;), home_team_details.get(&quot;court_id&quot;), external_team_details.get(&quot;court_id&quot;));</span>
-<span class="fc" id="L108">                    cache.put(curr_game.getGame_id(),curr_game);</span>
-                    //updating the details in the db
-<span class="fc" id="L110">                    HashMap&lt;String, String&gt; game_details = curr_game.convertToHash();</span>
-<span class="fc" id="L111">                    daController.games_placement(game_details);</span>
-<span class="fc" id="L112">                    array_to_return.add(game_details);</span>
-<span class="fc" id="L113">                    logger.log(Level.INFO,curr_game.getGame_id()+&quot;was scheduled to the system with POLICY1&quot;);</span>
-<span class="fc" id="L114">                    return array_to_return;</span>
-                }
-                else{
-<span class="fc" id="L117">                    String date_game2 = getNextDate(date);</span>
-<span class="pc bpc" id="L118" title="2 of 4 branches missed.">                    if(daController.check_game_date_validation(home_team_details.get(&quot;team_id&quot;), date_game2) &amp;&amp; daController.check_game_date_validation(external_team_details.get(&quot;team_id&quot;), date_game2)){</span>
-<span class="fc" id="L119">                        Game game2 = curr_game.game_placement(date,hour,leagueID,league_details.get(&quot;policy_id&quot;), home_team_details.get(&quot;court_id&quot;), external_team_details.get(&quot;court_id&quot;));</span>
-<span class="fc" id="L120">                        cache.put(game2.getGame_id(),game2);</span>
-<span class="fc" id="L121">                        cache.put(curr_game.getGame_id(),curr_game);</span>
-                        //updating the details in the db
-<span class="fc" id="L123">                        HashMap&lt;String, String&gt; game_details = curr_game.convertToHash();</span>
-<span class="fc" id="L124">                        HashMap&lt;String, String&gt; game_details2 = game2.convertToHash();</span>
-<span class="fc" id="L125">                        daController.games_placement(game_details);</span>
-<span class="fc" id="L126">                        daController.games_placement(game_details2);</span>
-<span class="fc" id="L127">                        array_to_return.add(game_details);</span>
-<span class="fc" id="L128">                        array_to_return.add(game_details2);</span>
-<span class="fc" id="L129">                        logger.log(Level.INFO,curr_game.getGame_id()+&quot; and &quot;+game2.getGame_id()+&quot; was scheduled to the system with POLICY2&quot;);</span>
-<span class="fc" id="L130">                        return array_to_return;</span>
-                    }
-                    else{
-<span class="nc" id="L133">                        logger.log(Level.WARNING,curr_game.getGame_id()+ &quot; scheduled game was faild with POLICY2, one of the teams in this game has already game at this date&quot;);</span>
-<span class="nc" id="L134">                        throw new ScheduleGameFailed(&quot;one of the teams in this game has already game at this date&quot;);</span>
-                    }
-                }
+<span class="fc" id="L126">                return array_to_return;</span>
             }
             else{
-<span class="fc" id="L139">                logger.log(Level.WARNING,curr_game.getGame_id()+ &quot; scheduled game was faild with POLICY2, one of the teams in this game has already game at this date&quot;);</span>
-<span class="fc" id="L140">                throw new ScheduleGameFailed(&quot;one of the teams in this game has already game at this date&quot;);</span>
+<span class="fc" id="L129">                String date_game2 = getNextDate(date);</span>
+<span class="pc bpc" id="L130" title="2 of 4 branches missed.">                if(daController.check_game_date_validation(home_team_details.get(&quot;team_id&quot;), date_game2) &amp;&amp; daController.check_game_date_validation(external_team_details.get(&quot;team_id&quot;), date_game2)){</span>
+<span class="fc" id="L131">                    Game game2 = curr_game.game_placement(date,hour,leagueID,league_details.get(&quot;policy_id&quot;), home_team_details.get(&quot;court_id&quot;), external_team_details.get(&quot;court_id&quot;));</span>
+<span class="fc" id="L132">                    cache.put(game2.getGame_id(),game2);</span>
+<span class="fc" id="L133">                    cache.put(curr_game.getGame_id(),curr_game);</span>
+                    //updating the details in the db
+<span class="fc" id="L135">                    HashMap&lt;String, String&gt; game_details = curr_game.convertToHash();</span>
+<span class="fc" id="L136">                    HashMap&lt;String, String&gt; game_details2 = game2.convertToHash();</span>
+<span class="fc" id="L137">                    daController.games_placement(game_details);</span>
+<span class="fc" id="L138">                    daController.games_placement(game_details2);</span>
+<span class="fc" id="L139">                    array_to_return.add(game_details);</span>
+<span class="fc" id="L140">                    array_to_return.add(game_details2);</span>
+<span class="fc" id="L141">                    logger.log(Level.INFO,curr_game.getGame_id()+&quot; and &quot;+game2.getGame_id()+&quot; was scheduled to the system with POLICY2&quot;);</span>
+<span class="fc" id="L142">                    fileHandler.close();</span>
+
+<span class="fc" id="L144">                    return array_to_return;</span>
+                }
+                else{
+<span class="nc" id="L147">                    logger.log(Level.WARNING,curr_game.getGame_id()+ &quot; scheduled game was faild with POLICY2, one of the teams in this game has already game at this date&quot;);</span>
+<span class="nc" id="L148">                    fileHandler.close();</span>
+
+<span class="nc" id="L150">                    throw new ScheduleGameFailed(&quot;one of the teams in this game has already game at this date&quot;);</span>
+                }
             }
+        }
+        else{
+<span class="fc" id="L155">            logger.log(Level.WARNING,curr_game.getGame_id()+ &quot; scheduled game was faild with POLICY2, one of the teams in this game has already game at this date&quot;);</span>
+<span class="fc" id="L156">            fileHandler.close();</span>
+
+<span class="fc" id="L158">            throw new ScheduleGameFailed(&quot;one of the teams in this game has already game at this date&quot;);</span>
+        }
           //  return array_to_return;
     }
 
 
     public HashMap&lt;String, String&gt; assign_referee_to_game(String referee_id, String game_id,int type) throws ObjectIDNotExistException, SQLException, ImportDataException, NullPointerException, ScheduleRefereeFailed {
             //check if the game exists in the cache
-<span class="fc" id="L148">            Game curr_game =null;</span>
-<span class="fc bfc" id="L149" title="All 2 branches covered.">            if(cache.containsKey(game_id)) {</span>
-<span class="fc" id="L150">                 curr_game = (Game) cache.get(game_id);</span>
+<span class="fc" id="L166">            Game curr_game =null;</span>
+<span class="fc bfc" id="L167" title="All 2 branches covered.">            if(cache.containsKey(game_id)) {</span>
+<span class="fc" id="L168">                 curr_game = (Game) cache.get(game_id);</span>
             }
             //if not - import game from db
-<span class="fc bfc" id="L153" title="All 2 branches covered.">            if (curr_game == null) {</span>
-<span class="fc" id="L154">                HashMap&lt;String, String&gt; game_details = daController.findGame(game_id);</span>
-<span class="fc" id="L155">                curr_game = new Game(game_details.get(&quot;home_team&quot;), game_details.get(&quot;external_team&quot;));</span>
-<span class="fc" id="L156">                curr_game.setGame_id(game_id);</span>
-<span class="fc" id="L157">                curr_game.setDate(game_details.get(&quot;date&quot;));</span>
-<span class="fc" id="L158">                String hour_detail = game_details.get(&quot;hour&quot;);</span>
-<span class="pc bpc" id="L159" title="1 of 2 branches missed.">                if (hour_detail !=null ){</span>
-<span class="nc" id="L160">                curr_game.setHour(Integer.parseInt(game_details.get(&quot;hour&quot;)));</span>
+<span class="fc bfc" id="L171" title="All 2 branches covered.">            if (curr_game == null) {</span>
+<span class="fc" id="L172">                HashMap&lt;String, String&gt; game_details = daController.findGame(game_id);</span>
+<span class="fc" id="L173">                curr_game = new Game(game_details.get(&quot;home_team&quot;), game_details.get(&quot;external_team&quot;));</span>
+<span class="fc" id="L174">                curr_game.setGame_id(game_id);</span>
+<span class="fc" id="L175">                curr_game.setDate(game_details.get(&quot;date&quot;));</span>
+<span class="fc" id="L176">                String hour_detail = game_details.get(&quot;hour&quot;);</span>
+<span class="pc bpc" id="L177" title="1 of 2 branches missed.">                if (hour_detail !=null ){</span>
+<span class="nc" id="L178">                curr_game.setHour(Integer.parseInt(game_details.get(&quot;hour&quot;)));</span>
                 }
-<span class="fc" id="L162">                curr_game.setCourtID(game_details.get(&quot;court&quot;));</span>
-<span class="fc" id="L163">                curr_game.setLeagueID(game_details.get(&quot;league&quot;));</span>
-<span class="fc" id="L164">                curr_game.setMain_referee_ID(game_details.get(&quot;main_referee&quot;));</span>
-<span class="fc" id="L165">                curr_game.setSecondary_referee_ID1(game_details.get(&quot;secondary_referee_1&quot;));</span>
-<span class="fc" id="L166">                curr_game.setSecondary_referee_ID2(game_details.get(&quot;secondary_referee_2&quot;));</span>
+<span class="fc" id="L180">                curr_game.setCourtID(game_details.get(&quot;court&quot;));</span>
+<span class="fc" id="L181">                curr_game.setLeagueID(game_details.get(&quot;league&quot;));</span>
+<span class="fc" id="L182">                curr_game.setMain_referee_ID(game_details.get(&quot;main_referee&quot;));</span>
+<span class="fc" id="L183">                curr_game.setSecondary_referee_ID1(game_details.get(&quot;secondary_referee_1&quot;));</span>
+<span class="fc" id="L184">                curr_game.setSecondary_referee_ID2(game_details.get(&quot;secondary_referee_2&quot;));</span>
             }
 
             //check if the referee exists in the cache
-<span class="fc" id="L170">            Referee curr_referee =null;</span>
-<span class="fc bfc" id="L171" title="All 2 branches covered.">            if(cache.containsKey(referee_id)) {</span>
-<span class="fc" id="L172">                curr_referee = (Referee) cache.get(referee_id);</span>
+<span class="fc" id="L188">            Referee curr_referee =null;</span>
+<span class="fc bfc" id="L189" title="All 2 branches covered.">            if(cache.containsKey(referee_id)) {</span>
+<span class="fc" id="L190">                curr_referee = (Referee) cache.get(referee_id);</span>
             }
-<span class="fc bfc" id="L174" title="All 2 branches covered.">            if (curr_referee == null) {</span>
+<span class="fc bfc" id="L192" title="All 2 branches covered.">            if (curr_referee == null) {</span>
                 //checking the if the referee id exists in memory
-<span class="fc" id="L176">                HashMap&lt;String, String&gt; referee_details = daController.findReferee(referee_id);</span>
-<span class="fc" id="L177">                curr_referee = new Referee(referee_details.get(&quot;username&quot;), referee_details.get(&quot;password&quot;), referee_details.get(&quot;refNum&quot;));</span>
-<span class="fc" id="L178">                curr_referee.setQualification(referee_details.get(&quot;qualification&quot;));</span>
-<span class="fc" id="L179">                curr_referee.setLeagueID(referee_details.get(&quot;leagueID&quot;));</span>
-<span class="fc" id="L180">                curr_referee.setRefereeID(referee_id);</span>
-<span class="fc" id="L181">                cache.put(curr_referee.getRefereeID(), curr_referee);</span>
+<span class="fc" id="L194">                HashMap&lt;String, String&gt; referee_details = daController.findReferee(referee_id);</span>
+<span class="fc" id="L195">                curr_referee = new Referee(referee_details.get(&quot;username&quot;), referee_details.get(&quot;password&quot;), referee_details.get(&quot;refNum&quot;));</span>
+<span class="fc" id="L196">                curr_referee.setQualification(referee_details.get(&quot;qualification&quot;));</span>
+<span class="fc" id="L197">                curr_referee.setLeagueID(referee_details.get(&quot;leagueID&quot;));</span>
+<span class="fc" id="L198">                curr_referee.setRefereeID(referee_id);</span>
+<span class="fc" id="L199">                cache.put(curr_referee.getRefereeID(), curr_referee);</span>
             }
 
             //CHECKS:
 
             //if the game has no league raise error
-<span class="pc bpc" id="L187" title="2 of 6 branches missed.">            if (curr_game.getLeagueID() == null || curr_game.getLeagueID().equals(&quot;NULL&quot;) || curr_game.getLeagueID().equals(&quot;&quot;)) {</span>
-<span class="fc" id="L188">                logger.log(Level.WARNING,curr_game.getGame_id()+ &quot; has no league&quot;);</span>
-<span class="fc" id="L189">                throw new NullPointerException(&quot;the game is not schedule to any league&quot;);</span>
+<span class="pc bpc" id="L205" title="2 of 6 branches missed.">            if (curr_game.getLeagueID() == null || curr_game.getLeagueID().equals(&quot;NULL&quot;) || curr_game.getLeagueID().equals(&quot;&quot;)) {</span>
+<span class="fc" id="L206">                logger.log(Level.WARNING,curr_game.getGame_id()+ &quot; has no league&quot;);</span>
+<span class="fc" id="L207">                fileHandler.close();</span>
+
+<span class="fc" id="L209">                throw new NullPointerException(&quot;the game is not schedule to any league&quot;);</span>
             }
             //if the referee has no league raise error
-<span class="pc bpc" id="L192" title="2 of 6 branches missed.">            if (curr_referee.getLeagueID() == null || curr_referee.getLeagueID().equals(&quot;NULL&quot;) || curr_referee.getLeagueID().equals(&quot;&quot;)) {</span>
-<span class="fc" id="L193">                logger.log(Level.WARNING,curr_referee.getLeagueID()+ &quot; has no league&quot;);</span>
-<span class="fc" id="L194">                throw new NullPointerException(&quot;the referee is not schedule to any league&quot;);</span>
+<span class="pc bpc" id="L212" title="2 of 6 branches missed.">            if (curr_referee.getLeagueID() == null || curr_referee.getLeagueID().equals(&quot;NULL&quot;) || curr_referee.getLeagueID().equals(&quot;&quot;)) {</span>
+<span class="fc" id="L213">                logger.log(Level.WARNING,curr_referee.getLeagueID()+ &quot; has no league&quot;);</span>
+<span class="fc" id="L214">                fileHandler.close();</span>
+
+<span class="fc" id="L216">                throw new NullPointerException(&quot;the referee is not schedule to any league&quot;);</span>
             }
 
             // if the leagues are not equal
-<span class="pc bpc" id="L198" title="1 of 2 branches missed.">            if (!curr_referee.getLeagueID().equals(curr_game.getLeagueID())) {</span>
-<span class="nc" id="L199">                logger.log(Level.WARNING,curr_referee.getLeagueID()+&quot; and &quot;+ curr_game.getGame_id()+&quot; has no the same league&quot;);</span>
-<span class="nc" id="L200">                throw new ScheduleRefereeFailed(&quot;the chosen referee and the chosen game are not belong to the same league&quot;);</span>
+<span class="pc bpc" id="L220" title="1 of 2 branches missed.">            if (!curr_referee.getLeagueID().equals(curr_game.getLeagueID())) {</span>
+<span class="nc" id="L221">                logger.log(Level.WARNING,curr_referee.getLeagueID()+&quot; and &quot;+ curr_game.getGame_id()+&quot; has no the same league&quot;);</span>
+<span class="nc" id="L222">                fileHandler.close();</span>
+
+<span class="nc" id="L224">                throw new ScheduleRefereeFailed(&quot;the chosen referee and the chosen game are not belong to the same league&quot;);</span>
             }
-<span class="pc bpc" id="L202" title="2 of 6 branches missed.">            if(curr_referee.getRefereeID().equals(curr_game.getMain_referee_ID()) || curr_referee.getRefereeID().equals(curr_game.getSecondary_referee_ID1()) || curr_referee.getRefereeID().equals(curr_game.getSecondary_referee_ID2())){</span>
-<span class="fc" id="L203">                logger.log(Level.WARNING,curr_referee.getLeagueID()+ &quot; already schedual to &quot;+curr_game.getGame_id());</span>
-<span class="fc" id="L204">                throw new ScheduleRefereeFailed(&quot;the chosen referee already schedual to this game&quot;);</span>
+<span class="pc bpc" id="L226" title="2 of 6 branches missed.">            if(curr_referee.getRefereeID().equals(curr_game.getMain_referee_ID()) || curr_referee.getRefereeID().equals(curr_game.getSecondary_referee_ID1()) || curr_referee.getRefereeID().equals(curr_game.getSecondary_referee_ID2())){</span>
+<span class="fc" id="L227">                logger.log(Level.WARNING,curr_referee.getLeagueID()+ &quot; already schedual to &quot;+curr_game.getGame_id());</span>
+<span class="fc" id="L228">                fileHandler.close();</span>
+
+<span class="fc" id="L230">                throw new ScheduleRefereeFailed(&quot;the chosen referee already schedual to this game&quot;);</span>
             }
             // if the type is not available
-<span class="pc bpc" id="L207" title="1 of 3 branches missed.">            switch (type) {</span>
+<span class="pc bpc" id="L233" title="1 of 3 branches missed.">            switch (type) {</span>
                 case 1:
-<span class="pc bpc" id="L209" title="5 of 6 branches missed.">                    if (curr_game.getMain_referee_ID() != null &amp;&amp; !(curr_game.getMain_referee_ID().equals(&quot;NULL&quot;)) &amp;&amp; !(curr_game.getMain_referee_ID().equals(&quot;&quot;))) {</span>
-<span class="nc" id="L210">                        logger.log(Level.WARNING,curr_game.getGame_id()+&quot;already has main referee schedule&quot;);</span>
-<span class="nc" id="L211">                        throw new ScheduleRefereeFailed(&quot;the chosen game is already has a main referee&quot;);</span>
+<span class="pc bpc" id="L235" title="5 of 6 branches missed.">                    if (curr_game.getMain_referee_ID() != null &amp;&amp; !(curr_game.getMain_referee_ID().equals(&quot;NULL&quot;)) &amp;&amp; !(curr_game.getMain_referee_ID().equals(&quot;&quot;))) {</span>
+<span class="nc" id="L236">                        logger.log(Level.WARNING,curr_game.getGame_id()+&quot;already has main referee schedule&quot;);</span>
+<span class="nc" id="L237">                        fileHandler.close();</span>
+
+<span class="nc" id="L239">                        throw new ScheduleRefereeFailed(&quot;the chosen game is already has a main referee&quot;);</span>
 
                     } else {
                         //main referee
-<span class="fc" id="L215">                        curr_game.setMain_referee_ID(referee_id);</span>
-<span class="fc" id="L216">                        cache.put(game_id, curr_game);</span>
-<span class="fc" id="L217">                        HashMap&lt;String,String&gt; game_details = curr_game.convertToHash();</span>
-<span class="fc" id="L218">                        Status status_returned = daController.updateRefereesToGame(game_details);</span>
-<span class="fc" id="L219">                        logger.log(Level.INFO,referee_id+&quot; set as main referee to &quot;+curr_game.getGame_id());</span>
-<span class="pc bpc" id="L220" title="1 of 2 branches missed.">                        if(status_returned==success){</span>
-<span class="fc" id="L221">                            return game_details;</span>
+<span class="fc" id="L243">                        curr_game.setMain_referee_ID(referee_id);</span>
+<span class="fc" id="L244">                        cache.put(game_id, curr_game);</span>
+<span class="fc" id="L245">                        HashMap&lt;String,String&gt; game_details = curr_game.convertToHash();</span>
+<span class="fc" id="L246">                        Status status_returned = daController.updateRefereesToGame(game_details);</span>
+<span class="fc" id="L247">                        logger.log(Level.INFO,referee_id+&quot; set as main referee to &quot;+curr_game.getGame_id());</span>
+<span class="fc" id="L248">                        fileHandler.close();</span>
+
+<span class="pc bpc" id="L250" title="1 of 2 branches missed.">                        if(status_returned==success){</span>
+<span class="fc" id="L251">                            return game_details;</span>
                         }
                         else{
-<span class="nc" id="L224">                            logger.log(Level.WARNING,&quot;schedule &quot;+ referee_id+&quot; to &quot;+ curr_game.getGame_id() +&quot; failed&quot;);</span>
-<span class="nc" id="L225">                            throw new ScheduleRefereeFailed(&quot;the status that returned is failure&quot;);</span>
+<span class="nc" id="L254">                            logger.log(Level.WARNING,&quot;schedule &quot;+ referee_id+&quot; to &quot;+ curr_game.getGame_id() +&quot; failed&quot;);</span>
+<span class="nc" id="L255">                            fileHandler.close();</span>
+
+<span class="nc" id="L257">                            throw new ScheduleRefereeFailed(&quot;the status that returned is failure&quot;);</span>
 
                         }
 
@@ -230,85 +262,101 @@ public class DomainController implements DomainControllerInterface {
 
                 case 2:
                     //if secondary1 is not available
-<span class="pc bpc" id="L233" title="2 of 6 branches missed.">                    if (curr_game.getSecondary_referee_ID1() != null &amp;&amp; !(curr_game.getSecondary_referee_ID1().equals(&quot;NULL&quot;)) &amp;&amp; !(curr_game.getSecondary_referee_ID1().equals(&quot;&quot;))) {</span>
+<span class="pc bpc" id="L265" title="2 of 6 branches missed.">                    if (curr_game.getSecondary_referee_ID1() != null &amp;&amp; !(curr_game.getSecondary_referee_ID1().equals(&quot;NULL&quot;)) &amp;&amp; !(curr_game.getSecondary_referee_ID1().equals(&quot;&quot;))) {</span>
                         //no available schedule
-<span class="pc bpc" id="L235" title="5 of 6 branches missed.">                        if (curr_game.getSecondary_referee_ID2() != null &amp;&amp; !(curr_game.getSecondary_referee_ID2().equals(&quot;NULL&quot;)) &amp;&amp; !(curr_game.getSecondary_referee_ID2().equals(&quot;&quot;))) {</span>
-<span class="nc" id="L236">                            logger.log(Level.WARNING,curr_game.getGame_id()+&quot;already has 2 secondary referee schedule&quot;);</span>
-<span class="nc" id="L237">                            throw new ScheduleRefereeFailed(&quot;the chosen game is already has secondary referees&quot;);</span>
+<span class="pc bpc" id="L267" title="5 of 6 branches missed.">                        if (curr_game.getSecondary_referee_ID2() != null &amp;&amp; !(curr_game.getSecondary_referee_ID2().equals(&quot;NULL&quot;)) &amp;&amp; !(curr_game.getSecondary_referee_ID2().equals(&quot;&quot;))) {</span>
+<span class="nc" id="L268">                            logger.log(Level.WARNING,curr_game.getGame_id()+&quot;already has 2 secondary referee schedule&quot;);</span>
+<span class="nc" id="L269">                            fileHandler.close();</span>
+
+<span class="nc" id="L271">                            throw new ScheduleRefereeFailed(&quot;the chosen game is already has secondary referees&quot;);</span>
                         }
                         //secondary referee2
                         else {
-<span class="fc" id="L241">                            curr_game.setSecondary_referee_ID2(referee_id);</span>
-<span class="fc" id="L242">                            cache.put(game_id, curr_game);</span>
-<span class="fc" id="L243">                            HashMap&lt;String,String&gt; game_details = curr_game.convertToHash();</span>
-<span class="fc" id="L244">                            Status status_returned = daController.updateRefereesToGame(game_details);</span>
-<span class="pc bpc" id="L245" title="1 of 2 branches missed.">                            if(status_returned==success){</span>
-<span class="fc" id="L246">                                logger.log(Level.INFO,referee_id+&quot; set as secondary referee to &quot;+curr_game.getGame_id());</span>
-<span class="fc" id="L247">                                return game_details;</span>
+<span class="fc" id="L275">                            curr_game.setSecondary_referee_ID2(referee_id);</span>
+<span class="fc" id="L276">                            cache.put(game_id, curr_game);</span>
+<span class="fc" id="L277">                            HashMap&lt;String,String&gt; game_details = curr_game.convertToHash();</span>
+<span class="fc" id="L278">                            Status status_returned = daController.updateRefereesToGame(game_details);</span>
+<span class="pc bpc" id="L279" title="1 of 2 branches missed.">                            if(status_returned==success){</span>
+<span class="fc" id="L280">                                logger.log(Level.INFO,referee_id+&quot; set as secondary referee to &quot;+curr_game.getGame_id());</span>
+<span class="fc" id="L281">                                fileHandler.close();</span>
+
+<span class="fc" id="L283">                                return game_details;</span>
                             }
                             else{
-<span class="nc" id="L250">                                logger.log(Level.WARNING,&quot;schedule &quot;+ referee_id+&quot; to &quot;+ curr_game.getGame_id() +&quot; failed&quot;);</span>
-<span class="nc" id="L251">                                throw new ScheduleRefereeFailed(&quot;the status that returned is failure&quot;);</span>
+<span class="nc" id="L286">                                logger.log(Level.WARNING,&quot;schedule &quot;+ referee_id+&quot; to &quot;+ curr_game.getGame_id() +&quot; failed&quot;);</span>
+<span class="nc" id="L287">                                fileHandler.close();</span>
+
+<span class="nc" id="L289">                                throw new ScheduleRefereeFailed(&quot;the status that returned is failure&quot;);</span>
                             }
                         }
 
                     } else {
 
-<span class="fc" id="L257">                        curr_game.setSecondary_referee_ID1(referee_id);</span>
-<span class="fc" id="L258">                        cache.put(game_id, curr_game);</span>
-<span class="fc" id="L259">                        HashMap&lt;String,String&gt; game_details = curr_game.convertToHash();</span>
-<span class="fc" id="L260">                        Status status_returned = daController.updateRefereesToGame(game_details);</span>
-<span class="pc bpc" id="L261" title="1 of 2 branches missed.">                        if(status_returned==success){</span>
-<span class="fc" id="L262">                            logger.log(Level.INFO,referee_id+&quot; set as secondary referee to &quot;+curr_game.getGame_id());</span>
-<span class="fc" id="L263">                            return game_details;</span>
+<span class="fc" id="L295">                        curr_game.setSecondary_referee_ID1(referee_id);</span>
+<span class="fc" id="L296">                        cache.put(game_id, curr_game);</span>
+<span class="fc" id="L297">                        HashMap&lt;String,String&gt; game_details = curr_game.convertToHash();</span>
+<span class="fc" id="L298">                        Status status_returned = daController.updateRefereesToGame(game_details);</span>
+<span class="pc bpc" id="L299" title="1 of 2 branches missed.">                        if(status_returned==success){</span>
+<span class="fc" id="L300">                            logger.log(Level.INFO,referee_id+&quot; set as secondary referee to &quot;+curr_game.getGame_id());</span>
+<span class="fc" id="L301">                            fileHandler.close();</span>
+
+<span class="fc" id="L303">                            return game_details;</span>
                         }
                         else{
-<span class="nc" id="L266">                            logger.log(Level.WARNING,&quot;schedule &quot;+ referee_id+&quot; to &quot;+ curr_game.getGame_id() +&quot; failed&quot;);</span>
-<span class="nc" id="L267">                            throw new ScheduleRefereeFailed(&quot;the status that returned is failure&quot;);</span>
+<span class="nc" id="L306">                            logger.log(Level.WARNING,&quot;schedule &quot;+ referee_id+&quot; to &quot;+ curr_game.getGame_id() +&quot; failed&quot;);</span>
+<span class="nc" id="L307">                            fileHandler.close();</span>
+
+<span class="nc" id="L309">                            throw new ScheduleRefereeFailed(&quot;the status that returned is failure&quot;);</span>
                         }
                     }
             }
-<span class="nc" id="L271">            return null;</span>
+<span class="nc" id="L313">            return null;</span>
     }
         public HashMap&lt;String,String&gt; assign_referee_to_league(String referee_id,String league_id) throws ObjectIDNotExistException, SQLException, ImportDataException, ScheduleRefereeFailed {
 
             //try {
             //checking the if the league id exists in memory
-<span class="fc" id="L277">            HashMap&lt;String, String&gt; league_details = daController.findLeague(league_id);</span>
-<span class="fc" id="L278">            Referee curr_referee = null;</span>
+<span class="fc" id="L319">            HashMap&lt;String, String&gt; league_details = daController.findLeague(league_id);</span>
+<span class="fc" id="L320">            Referee curr_referee = null;</span>
             //checking the league id exists in cache
-<span class="pc bpc" id="L280" title="1 of 2 branches missed.">            if (cache.containsKey(&quot;referee_id&quot;)) {</span>
-<span class="nc" id="L281">                curr_referee = (Referee) cache.get(referee_id);</span>
+<span class="pc bpc" id="L322" title="1 of 2 branches missed.">            if (cache.containsKey(&quot;referee_id&quot;)) {</span>
+<span class="nc" id="L323">                curr_referee = (Referee) cache.get(referee_id);</span>
             }
 
-<span class="pc bpc" id="L284" title="1 of 2 branches missed.">            if (curr_referee == null) {</span>
+<span class="pc bpc" id="L326" title="1 of 2 branches missed.">            if (curr_referee == null) {</span>
                 //checking the if the referee id exists in memory
-<span class="fc" id="L286">                HashMap&lt;String, String&gt; referee_details = daController.findReferee(referee_id);</span>
-<span class="fc" id="L287">                curr_referee = new Referee(referee_details.get(&quot;username&quot;), referee_details.get(&quot;password&quot;), referee_details.get(&quot;refNum&quot;));</span>
-<span class="fc" id="L288">                curr_referee.setRefereeID(referee_details.get(&quot;refereeID&quot;));</span>
-<span class="fc" id="L289">                curr_referee.setQualification(referee_details.get(&quot;qualification&quot;));</span>
-<span class="fc" id="L290">                curr_referee.setLeagueID(referee_details.get(&quot;leagueID&quot;));</span>
-<span class="fc" id="L291">                cache.put(curr_referee.getRefereeID(), curr_referee);</span>
+<span class="fc" id="L328">                HashMap&lt;String, String&gt; referee_details = daController.findReferee(referee_id);</span>
+<span class="fc" id="L329">                curr_referee = new Referee(referee_details.get(&quot;username&quot;), referee_details.get(&quot;password&quot;), referee_details.get(&quot;refNum&quot;));</span>
+<span class="fc" id="L330">                curr_referee.setRefereeID(referee_details.get(&quot;refereeID&quot;));</span>
+<span class="fc" id="L331">                curr_referee.setQualification(referee_details.get(&quot;qualification&quot;));</span>
+<span class="fc" id="L332">                curr_referee.setLeagueID(referee_details.get(&quot;leagueID&quot;));</span>
+<span class="fc" id="L333">                cache.put(curr_referee.getRefereeID(), curr_referee);</span>
 
             }
 
             //checking the referee have no league
-<span class="pc bpc" id="L296" title="2 of 6 branches missed.">            if (curr_referee.getLeagueID() == null || curr_referee.getLeagueID().equals(&quot;NULL&quot;) || curr_referee.getLeagueID().equals(&quot;&quot;)) {</span>
-<span class="fc" id="L297">                curr_referee.setLeagueID(league_id);</span>
-<span class="fc" id="L298">                Status status_returned = daController.updateLeagueToReferee(referee_id, league_id);</span>
-<span class="pc bpc" id="L299" title="1 of 2 branches missed.">                if (status_returned == success) {</span>
-<span class="fc" id="L300">                    cache.put(curr_referee.getRefereeID(), curr_referee);</span>
-<span class="fc" id="L301">                    logger.log(Level.INFO,league_id+&quot; set to &quot;+curr_referee.getRefereeID());</span>
-<span class="fc" id="L302">                    return curr_referee.get_referee_details();</span>
+<span class="pc bpc" id="L338" title="2 of 6 branches missed.">            if (curr_referee.getLeagueID() == null || curr_referee.getLeagueID().equals(&quot;NULL&quot;) || curr_referee.getLeagueID().equals(&quot;&quot;)) {</span>
+<span class="fc" id="L339">                curr_referee.setLeagueID(league_id);</span>
+<span class="fc" id="L340">                Status status_returned = daController.updateLeagueToReferee(referee_id, league_id);</span>
+<span class="pc bpc" id="L341" title="1 of 2 branches missed.">                if (status_returned == success) {</span>
+<span class="fc" id="L342">                    cache.put(curr_referee.getRefereeID(), curr_referee);</span>
+<span class="fc" id="L343">                    logger.log(Level.INFO,league_id+&quot; set to &quot;+curr_referee.getRefereeID());</span>
+<span class="fc" id="L344">                    fileHandler.close();</span>
+
+<span class="fc" id="L346">                    return curr_referee.get_referee_details();</span>
                 }
                 else {
-<span class="nc" id="L305">                    logger.log(Level.WARNING,league_id+&quot; failed set to &quot;+curr_referee.getRefereeID());</span>
-<span class="nc" id="L306">                    throw new ScheduleRefereeFailed(&quot;the status that returned is failure&quot;);</span>
+<span class="nc" id="L349">                    logger.log(Level.WARNING,league_id+&quot; failed set to &quot;+curr_referee.getRefereeID());</span>
+<span class="nc" id="L350">                    fileHandler.close();</span>
+
+<span class="nc" id="L352">                    throw new ScheduleRefereeFailed(&quot;the status that returned is failure&quot;);</span>
                 }
             }
             else {
-<span class="fc" id="L310">                logger.log(Level.WARNING,curr_referee.getRefereeID()+&quot; already schedule to another league&quot;);</span>
-<span class="fc" id="L311">                throw new ScheduleRefereeFailed(&quot;The referee is already schedule to another league&quot;);</span>
+<span class="fc" id="L356">                logger.log(Level.WARNING,curr_referee.getRefereeID()+&quot; already schedule to another league&quot;);</span>
+<span class="fc" id="L357">                fileHandler.close();</span>
+
+<span class="fc" id="L359">                throw new ScheduleRefereeFailed(&quot;The referee is already schedule to another league&quot;);</span>
             }
     }
 }
