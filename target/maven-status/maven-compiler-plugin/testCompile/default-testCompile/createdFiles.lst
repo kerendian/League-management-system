@@ -15,6 +15,7 @@ IntegrationTests\Domain\StubGamePlacement.class
 AcceptanceTests\Service\GameScheduleAcceptanceTest.class
 IntegrationTests\Domain\UpdateRefereeToGameIntegrationTest.class
 AcceptanceTests\Service\AssignRefereeToLeagueAcceptanceTest.class
+UnitTest\Domain\UnionRepTest.class
 IntegrationTests\Domain\UpdateRefereeToLeagueIntegrationTest.class
 IntegrationTests\Domain\StubUpdateRefereeToLeague.class
 IntegrationTests\Domain\FindRefereeIntegrationTest.class

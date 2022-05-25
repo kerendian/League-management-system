@@ -1,10 +1,12 @@
 Service\Status.class
 Domain\Court.class
 Exceptions\ScheduleRefereeFailed.class
+Domain\UnionRep.class
 Domain\Referee.class
 Exceptions\WrongPasswordException.class
 Exceptions\NullPointerException.class
 Exceptions\WrongUserNameException.class
+Domain\Team.class
 Domain\GamePlacementPolicy2.class
 Domain\Season.class
 DataAccess\DAControllerInterface.class
