@@ -19294,3 +19294,227 @@
   <message>REF1 already schedule to another league</message>
 </record>
 </log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-25T09:29:13.438212100Z</date>
+  <millis>1653470953438</millis>
+  <nanos>212100</nanos>
+  <sequence>0</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>GAME2 has no league</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-25T09:29:13.619330200Z</date>
+  <millis>1653470953619</millis>
+  <nanos>330200</nanos>
+  <sequence>7</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_league</method>
+  <thread>1</thread>
+  <message>LEAGUE1 set to REF4</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-25T09:29:13.852403Z</date>
+  <millis>1653470953852</millis>
+  <nanos>403000</nanos>
+  <sequence>9</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME2 and GAME10 was scheduled to the system with POLICY2</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-25T09:29:13.914891500Z</date>
+  <millis>1653470953914</millis>
+  <nanos>891500</nanos>
+  <sequence>13</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>findUser</method>
+  <thread>1</thread>
+  <message>user Bob tried to log in to the system as Referees with wrong username or user type</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-25T09:29:13.992998100Z</date>
+  <millis>1653470953992</millis>
+  <nanos>998100</nanos>
+  <sequence>17</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>GAME2 has no league</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-25T09:29:14.086693100Z</date>
+  <millis>1653470954086</millis>
+  <nanos>693100</nanos>
+  <sequence>28</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>GAME2 has no league</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-25T09:29:14.211662200Z</date>
+  <millis>1653470954211</millis>
+  <nanos>662200</nanos>
+  <sequence>39</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>GAME2 has no league</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-25T09:29:14.321011Z</date>
+  <millis>1653470954321</millis>
+  <nanos>11000</nanos>
+  <sequence>52</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>GAME2 has no league</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-25T09:29:14.414737800Z</date>
+  <millis>1653470954414</millis>
+  <nanos>737800</nanos>
+  <sequence>61</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>games_placement</method>
+  <thread>1</thread>
+  <message>GAME2 and GAME10 was scheduled to the system with POLICY2</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-25T09:29:14.570950300Z</date>
+  <millis>1653470954570</millis>
+  <nanos>950300</nanos>
+  <sequence>65</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>GAME2 has no league</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-25T09:29:14.649057300Z</date>
+  <millis>1653470954649</millis>
+  <nanos>57300</nanos>
+  <sequence>76</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>INFO</level>
+  <class>Domain.DomainController</class>
+  <method>findUser</method>
+  <thread>1</thread>
+  <message>user Alice logged in to the system as Referees</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-25T09:29:14.774027400Z</date>
+  <millis>1653470954774</millis>
+  <nanos>27400</nanos>
+  <sequence>80</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>GAME2 has no league</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-25T09:29:15.758187900Z</date>
+  <millis>1653470955758</millis>
+  <nanos>187900</nanos>
+  <sequence>97</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>GAME2 has no league</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1255" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-05-25T09:29:16.273693300Z</date>
+  <millis>1653470956273</millis>
+  <nanos>693300</nanos>
+  <sequence>114</sequence>
+  <logger>Domain.DomainController</logger>
+  <level>WARNING</level>
+  <class>Domain.DomainController</class>
+  <method>assign_referee_to_game</method>
+  <thread>1</thread>
+  <message>GAME2 has no league</message>
+</record>
+</log>

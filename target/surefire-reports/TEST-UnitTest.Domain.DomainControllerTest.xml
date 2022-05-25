@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="22" failures="0" name="UnitTest.Domain.DomainControllerTest" time="0" errors="0" skipped="0">
+<testsuite tests="22" failures="0" name="UnitTest.Domain.DomainControllerTest" time="0.016" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="15.0.2+7-27"/>
@@ -60,26 +60,26 @@
     <property name="sun.stdout.encoding" value="cp862"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="UnitTest.Domain.DomainControllerTest" name="assign_referee_with_league_to_league" time="0"/>
+  <testcase classname="UnitTest.Domain.DomainControllerTest" name="assign_referee_to_game_without_league" time="0"/>
+  <testcase classname="UnitTest.Domain.DomainControllerTest" name="assign_secondary_referee_to_game_valid" time="0"/>
+  <testcase classname="UnitTest.Domain.DomainControllerTest" name="assign_referee_without_league_to_game" time="0"/>
   <testcase classname="UnitTest.Domain.DomainControllerTest" name="findValidUser" time="0"/>
-  <testcase classname="UnitTest.Domain.DomainControllerTest" name="assign_main_referee_to_game_valid" time="0"/>
   <testcase classname="UnitTest.Domain.DomainControllerTest" name="assign_secondary_referee_twise" time="0"/>
   <testcase classname="UnitTest.Domain.DomainControllerTest" name="assign_secondary2_referee" time="0"/>
-  <testcase classname="UnitTest.Domain.DomainControllerTest" name="games_placement_invalid_gameid" time="0"/>
+  <testcase classname="UnitTest.Domain.DomainControllerTest" name="assign_main_referee_to_game_valid" time="0"/>
   <testcase classname="UnitTest.Domain.DomainControllerTest" name="assign_invalid_referee_to_league" time="0"/>
-  <testcase classname="UnitTest.Domain.DomainControllerTest" name="games_placement_valid1" time="0"/>
-  <testcase classname="UnitTest.Domain.DomainControllerTest" name="games_placement_invalid_date" time="0"/>
-  <testcase classname="UnitTest.Domain.DomainControllerTest" name="games_placement_team_has_game" time="0"/>
   <testcase classname="UnitTest.Domain.DomainControllerTest" name="assign_referee_to_invalid_league" time="0"/>
   <testcase classname="UnitTest.Domain.DomainControllerTest" name="assign_valid_referee_to_league" time="0"/>
   <testcase classname="UnitTest.Domain.DomainControllerTest" name="games_placement_valid2" time="0"/>
-  <testcase classname="UnitTest.Domain.DomainControllerTest" name="games_placement_has_game" time="0"/>
   <testcase classname="UnitTest.Domain.DomainControllerTest" name="games_placement_invalid_leagueid" time="0"/>
+  <testcase classname="UnitTest.Domain.DomainControllerTest" name="games_placement_valid1" time="0"/>
+  <testcase classname="UnitTest.Domain.DomainControllerTest" name="games_placement_invalid_date" time="0.016"/>
+  <testcase classname="UnitTest.Domain.DomainControllerTest" name="games_placement_has_game" time="0"/>
+  <testcase classname="UnitTest.Domain.DomainControllerTest" name="games_placement_team_has_game" time="0"/>
+  <testcase classname="UnitTest.Domain.DomainControllerTest" name="games_placement_invalid_gameid" time="0"/>
   <testcase classname="UnitTest.Domain.DomainControllerTest" name="findUserWithWrongPassword" time="0"/>
   <testcase classname="UnitTest.Domain.DomainControllerTest" name="findUserWithWrongUserType" time="0"/>
   <testcase classname="UnitTest.Domain.DomainControllerTest" name="findUserWithWrongUserName" time="0"/>
-  <testcase classname="UnitTest.Domain.DomainControllerTest" name="assign_referee_without_league_to_game" time="0"/>
-  <testcase classname="UnitTest.Domain.DomainControllerTest" name="assign_secondary_referee_to_game_valid" time="0"/>
-  <testcase classname="UnitTest.Domain.DomainControllerTest" name="assign_referee_to_game_without_league" time="0"/>
   <testcase classname="UnitTest.Domain.DomainControllerTest" name="assign_without_league_referee_to_game_without_league" time="0"/>
+  <testcase classname="UnitTest.Domain.DomainControllerTest" name="assign_referee_with_league_to_league" time="0"/>
 </testsuite>

@@ -61,7 +61,7 @@
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
   <testcase classname="IntegrationTests.Domain.LogInIntegrationTest" name="findValidUser" time="0"/>
-  <testcase classname="IntegrationTests.Domain.LogInIntegrationTest" name="findUserWithWrongPassword" time="0.015"/>
-  <testcase classname="IntegrationTests.Domain.LogInIntegrationTest" name="findUserWithWrongUserType" time="0"/>
+  <testcase classname="IntegrationTests.Domain.LogInIntegrationTest" name="findUserWithWrongPassword" time="0"/>
+  <testcase classname="IntegrationTests.Domain.LogInIntegrationTest" name="findUserWithWrongUserType" time="0.015"/>
   <testcase classname="IntegrationTests.Domain.LogInIntegrationTest" name="findUserWithWrongUserName" time="0"/>
 </testsuite>

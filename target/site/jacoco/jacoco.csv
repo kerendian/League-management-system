@@ -14,6 +14,8 @@ Maven Quick Start Archetype,Domain,GamePlacementPolicy1,3,0,0,0,1,0,1,0,1,0
 Maven Quick Start Archetype,Domain,League,0,39,0,0,0,7,0,3,0,3
 Maven Quick Start Archetype,Domain,UserStatus,0,21,0,0,0,2,0,1,0,1
 Maven Quick Start Archetype,Domain,Referee,0,132,0,0,0,26,0,11,0,11
+Maven Quick Start Archetype,Domain,UnionRep,0,25,0,0,0,5,0,3,0,3
+Maven Quick Start Archetype,Domain,Team,31,0,0,0,10,0,5,0,5,0
 Maven Quick Start Archetype,Domain,GamePlacementPolicy,3,5,0,0,1,2,1,1,1,1
 Maven Quick Start Archetype,Domain,Court,0,28,0,0,0,6,0,2,0,2
 Maven Quick Start Archetype,Domain,DomainController,226,940,32,59,30,159,29,27,1,9

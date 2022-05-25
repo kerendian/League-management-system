@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="14" failures="0" name="IntegrationTests.Domain.FindGameIntegrationTest" time="0.015" errors="0" skipped="0">
+<testsuite tests="14" failures="0" name="IntegrationTests.Domain.FindGameIntegrationTest" time="0.031" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="15.0.2+7-27"/>
@@ -60,18 +60,18 @@
     <property name="sun.stdout.encoding" value="cp862"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
+  <testcase classname="IntegrationTests.Domain.FindGameIntegrationTest" name="assign_referee_to_game_without_league" time="0"/>
+  <testcase classname="IntegrationTests.Domain.FindGameIntegrationTest" name="assign_secondary_referee_to_game_valid" time="0"/>
+  <testcase classname="IntegrationTests.Domain.FindGameIntegrationTest" name="assign_referee_without_league_to_game" time="0"/>
+  <testcase classname="IntegrationTests.Domain.FindGameIntegrationTest" name="assign_secondary_referee_twise" time="0.016"/>
+  <testcase classname="IntegrationTests.Domain.FindGameIntegrationTest" name="assign_secondary2_referee" time="0"/>
   <testcase classname="IntegrationTests.Domain.FindGameIntegrationTest" name="assign_main_referee_to_game_valid" time="0"/>
-  <testcase classname="IntegrationTests.Domain.FindGameIntegrationTest" name="assign_secondary_referee_twise" time="0"/>
-  <testcase classname="IntegrationTests.Domain.FindGameIntegrationTest" name="assign_secondary2_referee" time="0.015"/>
-  <testcase classname="IntegrationTests.Domain.FindGameIntegrationTest" name="games_placement_invalid_gameid" time="0"/>
+  <testcase classname="IntegrationTests.Domain.FindGameIntegrationTest" name="games_placement_valid2" time="0"/>
+  <testcase classname="IntegrationTests.Domain.FindGameIntegrationTest" name="games_placement_invalid_leagueid" time="0"/>
   <testcase classname="IntegrationTests.Domain.FindGameIntegrationTest" name="games_placement_valid1" time="0"/>
   <testcase classname="IntegrationTests.Domain.FindGameIntegrationTest" name="games_placement_invalid_date" time="0"/>
-  <testcase classname="IntegrationTests.Domain.FindGameIntegrationTest" name="games_placement_team_has_game" time="0"/>
-  <testcase classname="IntegrationTests.Domain.FindGameIntegrationTest" name="games_placement_valid2" time="0"/>
   <testcase classname="IntegrationTests.Domain.FindGameIntegrationTest" name="games_placement_has_game" time="0"/>
-  <testcase classname="IntegrationTests.Domain.FindGameIntegrationTest" name="games_placement_invalid_leagueid" time="0"/>
-  <testcase classname="IntegrationTests.Domain.FindGameIntegrationTest" name="assign_referee_without_league_to_game" time="0"/>
-  <testcase classname="IntegrationTests.Domain.FindGameIntegrationTest" name="assign_secondary_referee_to_game_valid" time="0"/>
-  <testcase classname="IntegrationTests.Domain.FindGameIntegrationTest" name="assign_referee_to_game_without_league" time="0"/>
+  <testcase classname="IntegrationTests.Domain.FindGameIntegrationTest" name="games_placement_team_has_game" time="0"/>
+  <testcase classname="IntegrationTests.Domain.FindGameIntegrationTest" name="games_placement_invalid_gameid" time="0.015"/>
   <testcase classname="IntegrationTests.Domain.FindGameIntegrationTest" name="assign_without_league_referee_to_game_without_league" time="0"/>
 </testsuite>
